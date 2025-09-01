@@ -15,6 +15,17 @@ export type TelemetryProps = {
 };
 
 export class Telemetry extends Component<TelemetryProps> {
+  constructor(props: TelemetryProps) {
+    super(props);
+
+    this.soilSensorConfig = new HTTPConfig(
+      new JSONFormatter(),
+      `${this.props.baseURL}/config/sensor/analog?id=soil_a0`,
+    );
+
+    this.notificator = new DefaultNotificator();
+  }
+
   render() {
     if (!this.props.data) {
       return <p>Loading telemetry data...</p>;
@@ -29,23 +40,19 @@ export class Telemetry extends Component<TelemetryProps> {
     const system_telemetry: SystemTelemetryData =
       JSONTelemetryParser.parseSystemTelemetryData(this.props.data);
 
-    const soilSensorConfig = new HTTPConfig(
-      new JSONFormatter(),
-      `${this.props.baseURL}/config/sensor/analog?id=soil_a0`,
-    );
-
-    const notificator: Notificator = new DefaultNotificator();
-
     return (
       <div>
         <AnalogSensor
           title="Moisture"
           data={sensor_data}
-          config={soilSensorConfig}
-          notificator={notificator}
+          config={this.soilSensorConfig}
+          notificator={this.notificator}
         />
         <SystemTelemetry data={system_telemetry} />
       </div>
     );
   }
+
+  private soilSensorConfig: Config;
+  private notificator: Notificator;
 }
