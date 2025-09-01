@@ -1,21 +1,18 @@
-import { Component } from "preact";
-
 import { AnalogSensor, AnalogSensorData } from "./sensor/soil/analog_sensor";
 import { JSONTelemetryParser } from "./parser/json_telemetry_parser";
 import { SystemTelemetry, SystemTelemetryData } from "./system/telemetry";
 import { Config } from "./config/config";
 import { HTTPConfig } from "./config/http_config";
-import { JSONFormatter } from "./config/json_formatter";
 import { Notificator } from "./system/notificator";
 import { DefaultNotificator } from "./system/default_notificator";
+import { JSONFormatter } from "./fmt/json_formatter";
+import {
+  BasicDataComponent,
+  BasicDataComponentProps,
+} from "./pipeline/basic_data_component";
 
-export type TelemetryProps = {
-  baseURL: string;
-  data: Record<string, any> | null;
-};
-
-export class Telemetry extends Component<TelemetryProps> {
-  constructor(props: TelemetryProps) {
+export class Telemetry extends BasicDataComponent {
+  constructor(props: BasicDataComponentProps) {
     super(props);
 
     this.soilSensorConfig = new HTTPConfig(
@@ -27,18 +24,18 @@ export class Telemetry extends Component<TelemetryProps> {
   }
 
   render() {
-    if (!this.props.data) {
+    if (!this.state.data) {
       return <p>Loading telemetry data...</p>;
     }
 
     const sensor_data: AnalogSensorData =
       JSONTelemetryParser.parseAnalogSoilSensorData(
         "sensor_soil",
-        this.props.data,
+        this.state.data,
       );
 
     const system_telemetry: SystemTelemetryData =
-      JSONTelemetryParser.parseSystemTelemetryData(this.props.data);
+      JSONTelemetryParser.parseSystemTelemetryData(this.state.data);
 
     return (
       <div>

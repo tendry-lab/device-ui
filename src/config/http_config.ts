@@ -1,4 +1,4 @@
-import { Formatter } from "./formatter";
+import { Formatter } from "../fmt/formatter";
 import { Config } from "./config";
 import { HTTPOps } from "./../algo/http_ops";
 import { HTTPFetcher } from "./../http/http_fetcher";
