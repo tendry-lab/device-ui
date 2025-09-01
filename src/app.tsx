@@ -1,6 +1,6 @@
 import { Component } from "preact";
 
-import { Telemetry } from "./telemetry";
+import { TelemetryDataComponent } from "./telemetry_data_component";
 
 import "./app.css";
 
@@ -12,7 +12,7 @@ export class App extends Component {
     return (
       <div className="app-container">
         <h1>Bonsai Zero Analog 1 Kit Dashboard</h1>
-        <Telemetry baseURL={API_BASE_URL} interval={10 * 1000} />
+        <TelemetryDataComponent baseURL={API_BASE_URL} interval={10 * 1000} />
       </div>
     );
   }
