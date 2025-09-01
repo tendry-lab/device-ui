@@ -1,0 +1,210 @@
+/* Analog Sensor Styles */
+.sensor-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.sensor-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sensor-header {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.sensor-header.expanded {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.sensor-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.sensor-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #212529;
+}
+
+.expand-arrow {
+  font-size: 14px;
+  color: #6c757d;
+  transition: transform 0.2s ease;
+}
+
+.expand-arrow.expanded {
+  transform: rotate(90deg);
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.status-duration {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.moisture-display {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.moisture-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #212529;
+}
+
+.moisture-unit {
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.progress-info {
+  margin-left: auto;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.sensor-details {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.detail-item {
+  /* No specific styles needed, just for structure */
+}
+
+.detail-label {
+  font-size: 12px;
+  color: #6c757d;
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #212529;
+}
+
+.previous-status {
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.prev-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prev-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.prev-status-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212529;
+}
+
+.prev-status-duration {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* Status-specific colors for indicators */
+.status-indicator.status-none { background-color: #868e96; }
+.status-indicator.status-saturated { background-color: #51cf66; }
+.status-indicator.status-wet { background-color: #74c0fc; }
+.status-indicator.status-depletion { background-color: #ffd43b; }
+.status-indicator.status-dry { background-color: #ff8787; }
+.status-indicator.status-error { background-color: #f03e3e; }
+
+/* Text colors for status text */
+.status-text.status-none { color: #868e96; }
+.status-text.status-saturated { color: #51cf66; }
+.status-text.status-wet { color: #74c0fc; }
+.status-text.status-depletion { color: #d69e2e; }
+.status-text.status-dry { color: #e53e3e; }
+.status-text.status-error { color: #e53e3e; }
+
+.config-button-container {
+    margin-bottom: 16px;
+}
+
+.config-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .sensor-card {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .sensor-header {
+    padding: 1rem;
+  }
+
+  .sensor-details {
+    padding: 1rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .moisture-display {
+    flex-wrap: wrap;
+  }
+
+  .moisture-value {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,39 @@
+name: Build Web-GUI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+
+jobs:
+  build-firmware:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_PATH: project
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: ${{ env.SOURCE_PATH }}
+
+      - name: setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build web GUI
+        shell: bash
+        run: |
+          cd ${{ env.SOURCE_PATH }}
+
+          npm install
+          npm run build
+          npm run fmt
+
+          if [ -n "$(git status --porcelain .)" ]; then
+            echo "Please run 'npm run fmt' and commit the updated files."
+            exit 1
+          fi
