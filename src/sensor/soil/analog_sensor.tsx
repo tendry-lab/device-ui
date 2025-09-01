@@ -3,7 +3,6 @@ import { Component } from "preact";
 import { FormConfigComponent } from "../../config/form_config_component";
 import { Config } from "../../config/config";
 import { Notificator } from "../../system/notificator";
-import { DefaultNotificator } from "../../system/default_notificator";
 
 import "./analog_sensor.css";
 
@@ -25,6 +24,7 @@ export type AnalogSensorProps = {
   title: string;
   data: AnalogSensorData;
   config: Config;
+  notificator: Notificator;
 };
 
 // Get CSS class for status styling.
@@ -69,8 +69,6 @@ export class AnalogSensor extends Component<
       expanded: false,
       enableCalibration: false,
     };
-
-    this.notificator = new DefaultNotificator();
   }
 
   render() {
@@ -168,7 +166,7 @@ export class AnalogSensor extends Component<
                 config={this.props.config}
                 ignoreKeys={["bitwidth"]}
                 onClose={this.handleConfigEnd}
-                notificator={this.notificator}
+                notificator={this.props.notificator}
               />
             )}
           </div>
@@ -202,6 +200,4 @@ export class AnalogSensor extends Component<
       enableCalibration: false,
     });
   };
-
-  private notificator: Notificator;
 }
