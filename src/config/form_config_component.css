@@ -99,14 +99,14 @@
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-.config-buttons {
+.config-buttons-container {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.config-btn {
+.config-buttons-item {
   padding: 8px 12px;
   color: white;
   border: none;
@@ -117,35 +117,27 @@
   transition: opacity 0.2s ease;
 }
 
-.config-btn:hover:not(:disabled) {
+.config-buttons-item:hover:not(:disabled) {
   opacity: 0.9;
 }
 
-.config-btn:disabled {
+.config-buttons-item:disabled {
   cursor: not-allowed;
   opacity: 0.6;
 }
 
-.btn-air {
-  background-color: #28a745;
-}
-
-.btn-water {
-  background-color: #17a2b8;
-}
-
-.btn-apply {
+.config-buttons-item-apply {
   background-color: #007bff;
 }
 
-.btn-apply:disabled {
+.config-buttons-item-apply:disabled {
   background-color: #6c757d;
 }
 
-.btn-reset {
+.config-buttons-item-reset {
   background-color: #dc3545;
 }
 
-.btn-close {
+.config-buttons-item-close {
   background-color: #6c757d;
 }

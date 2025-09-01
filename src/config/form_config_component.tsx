@@ -48,16 +48,25 @@ function ConfigForm(props: configFormProps) {
       </div>
 
       {/* Action buttons. */}
-      <div className="config-buttons">
-        <button onClick={props.onApply} className="config-btn btn-apply">
+      <div className="config-buttons-container">
+        <button
+          onClick={props.onApply}
+          className="config-buttons-item config-buttons-item-apply"
+        >
           Save
         </button>
 
-        <button onClick={props.onReset} className="config-btn btn-reset">
+        <button
+          onClick={props.onReset}
+          className="config-buttons-item config-buttons-item-reset"
+        >
           Reset
         </button>
 
-        <button onClick={props.onClose} className="config-btn btn-close">
+        <button
+          onClick={props.onClose}
+          className="config-buttons-item config-buttons-item-close"
+        >
           Cancel
         </button>
       </div>
