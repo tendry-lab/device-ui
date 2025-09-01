@@ -1,3 +1,5 @@
+[![Build Web-GUI](https://github.com/tendry-lab/bonsai-zero-a-1-k-web-gui/actions/workflows/build.yml/badge.svg)](https://github.com/tendry-lab/bonsai-zero-a-1-k-web-gui/actions/workflows/build.yml)
+
 ## Development
 
 ```bash
