@@ -2,8 +2,6 @@ import { Component } from "preact";
 
 import { FormConfigComponent } from "../../config/form_config_component";
 import { Config } from "../../config/config";
-import { HTTPConfig } from "../../config/http_config";
-import { JSONFormatter } from "../../config/json_formatter";
 import { Notificator } from "../../system/notificator";
 import { DefaultNotificator } from "../../system/default_notificator";
 
@@ -26,8 +24,7 @@ export type AnalogSensorData = {
 export type AnalogSensorProps = {
   title: string;
   data: AnalogSensorData;
-  baseURL: string;
-  id: string;
+  config: Config;
 };
 
 // Get CSS class for status styling.
@@ -72,11 +69,6 @@ export class AnalogSensor extends Component<
       expanded: false,
       enableCalibration: false,
     };
-
-    this.config = new HTTPConfig(
-      new JSONFormatter(),
-      `${this.props.baseURL}/config/sensor/analog?id=${this.props.id}`,
-    );
 
     this.notificator = new DefaultNotificator();
   }
@@ -173,7 +165,7 @@ export class AnalogSensor extends Component<
             {/* Calibration mode */}
             {this.state.enableCalibration && (
               <FormConfigComponent
-                config={this.config}
+                config={this.props.config}
                 ignoreKeys={["bitwidth"]}
                 onClose={this.handleConfigEnd}
                 notificator={this.notificator}
@@ -211,6 +203,5 @@ export class AnalogSensor extends Component<
     });
   };
 
-  private config: Config;
   private notificator: Notificator;
 }
