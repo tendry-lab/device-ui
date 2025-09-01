@@ -11,7 +11,7 @@ import {
   BasicDataComponentProps,
 } from "./pipeline/basic_data_component";
 
-export class Telemetry extends BasicDataComponent {
+export class TelemetryDataComponent extends BasicDataComponent {
   constructor(props: BasicDataComponentProps) {
     super(props);
 
