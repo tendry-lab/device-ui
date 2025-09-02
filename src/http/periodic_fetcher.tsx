@@ -10,6 +10,8 @@ export class PeriodicFetcher {
   }
 
   async start() {
+    this.stop();
+
     await this.fetchData();
 
     this.timer = setInterval(this.fetchData, this.interval);
