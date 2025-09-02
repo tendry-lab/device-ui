@@ -4,7 +4,6 @@ import { SystemTelemetry, SystemTelemetryData } from "./system/telemetry";
 import { Config } from "./config/config";
 import { HTTPConfig } from "./config/http_config";
 import { Notificator } from "./system/notificator";
-import { DefaultNotificator } from "./system/default_notificator";
 import { JSONFormatter } from "./fmt/json_formatter";
 import {
   BasicDataComponent,
@@ -19,8 +18,6 @@ export class TelemetryDataComponent extends BasicDataComponent {
       new JSONFormatter(),
       `${this.props.baseURL}/config/sensor/analog?id=soil_a0`,
     );
-
-    this.notificator = new DefaultNotificator();
   }
 
   render() {
@@ -43,13 +40,13 @@ export class TelemetryDataComponent extends BasicDataComponent {
           title="Moisture"
           data={sensor_data}
           config={this.soilSensorConfig}
-          notificator={this.notificator}
+          notificator={this.props.notificator}
         />
+
         <SystemTelemetry data={system_telemetry} />
       </div>
     );
   }
 
   private soilSensorConfig: Config;
-  private notificator: Notificator;
 }

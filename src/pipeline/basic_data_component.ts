@@ -6,6 +6,7 @@ import { Formatter } from "../fmt/formatter";
 import { JSONFormatter } from "../fmt/json_formatter";
 import { HTTPFetcher } from "../http/http_fetcher";
 import { PeriodicFetcher } from "../http/periodic_fetcher";
+import { Notificator } from "../system/notificator";
 
 export type BasicDataComponentProps = {
   // Device API base URL.
@@ -13,6 +14,9 @@ export type BasicDataComponentProps = {
 
   // How often to fetch device data, in milliseconds.
   interval: number;
+
+  // Notificator to send notifications.
+  notificator: Notificator;
 };
 
 type basicDataComponentState = {
