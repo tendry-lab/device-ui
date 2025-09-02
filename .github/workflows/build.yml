@@ -30,6 +30,7 @@ jobs:
           cd ${{ env.SOURCE_PATH }}
 
           npm install
+          npm run test
           npm run build
           npm run fmt
 
