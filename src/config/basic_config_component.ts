@@ -42,6 +42,14 @@ export abstract class BasicConfigComponent extends Component<
     await this.readConfig();
   }
 
+  componentWillUnmount() {
+    this.setState({
+      data: null,
+      loading: false,
+      error: null,
+    });
+  }
+
   // Note: use arrow function to properly capture `this`.
   protected writeConfig = async () => {
     if (

@@ -65,6 +65,10 @@ export abstract class BasicDataComponent
 
   componentWillUnmount() {
     this.periodicFetcher.stop();
+
+    this.setState({
+      data: null,
+    });
   }
 
   private fetcher: Fetcher;
