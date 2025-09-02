@@ -45,6 +45,12 @@ export abstract class BasicDataComponent
   }
 
   handleFetched(data: Uint8Array): void {
+    // Ignore notifications when the component was unmounted before
+    // the handleFetched was called.
+    if (!this.base) {
+      return;
+    }
+
     const result = this.formatter.format(data);
     if (result.error) {
       console.error(
