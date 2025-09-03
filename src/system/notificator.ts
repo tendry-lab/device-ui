@@ -1,14 +1,14 @@
-import { NotificationSeverity } from "./notification_types";
+import { AlertType, ConfirmType } from "./notification_types";
 
-export type AlertResult = {
-  promise: Promise<void> | null;
+import { NotificationSeverity } from "./notification";
+
+export type NotificationResult<T> = {
+  promise: Promise<T> | null;
   error: Error | null;
 };
 
-export type ConfirmResult = {
-  promise: Promise<boolean> | null;
-  error: Error | null;
-};
+export type AlertResult = NotificationResult<AlertType>;
+export type ConfirmResult = NotificationResult<ConfirmType>;
 
 // Send notifications.
 export interface Notificator {

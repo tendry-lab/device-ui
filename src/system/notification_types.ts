@@ -1,6 +1,19 @@
-// Various notification severities.
-export enum NotificationSeverity {
-  Err = 0,
-  Wrn,
-  Inf,
-}
+import { LimitQueue } from "../core/limit_queue";
+import { Notification } from "./notification";
+import { NotificationQueue } from "./notification_queue";
+
+export type AlertType = void;
+export type ConfirmType = boolean;
+
+export type AlertNotification = Notification<AlertType>;
+export type ConfirmNotification = Notification<ConfirmType>;
+
+export class LimitNotificationQueue<T>
+  extends LimitQueue<Notification<T>>
+  implements NotificationQueue<T> {}
+
+export type AlertNotificationQueue = NotificationQueue<AlertType>;
+export class AlertLimitNotificationQueue extends LimitNotificationQueue<AlertType> {}
+
+export type ConfirmNotificationQueue = NotificationQueue<ConfirmType>;
+export class ConfirmLimitNotificationQueue extends LimitNotificationQueue<ConfirmType> {}

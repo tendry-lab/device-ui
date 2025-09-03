@@ -1,5 +1,5 @@
 import { Notificator, AlertResult, ConfirmResult } from "./notificator";
-import { NotificationSeverity } from "./notification_types";
+import { NotificationSeverity } from "./notification";
 
 // Default browser-based notification.
 export class DefaultNotificator implements Notificator {

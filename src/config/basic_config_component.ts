@@ -2,7 +2,7 @@ import { Component } from "preact";
 
 import { Config } from "./config";
 import { Notificator } from "../system/notificator";
-import { NotificationSeverity } from "../system/notification_types";
+import { NotificationSeverity } from "../system/notification";
 
 type configState = {
   data: Record<string, any> | null;
