@@ -1,13 +1,20 @@
-// Various notification types.
-export enum NotificationType {
-  ERROR = 0,
-  SUCCESS = 1,
-}
+import { NotificationSeverity } from "./notification_types";
 
+export type AlertResult = {
+  promise: Promise<void> | null;
+  error: Error | null;
+};
+
+export type ConfirmResult = {
+  promise: Promise<boolean> | null;
+  error: Error | null;
+};
+
+// Send notifications.
 export interface Notificator {
-  // Alertring the user with @p str message and @p typ notification type.
-  alert(str: string, typ: NotificationType): void;
+  // Send an alert dialog.
+  alert(message: string, severity: NotificationSeverity): AlertResult;
 
-  // Confirm the user choice.
-  confirm(str: string): Promise<boolean>;
+  // Send a confirmation dialog.
+  confirm(message: string, severity: NotificationSeverity): ConfirmResult;
 }

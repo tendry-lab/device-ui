@@ -1,7 +1,8 @@
 import { Component } from "preact";
 
 import { Config } from "./config";
-import { Notificator, NotificationType } from "../system/notificator";
+import { Notificator } from "../system/notificator";
+import { NotificationSeverity } from "../system/notification_types";
 
 type configState = {
   data: Record<string, any> | null;
@@ -52,11 +53,26 @@ export abstract class BasicConfigComponent extends Component<
 
   // Note: use arrow function to properly capture `this`.
   protected writeConfig = async () => {
-    if (
-      await !this.props.notificator.confirm(
-        "Are you sure you want to update configuration?",
-      )
-    ) {
+    const confirmResult = this.props.notificator.confirm(
+      "Are you sure you want to update configuration?",
+      NotificationSeverity.Wrn,
+    );
+    if (confirmResult.error) {
+      const alertResult = this.props.notificator.alert(
+        `Unable to open confirm dialog: ${confirmResult.error}`,
+        NotificationSeverity.Err,
+      );
+      if (alertResult.error) {
+        console.error(
+          `basic-config-component: failed to send notification: ${alertResult.error}`,
+        );
+      }
+
+      return;
+    }
+
+    const resultConfirmed = await confirmResult.promise;
+    if (!resultConfirmed) {
       return;
     }
 
@@ -64,27 +80,54 @@ export abstract class BasicConfigComponent extends Component<
     if (err) {
       console.error(`basic-config-component: error updating config: ${err}`);
 
-      this.props.notificator.alert(
-        "Error updating configuration",
-        NotificationType.ERROR,
+      const alertResult = this.props.notificator.alert(
+        `Error updating configuration: ${err}`,
+        NotificationSeverity.Err,
       );
-    } else {
-      this.props.notificator.alert(
-        "Configuration updated successfully!",
-        NotificationType.SUCCESS,
-      );
+      if (alertResult.error) {
+        console.error(
+          `basic-config-component: failed to send notification: ${alertResult.error}`,
+        );
+      }
 
-      await this.readConfig();
+      return;
     }
+
+    const alertResult = this.props.notificator.alert(
+      "Configuration updated successfully!",
+      NotificationSeverity.Inf,
+    );
+    if (alertResult.error) {
+      console.error(
+        `basic-config-component: failed to send notification: ${alertResult.error}`,
+      );
+    }
+
+    await this.readConfig();
   };
 
   // Note: use arrow function to properly capture `this`.
   protected resetConfig = async () => {
-    if (
-      await !this.props.notificator.confirm(
-        "Are you sure you want to reset configuration to defaults?",
-      )
-    ) {
+    const confirmResult = this.props.notificator.confirm(
+      "Are you sure you want to reset configuration?",
+      NotificationSeverity.Wrn,
+    );
+    if (confirmResult.error) {
+      const alertResult = this.props.notificator.alert(
+        `Unable to open confirm dialog: ${confirmResult.error}`,
+        NotificationSeverity.Err,
+      );
+      if (alertResult.error) {
+        console.error(
+          `basic-config-component: failed to send notification: ${alertResult.error}`,
+        );
+      }
+
+      return;
+    }
+
+    const resultConfirmed = await confirmResult.promise;
+    if (!resultConfirmed) {
       return;
     }
 
@@ -92,18 +135,30 @@ export abstract class BasicConfigComponent extends Component<
     if (err) {
       console.error("basic-config-component: error resetting config:", err);
 
-      this.props.notificator.alert(
-        "Error resetting configuration",
-        NotificationType.ERROR,
+      const alertResult = this.props.notificator.alert(
+        `Error resetting configuration: ${err}`,
+        NotificationSeverity.Err,
       );
-    } else {
-      this.props.notificator.alert(
-        "Configuration reset successfully!",
-        NotificationType.SUCCESS,
-      );
+      if (alertResult.error) {
+        console.error(
+          `basic-config-component: failed to send notification: ${alertResult.error}`,
+        );
+      }
 
-      await this.readConfig();
+      return;
     }
+
+    const alertResult = this.props.notificator.alert(
+      "Configuration reseted successfully!",
+      NotificationSeverity.Inf,
+    );
+    if (alertResult.error) {
+      console.error(
+        `basic-config-component: failed to send notification: ${alertResult.error}`,
+      );
+    }
+
+    await this.readConfig();
   };
 
   // Note: use arrow function to properly capture `this`.

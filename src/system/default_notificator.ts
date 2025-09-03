@@ -1,14 +1,25 @@
-import { Notificator, NotificationType } from "./notificator";
+import { Notificator, AlertResult, ConfirmResult } from "./notificator";
+import { NotificationSeverity } from "./notification_types";
 
 // Default browser-based notification.
 export class DefaultNotificator implements Notificator {
   // https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
-  alert(str: string, _: NotificationType): void {
-    return alert(str);
+  alert(message: string, _: NotificationSeverity): AlertResult {
+    alert(message);
+
+    return {
+      promise: Promise.resolve(),
+      error: null,
+    };
   }
 
   // https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm
-  async confirm(str: string): Promise<boolean> {
-    return confirm(str);
+  confirm(message: string, _: NotificationSeverity): ConfirmResult {
+    const result = confirm(message);
+
+    return {
+      promise: Promise.resolve(result),
+      error: null,
+    };
   }
 }
