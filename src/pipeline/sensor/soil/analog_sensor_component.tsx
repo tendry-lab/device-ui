@@ -1,31 +1,11 @@
 import { Component } from "preact";
 
-import { FormConfigComponent } from "../../config/form_config_component";
-import { Config } from "../../config/config";
-import { Notificator } from "../../system/notificator";
+import { FormConfigComponent } from "../../../config/form_config_component";
+import { Config } from "../../../config/config";
+import { Notificator } from "../../../system/notificator";
+import { AnalogSensorData } from "../../../device/sensor/soil/data_types";
 
-import "./analog_sensor.css";
-
-// Various sensor characteristics.
-export type AnalogSensorData = {
-  raw: number;
-  voltage: number;
-  moisture: number;
-  prev_status: string;
-  curr_status: string;
-  prev_status_dur: number;
-  curr_status_dur: number;
-  write_count: number;
-  status_progress: number;
-};
-
-// Sensor settings used during the rendering process.
-export type AnalogSensorProps = {
-  title: string;
-  data: AnalogSensorData;
-  config: Config;
-  notificator: Notificator;
-};
+import "./analog_sensor_component.css";
 
 // Get CSS class for status styling.
 function getStatusClass(status: string): string {
@@ -57,12 +37,20 @@ type analogSensorState = {
   enableCalibration: boolean;
 };
 
+// Sensor settings used during the rendering process.
+export type AnalogSensorComponentProps = {
+  title: string;
+  data: AnalogSensorData;
+  config: Config;
+  notificator: Notificator;
+};
+
 // Analog soil sensor rendering.
-export class AnalogSensor extends Component<
-  AnalogSensorProps,
+export class AnalogSensorComponent extends Component<
+  AnalogSensorComponentProps,
   analogSensorState
 > {
-  constructor(props: AnalogSensorProps) {
+  constructor(props: AnalogSensorComponentProps) {
     super(props);
 
     this.state = {

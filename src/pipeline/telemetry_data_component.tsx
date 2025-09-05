@@ -1,14 +1,18 @@
-import { AnalogSensor, AnalogSensorData } from "./sensor/soil/analog_sensor";
-import { JSONTelemetryParser } from "./parser/json_telemetry_parser";
-import { SystemTelemetry, SystemTelemetryData } from "./system/telemetry";
-import { Config } from "./config/config";
-import { HTTPConfig } from "./config/http_config";
-import { Notificator } from "./system/notificator";
-import { JSONFormatter } from "./fmt/json_formatter";
+import { JSONTelemetryParser } from "../device/json_telemetry_parser";
+import { Config } from "../config/config";
+import { HTTPConfig } from "../config/http_config";
+import { Notificator } from "../system/notificator";
+import { JSONFormatter } from "../fmt/json_formatter";
+import { AnalogSensorData } from "../device/sensor/soil/data_types";
+import { AnalogSensorComponent } from "./sensor/soil/analog_sensor_component";
+
 import {
   BasicDataComponent,
   BasicDataComponentProps,
-} from "./pipeline/basic_data_component";
+} from "./basic_data_component";
+
+import { SystemTelemetryData } from "../device/data_types";
+import { SystemTelemetryComponent } from "./system_telemetry_component";
 
 export class TelemetryDataComponent extends BasicDataComponent {
   constructor(props: BasicDataComponentProps) {
@@ -36,14 +40,14 @@ export class TelemetryDataComponent extends BasicDataComponent {
 
     return (
       <div>
-        <AnalogSensor
+        <AnalogSensorComponent
           title="Moisture"
           data={sensor_data}
           config={this.soilSensorConfig}
           notificator={this.props.notificator}
         />
 
-        <SystemTelemetry data={system_telemetry} />
+        <SystemTelemetryComponent data={system_telemetry} />
       </div>
     );
   }
