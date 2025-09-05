@@ -1,7 +1,7 @@
 import { Component } from "preact";
 
-import { FormConfigComponent } from "../../../config/form_config_component";
-import { Config } from "../../../config/config";
+import { FormConfigComponent } from "../../../pipeline/form_config_component";
+import { Config } from "../../../device/config";
 import { Notificator } from "../../../system/notificator";
 import { AnalogSensorData } from "../../../device/sensor/soil/data_types";
 
