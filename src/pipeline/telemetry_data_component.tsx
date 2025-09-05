@@ -1,3 +1,5 @@
+import { Component } from "preact";
+
 import { JSONTelemetryParser } from "../device/json_telemetry_parser";
 import { Config } from "../device/config";
 import { HTTPConfig } from "../device/http_config";
