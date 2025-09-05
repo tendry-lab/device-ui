@@ -50,7 +50,7 @@ export class MonitorNotificationQueue<T> implements NotificationQueue<T> {
   }
 
   // Set a monitor to be notified when a notification is added to the queue (or removed).
-  setMonitor(monitor: ObjectMonitor) {
+  setMonitor(monitor: ObjectMonitor | null) {
     this.monitor = monitor;
   }
 
