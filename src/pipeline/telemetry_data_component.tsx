@@ -1,6 +1,6 @@
 import { JSONTelemetryParser } from "../device/json_telemetry_parser";
-import { Config } from "../config/config";
-import { HTTPConfig } from "../config/http_config";
+import { Config } from "../device/config";
+import { HTTPConfig } from "../device/http_config";
 import { Notificator } from "../system/notificator";
 import { JSONFormatter } from "../fmt/json_formatter";
 import { AnalogSensorData } from "../device/sensor/soil/data_types";

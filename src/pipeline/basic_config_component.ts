@@ -1,6 +1,6 @@
 import { Component } from "preact";
 
-import { Config } from "./config";
+import { Config } from "../device/config";
 import { Notificator } from "../system/notificator";
 import { NotificationSeverity } from "../system/notification";
 
