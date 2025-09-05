@@ -1,15 +1,6 @@
 import { useState } from "preact/hooks";
 
-// Various device system telemetry.
-export type SystemTelemetryData = {
-  uptime: number;
-  lifetime: number;
-  heap: number;
-  heapMin: number;
-  heapInternal: number;
-  resetReason: string;
-  timestamp: number;
-};
+import { SystemTelemetryData } from "../device/data_types";
 
 // System telemetry settings used during the rendering process.
 export type SystemTelemetryProps = {
@@ -17,7 +8,7 @@ export type SystemTelemetryProps = {
 };
 
 // System telemetry data rendering.
-export function SystemTelemetry({ data }: SystemTelemetryProps) {
+export function SystemTelemetryComponent({ data }: SystemTelemetryProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (

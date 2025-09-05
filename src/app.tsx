@@ -2,7 +2,7 @@ import { Component } from "preact";
 
 import { Notificator } from "./system/notificator";
 import { DefaultNotificator } from "./system/default_notificator";
-import { TelemetryDataComponent } from "./telemetry_data_component";
+import { TelemetryDataComponent } from "./pipeline/telemetry_data_component";
 
 import "./app.css";
 

@@ -1,5 +1,5 @@
-import { AnalogSensorData } from "./../sensor/soil/analog_sensor";
-import { SystemTelemetryData } from "./../system/telemetry";
+import { AnalogSensorData } from "./sensor/soil/data_types";
+import { SystemTelemetryData } from "./data_types";
 
 export class JSONTelemetryParser {
   // Parse sensor data from @p data.
