@@ -6,8 +6,8 @@ import { MonitorNotificationQueue } from "./monitor_notification_queue";
 export type AlertType = void;
 export type ConfirmType = boolean;
 
-export type AlertNotification = Notification<AlertType>;
-export type ConfirmNotification = Notification<ConfirmType>;
+export class AlertNotification extends Notification<AlertType> {}
+export class ConfirmNotification extends Notification<ConfirmType> {}
 
 export class LimitNotificationQueue<T>
   extends LimitQueue<Notification<T>>
