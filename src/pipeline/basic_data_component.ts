@@ -45,8 +45,7 @@ export abstract class BasicDataComponent
   }
 
   handleFetched(data: Uint8Array): void {
-    // Ignore notifications when the component was unmounted before
-    // the handleFetched was called.
+    // Ignore notifications if the component has already been unmounted.
     if (!this.base) {
       return;
     }
