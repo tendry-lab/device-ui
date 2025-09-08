@@ -4,6 +4,8 @@ import { NotificationDispatcher } from "./notification_dispatcher";
 import { MonitorNotificationQueue } from "./monitor_notification_queue";
 
 import {
+  AlertArrayQueue,
+  ConfirmArrayQueue,
   AlertLimitNotificationQueue,
   ConfirmLimitNotificationQueue,
   AlertType,
@@ -37,11 +39,15 @@ describe("Notification Dispatcher", () => {
     expect(clock.setTimestamp(timestamp)).toBeNull();
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -109,11 +115,16 @@ describe("Notification Dispatcher", () => {
     expect(clock.setTimestamp(timestamp)).toBeNull();
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
+
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 2;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -196,11 +207,15 @@ describe("Notification Dispatcher", () => {
     expect(clock.setTimestamp(timestamp)).toBeNull();
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -293,11 +308,15 @@ describe("Notification Dispatcher", () => {
     expect(clock.setTimestamp(timestamp)).toBeNull();
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -356,11 +375,15 @@ describe("Notification Dispatcher", () => {
     expect(clock.setTimestamp(timestamp)).toBeNull();
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -429,11 +452,15 @@ describe("Notification Dispatcher", () => {
     expect(clock.setTimestamp(timestamp)).toBeNull();
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -490,11 +517,15 @@ describe("Notification Dispatcher", () => {
     expect(clock.setTimestamp(timestamp)).toBeNull();
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -583,11 +614,15 @@ describe("Notification Dispatcher", () => {
     clock.error = new Error("system lock isn't available");
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);
@@ -654,14 +689,17 @@ describe("Notification Dispatcher", () => {
 
     const clock = new TestSystemClock();
     expect(clock.setTimestamp(timestamp)).toBeNull();
-    clock.error = new Error("system lock isn't available");
 
     const maxAlertNumber = 1;
-    const alertLimitQueue = new AlertLimitNotificationQueue(maxAlertNumber);
+    const alertLimitQueue = new AlertLimitNotificationQueue(
+      new AlertArrayQueue(),
+      maxAlertNumber,
+    );
     const alertQueue = new MonitorNotificationQueue(alertLimitQueue);
 
     const maxConfirmNumber = 1;
     const confirmLimitQueue = new ConfirmLimitNotificationQueue(
+      new ConfirmArrayQueue(),
       maxConfirmNumber,
     );
     const confirmQueue = new MonitorNotificationQueue(confirmLimitQueue);

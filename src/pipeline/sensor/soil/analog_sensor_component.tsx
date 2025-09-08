@@ -4,6 +4,8 @@ import { FormConfigComponent } from "../../../pipeline/form_config_component";
 import { Config } from "../../../device/config";
 import { Notificator } from "../../../system/notificator";
 import { AnalogSensorData } from "../../../device/sensor/soil/data_types";
+import { PeriodicDataFetcher } from "../../../device/periodic_data_fetcher";
+import { TelemetryParser } from "../../../device/telemetry_parser";
 
 import "./analog_sensor_component.css";
 
@@ -33,15 +35,26 @@ function formatDuration(seconds: number): string {
 }
 
 type analogSensorState = {
+  data: Record<string, any> | null;
   expanded: boolean;
   enableCalibration: boolean;
 };
 
 // Sensor settings used during the rendering process.
 export type AnalogSensorComponentProps = {
+  // Sensor card title.
   title: string;
-  data: AnalogSensorData;
+
+  // Prefix of the sensor's data keys in telemetry.
+  prefix: string;
+
+  // Fetcher to fetch and format soil sensor data.
+  fetcher: PeriodicDataFetcher;
+
+  // Config to configure the sensor.
   config: Config;
+
+  // Notificator to send various notifications.
   notificator: Notificator;
 };
 
@@ -54,14 +67,55 @@ export class AnalogSensorComponent extends Component<
     super(props);
 
     this.state = {
+      data: null,
       expanded: false,
       enableCalibration: false,
     };
   }
 
+  async componentDidMount() {
+    const error = this.props.fetcher.add(this);
+    if (error) {
+      console.error(
+        `analog-sensor-component: failed to register for data changes: ${error}`,
+      );
+    }
+  }
+
+  componentWillUnmount() {
+    const error = this.props.fetcher.remove(this);
+    if (error) {
+      console.error(
+        `analog-sensor-component: failed to unregister for data changes: ${error}`,
+      );
+    }
+
+    this.setState({
+      data: null,
+      expanded: false,
+      enableCalibration: false,
+    });
+  }
+
+  notifyChanged() {
+    const data = this.props.fetcher.getData();
+    if (!data) {
+      return;
+    }
+
+    this.setState({
+      ...this.state,
+      data: TelemetryParser.parseAnalogSoilSensorData(this.props.prefix, data),
+    });
+  }
+
   render() {
-    const statusClass = getStatusClass(this.props.data.curr_status);
-    const prevStatusClass = getStatusClass(this.props.data.prev_status);
+    if (!this.state.data) {
+      return <p>Loading sensor data...</p>;
+    }
+
+    const statusClass = getStatusClass(this.state.data.curr_status);
+    const prevStatusClass = getStatusClass(this.state.data.prev_status);
 
     return (
       <div className="sensor-card">
@@ -83,21 +137,21 @@ export class AnalogSensorComponent extends Component<
           <div className="status-row">
             <div className={`status-indicator ${statusClass}`}></div>
             <span className={`status-text ${statusClass}`}>
-              {this.props.data.curr_status}
+              {this.state.data.curr_status}
             </span>
             <span className="status-duration">
-              for {formatDuration(this.props.data.curr_status_dur)}
+              for {formatDuration(this.state.data.curr_status_dur)}
             </span>
           </div>
 
           {/* Moisture percentage - prominent display */}
           <div className="moisture-display">
             <span className="moisture-value">
-              {this.props.data.moisture.toFixed(1)}
+              {this.state.data.moisture.toFixed(1)}
             </span>
             <span className="moisture-unit">%</span>
             <div className="progress-info">
-              Progress: {this.props.data.status_progress}%
+              Progress: {this.state.data.status_progress}%
             </div>
           </div>
         </div>
@@ -108,16 +162,16 @@ export class AnalogSensorComponent extends Component<
             <div className="details-grid">
               <div className="detail-item">
                 <div className="detail-label">Raw Value</div>
-                <div className="detail-value">{this.props.data.raw}</div>
+                <div className="detail-value">{this.state.data.raw}</div>
               </div>
               <div className="detail-item">
                 <div className="detail-label">Voltage</div>
-                <div className="detail-value">{this.props.data.voltage}mV</div>
+                <div className="detail-value">{this.state.data.voltage}mV</div>
               </div>
               <div className="detail-item">
                 <div className="detail-label">Write Count</div>
                 <div className="detail-value">
-                  {this.props.data.write_count.toLocaleString()}
+                  {this.state.data.write_count.toLocaleString()}
                 </div>
               </div>
             </div>
@@ -140,10 +194,10 @@ export class AnalogSensorComponent extends Component<
                   className={`prev-status-indicator ${prevStatusClass}`}
                 ></div>
                 <span className="prev-status-text">
-                  {this.props.data.prev_status}
+                  {this.state.data.prev_status}
                 </span>
                 <span className="prev-status-duration">
-                  ({formatDuration(this.props.data.prev_status_dur)})
+                  ({formatDuration(this.state.data.prev_status_dur)})
                 </span>
               </div>
             </div>
@@ -166,6 +220,7 @@ export class AnalogSensorComponent extends Component<
   // Note: use arrow function to properly capture `this`.
   private handleConfigEnd = () => {
     this.setState({
+      ...this.state,
       expanded: false,
       enableCalibration: false,
     });
@@ -174,6 +229,7 @@ export class AnalogSensorComponent extends Component<
   // Note: use arrow function to properly capture `this`.
   private handleConfigBegin = () => {
     this.setState({
+      ...this.state,
       expanded: true,
       enableCalibration: true,
     });
@@ -184,6 +240,7 @@ export class AnalogSensorComponent extends Component<
     const wasExpanded = this.state.expanded;
 
     this.setState({
+      ...this.state,
       expanded: !wasExpanded,
       enableCalibration: false,
     });

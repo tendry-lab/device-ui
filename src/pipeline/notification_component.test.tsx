@@ -9,6 +9,8 @@ import { NotificationDispatcher } from "../system/notification_dispatcher";
 import {
   AlertNotification,
   ConfirmNotification,
+  AlertArrayQueue,
+  ConfirmArrayQueue,
   AlertLimitNotificationQueue,
   ConfirmLimitNotificationQueue,
 } from "../system/notification_types";
@@ -39,10 +41,10 @@ describe("Notification Component", () => {
     systemClock.setTimestamp(12345);
 
     const alertQueue = new MonitorNotificationQueue(
-      new AlertLimitNotificationQueue(5),
+      new AlertLimitNotificationQueue(new AlertArrayQueue(), 5),
     );
     const confirmQueue = new MonitorNotificationQueue(
-      new ConfirmLimitNotificationQueue(5),
+      new ConfirmLimitNotificationQueue(new ConfirmArrayQueue(), 5),
     );
 
     const dispatcher = new NotificationDispatcher(

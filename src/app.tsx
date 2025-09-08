@@ -2,10 +2,11 @@ import { Component } from "preact";
 
 import { Notificator } from "./system/notificator";
 import { NotificationDispatcher } from "./system/notification_dispatcher";
-import { TelemetryDataComponent } from "./pipeline/telemetry_data_component";
 import { NotificationComponent } from "./pipeline/notification_component";
 
 import {
+  AlertArrayQueue,
+  ConfirmArrayQueue,
   AlertMonitorNotificationQueue,
   ConfirmMonitorNotificationQueue,
   AlertLimitNotificationQueue,
@@ -16,6 +17,15 @@ import { NotificationModality } from "./system/notification";
 
 import { SystemClock } from "./system/system_clock";
 import { LocalSystemClock } from "./system/local_system_clock";
+
+import { Fetcher } from "./http/fetcher";
+import { Formatter } from "./fmt/formatter";
+import { HTTPFetcher } from "./http/http_fetcher";
+import { PeriodicDataFetcher } from "./device/periodic_data_fetcher";
+import { JSONFormatter } from "./fmt/json_formatter";
+import { Config } from "./device/config";
+import { HTTPConfig } from "./device/http_config";
+import { AnalogSensorComponent } from "./pipeline/sensor/soil/analog_sensor_component";
 
 import "./app.css";
 
@@ -28,11 +38,11 @@ export class App extends Component<appProps, {}> {
     this.systemClock = new LocalSystemClock();
 
     this.notificationAlertQueue = new AlertMonitorNotificationQueue(
-      new AlertLimitNotificationQueue(4),
+      new AlertLimitNotificationQueue(new AlertArrayQueue(), 4),
     );
 
     this.notificationConfirmQueue = new ConfirmMonitorNotificationQueue(
-      new ConfirmLimitNotificationQueue(1),
+      new ConfirmLimitNotificationQueue(new ConfirmArrayQueue(), 1),
     );
 
     this.notificationDispatcher = new NotificationDispatcher(
@@ -48,19 +58,39 @@ export class App extends Component<appProps, {}> {
         timeout: 0,
       },
     );
+
+    this.telemetryHTTPFetcher = new HTTPFetcher(`${App.apiBaseURL}/telemetry`);
+    this.telemetryFormatter = new JSONFormatter();
+
+    this.telemetryDataFetcher = new PeriodicDataFetcher(
+      this.telemetryHTTPFetcher,
+      this.telemetryFormatter,
+      App.telemetryFetchInterval,
+    );
+
+    this.soilSensorConfig = new HTTPConfig(
+      new JSONFormatter(),
+      `${App.apiBaseURL}/config/sensor/analog?id=soil_a0`,
+    );
+  }
+
+  async componentDidMount() {
+    this.telemetryDataFetcher.start();
+  }
+
+  componentWillUnmount() {
+    this.telemetryDataFetcher.stop();
   }
 
   render() {
-    // Base URL.
-    const API_BASE_URL: string = "api/v1";
-
     return (
       <>
         <div className="app-container">
-          <h1>Bonsai Zero Analog 1 Kit Dashboard</h1>
-          <TelemetryDataComponent
-            baseURL={API_BASE_URL}
-            interval={10 * 1000}
+          <AnalogSensorComponent
+            title="Moisture"
+            prefix="sensor_soil"
+            fetcher={this.telemetryDataFetcher}
+            config={this.soilSensorConfig}
             notificator={this.notificationDispatcher}
           />
         </div>
@@ -74,8 +104,18 @@ export class App extends Component<appProps, {}> {
     );
   }
 
+  private static readonly apiBaseURL: string = "api/v1";
+
   private systemClock: SystemClock;
+
   private notificationAlertQueue: AlertMonitorNotificationQueue;
   private notificationConfirmQueue: ConfirmMonitorNotificationQueue;
   private notificationDispatcher: NotificationDispatcher;
+
+  private static readonly telemetryFetchInterval: number = 10 * 1000;
+  private telemetryHTTPFetcher: Fetcher;
+  private telemetryFormatter: Formatter;
+  private telemetryDataFetcher: PeriodicDataFetcher;
+
+  private soilSensorConfig: Config;
 }
