@@ -1,14 +1,19 @@
-export class LimitQueue<T> {
+import { Queue } from "./queue";
+
+// Limit maximum number of elements in the queue.
+export class LimitQueue<T> implements Queue<T> {
   // Initialize.
   //
   // @params
+  //  - @p queue to hold the actual data.
   //  - @p maxSize - maximum number of elements in the queue.
-  constructor(maxSize: number) {
+  constructor(queue: Queue<T>, maxSize: number) {
     if (maxSize <= 0) {
       throw new Error("queue size should be >0");
     }
-
     this.maxSize = maxSize;
+
+    this.queue = queue;
   }
 
   // Add element to the queue.
@@ -16,13 +21,11 @@ export class LimitQueue<T> {
   // @return
   //  Error if queue is full.
   add(item: T): Error | null {
-    if (this.items.length >= this.maxSize) {
+    if (this.queue.len() >= this.maxSize) {
       return new Error("queue is full");
     }
 
-    this.items.push(item);
-
-    return null;
+    return this.queue.add(item);
   }
 
   // Remove element from the queue by reference.
@@ -30,26 +33,20 @@ export class LimitQueue<T> {
   // @return
   //  Error if element was not found.
   remove(item: T): Error | null {
-    const index = this.items.indexOf(item);
-    if (index === -1) {
-      return new Error("not found");
-    }
-
-    this.items.splice(index, 1);
-
-    return null;
+    return this.queue.remove(item);
   }
 
   // Return number of elements in the queue.
   len(): number {
-    return this.items.length;
+    return this.queue.len();
   }
 
   // Iterate over all elements in the queue.
   forEach(fn: (item: T) => void): void {
-    this.items.forEach(fn);
+    this.queue.forEach(fn);
   }
 
-  private items: T[] = [];
-  private maxSize: number;
+  private readonly maxSize: number;
+
+  private queue: Queue<T>;
 }

@@ -1,7 +1,7 @@
 import { AnalogSensorData } from "./sensor/soil/data_types";
 import { SystemTelemetryData } from "./data_types";
 
-export class JSONTelemetryParser {
+export class TelemetryParser {
   // Parse sensor data from @p data.
   static parseAnalogSoilSensorData(
     prefix: string,

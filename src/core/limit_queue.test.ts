@@ -1,14 +1,19 @@
 import { describe, test, expect } from "vitest";
 
 import { LimitQueue } from "./limit_queue";
+import { ArrayQueue } from "./array_queue";
 
 describe("Limit Queue", () => {
   test("Invalid max size", () => {
-    expect(() => new LimitQueue<number>(0)).toThrow("queue size should be >0");
-    expect(() => new LimitQueue<number>(-1)).toThrow("queue size should be >0");
+    expect(() => new LimitQueue<number>(new ArrayQueue(), 0)).toThrow(
+      "queue size should be >0",
+    );
+    expect(() => new LimitQueue<number>(new ArrayQueue(), -1)).toThrow(
+      "queue size should be >0",
+    );
   });
   test("Add-Remove", () => {
-    const q = new LimitQueue<number>(1);
+    const q = new LimitQueue<number>(new ArrayQueue(), 1);
     expect(q.add(42)).toBeNull();
     expect(q.len()).toBe(1);
 

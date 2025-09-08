@@ -8,6 +8,7 @@ import {
 import {
   AlertNotificationQueue,
   ConfirmNotificationQueue,
+  NotificationQueue,
   AlertType,
   ConfirmType,
 } from "./notification_types";
@@ -17,8 +18,6 @@ import {
   NotificationSeverity,
   Notification,
 } from "./notification";
-
-import { NotificationQueue } from "./notification_queue";
 
 import { SystemClock } from "./system_clock";
 

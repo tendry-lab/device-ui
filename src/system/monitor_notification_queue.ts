@@ -1,4 +1,4 @@
-import { NotificationQueue } from "./notification_queue";
+import { NotificationQueue } from "./notification_types";
 import { ObjectMonitor } from "../core/object_monitor";
 import { Notification } from "./notification";
 
