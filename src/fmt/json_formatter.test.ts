@@ -1,3 +1,5 @@
+import { describe, test, expect } from "vitest";
+
 import { JSONFormatter } from "./json_formatter";
 import { Formatter } from "./formatter";
 
