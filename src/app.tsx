@@ -65,6 +65,7 @@ export class App extends Component<appProps, {}> {
           />
         </div>
         <NotificationComponent
+          maxNonModalNotificationCount={3}
           systemClock={this.systemClock}
           alertQueue={this.notificationAlertQueue}
           confirmQueue={this.notificationConfirmQueue}

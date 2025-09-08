@@ -78,6 +78,7 @@ describe("Notification Component", () => {
 
     const { unmount } = render(
       <NotificationComponent
+        maxNonModalNotificationCount={3}
         systemClock={systemClock}
         alertQueue={alertQueue}
         confirmQueue={confirmQueue}
