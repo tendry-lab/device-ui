@@ -1,3 +1,5 @@
+import { describe, test, expect } from "vitest";
+
 import { LimitQueue } from "./limit_queue";
 
 describe("Limit Queue", () => {
