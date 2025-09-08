@@ -22,8 +22,16 @@ type notificationComponentState = {
 };
 
 export type NotificationComponentProps = {
+  // Maximum number of stacked non-modal notifications.
+  maxNonModalNotificationCount: number;
+
+  // Clock to update the component state timestamp.
   systemClock: SystemClock;
+
+  // Alert notification queue.
   alertQueue: AlertMonitorNotificationQueue;
+
+  // Confirmation notification queue.
   confirmQueue: ConfirmMonitorNotificationQueue;
 };
 
@@ -171,11 +179,9 @@ export class NotificationComponent
       }
     });
 
-    // Limit non-modal notifications
-    const maxNonModalNotifications = 5;
     const limitedNonModalElements = nonModalElements.slice(
       0,
-      maxNonModalNotifications,
+      this.props.maxNonModalNotificationCount,
     );
 
     // Only render if there are notifications
