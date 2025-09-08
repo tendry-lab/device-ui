@@ -57,7 +57,7 @@ export class NotificationComponent
   }
 
   notifyChanged() {
-    // Ignore notifications when the component was already unmounted.
+    // Ignore notifications if the component has already been unmounted.
     if (!this.base) {
       return;
     }
