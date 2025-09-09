@@ -57,11 +57,6 @@ export class NotificationComponent
   }
 
   notifyChanged() {
-    // Ignore notifications if the component has already been unmounted.
-    if (!this.base) {
-      return;
-    }
-
     let timestamp: number = 0;
 
     const result = this.props.systemClock.getTimestamp();
