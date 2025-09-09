@@ -104,17 +104,10 @@ export class NotificationComponent
           <div
             key={`alert-${notification.timestamp}`}
             className={`notification alert non-modal ${NotificationComponent.getSeverityClass(notification.severity)}`}
+            onClick={() => this.handleAlertResolve(notification)}
           >
             <div className="notification-content">
               <div className="notification-message">{notification.message}</div>
-              <div className="notification-buttons">
-                <button
-                  className="notification-button"
-                  onClick={() => this.handleAlertResolve(notification)}
-                >
-                  OK
-                </button>
-              </div>
             </div>
           </div>
         );
@@ -192,7 +185,9 @@ export class NotificationComponent
     return (
       <>
         {/* Modal notifications - positioned directly */}
-        {modalElements}
+        {modalElements.length > 0 && (
+          <div className="modal-backdrop">{modalElements}</div>
+        )}
 
         {/* Non-modal notifications - right side of screen */}
         {limitedNonModalElements.length > 0 && (
