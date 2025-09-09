@@ -1,34 +1,40 @@
 /* CSS Custom Properties */
 :root {
-  --config-bg: #fff3cd;
-  --config-border: #ffeaa7;
-  --config-text: #856404;
-  --config-text-secondary: #6c757d;
-  --config-text-dark: #495057;
+  --config-bg: #f8fafc;
+  --config-border: #e2e8f0;
+  --config-text: #334155;
+  --config-text-secondary: #64748b;
+  --config-text-dark: #1e293b;
   --config-success: #10b981;
-  --config-danger: #dc3545;
-  --config-primary: #007bff;
-  --config-secondary: #6c757d;
-  --config-light: #f9f9f9;
-  --config-white: #fff;
-  --config-border-input: #ced4da;
-  --config-focus: rgba(0, 123, 255, 0.25);
-  --config-radius: 8px;
-  --config-radius-small: 6px;
-  --config-radius-button: 4px;
+  --config-success-hover: #059669;
+  --config-danger: #ef4444;
+  --config-danger-hover: #dc2626;
+  --config-primary: #3b82f6;
+  --config-secondary: #6b7280;
+  --config-light: #f9fafb;
+  --config-white: #ffffff;
+  --config-border-input: #d1d5db;
+  --config-focus: rgba(59, 130, 246, 0.1);
+  --config-focus-ring: rgba(59, 130, 246, 0.5);
+  --config-radius: 12px;
+  --config-radius-small: 8px;
+  --config-radius-button: 6px;
   --config-spacing: 16px;
   --config-spacing-small: 8px;
   --config-spacing-large: 24px;
-  --config-transition: 0.2s ease;
+  --config-transition: 0.15s ease;
+  --config-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --config-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Main Container */
 .config-container {
   margin-top: var(--config-spacing);
-  padding: 20px;
+  padding: var(--config-spacing-large);
   background-color: var(--config-bg);
   border: 1px solid var(--config-border);
   border-radius: var(--config-radius);
+  box-shadow: var(--config-shadow);
   text-align: center;
 }
 
@@ -52,37 +58,6 @@
   margin: 0;
 }
 
-/* Current Config Display */
-.current-config {
-  margin-bottom: var(--config-spacing);
-  font-size: 14px;
-}
-
-.current-config strong {
-  color: var(--config-text-dark);
-}
-
-.live-raw-value {
-  margin-bottom: var(--config-spacing);
-  font-size: 18px;
-  font-weight: bold;
-  padding: 12px;
-  background-color: var(--config-white);
-  border-radius: var(--config-radius-small);
-  border: 2px solid var(--config-primary);
-  color: var(--config-primary);
-}
-
-.calibration-values {
-  margin-bottom: var(--config-spacing);
-  font-size: 14px;
-  color: var(--config-text-dark);
-}
-
-.calibration-values div {
-  margin-bottom: 4px;
-}
-
 /* Form Styling */
 .config-form {
   margin-bottom: var(--config-spacing-large);
@@ -90,93 +65,119 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: var(--config-spacing-small);
   width: 100%;
-  max-width: 200px;
+  justify-content: flex-end;
 }
 
 .form-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--config-spacing-small);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--config-text-dark);
-  width: 100%;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .form-input {
-  padding: 10px 12px;
+  padding: 8px 12px;
   border: 2px solid var(--config-border-input);
   border-radius: var(--config-radius-small);
   font-size: 14px;
-  width: 100%;
-  text-align: center;
-  transition: border-color var(--config-transition), box-shadow var(--config-transition);
+  background-color: var(--config-white);
+  transition: all var(--config-transition);
+  font-family: inherit;
+  text-align: left;
+  width: 80px;
 }
 
 .form-input:focus {
   outline: none;
   border-color: var(--config-primary);
-  box-shadow: 0 0 0 3px var(--config-focus);
+  background-color: var(--config-focus);
+  box-shadow: 0 0 0 3px var(--config-focus-ring);
+}
+
+.form-input:hover:not(:focus) {
+  border-color: var(--config-text-secondary);
 }
 
 /* Button Container */
 .config-buttons-container {
   display: flex;
-  gap: var(--config-spacing-small);
-  flex-wrap: wrap;
+  gap: 12px;
   justify-content: center;
+  margin-top: var(--config-spacing);
 }
 
 .config-buttons-item {
-  padding: var(--config-spacing-small) 12px;
-  color: var(--config-white);
+  padding: 12px 20px;
   border: none;
   border-radius: var(--config-radius-button);
   cursor: pointer;
-  font-size: 12px;
-  font-weight: 500;
-  transition: opacity var(--config-transition);
-  min-width: 60px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all var(--config-transition);
+  min-width: 80px;
+  box-shadow: var(--config-shadow);
 }
 
 .config-buttons-item:hover:not(:disabled) {
-  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: var(--config-shadow-hover);
+}
+
+.config-buttons-item:active {
+  transform: translateY(0);
 }
 
 .config-buttons-item:disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none;
 }
 
 .config-buttons-item:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid var(--config-primary);
   outline-offset: 2px;
 }
 
 /* Button Variants */
 .config-buttons-item-apply {
-  background-color: var(--config-primary);
+  background-color: var(--config-success);
+  color: var(--config-white);
 }
 
-.config-buttons-item-apply:disabled {
-  background-color: var(--config-secondary);
+.config-buttons-item-apply:hover:not(:disabled) {
+  background-color: var(--config-success-hover);
 }
 
 .config-buttons-item-reset {
   background-color: var(--config-danger);
+  color: var(--config-white);
+}
+
+.config-buttons-item-reset:hover:not(:disabled) {
+  background-color: var(--config-danger-hover);
 }
 
 .config-buttons-item-close {
-  background-color: var(--config-secondary);
+  background-color: var(--config-white);
+  color: var(--config-text-dark);
+  border: 2px solid var(--config-border-input);
+}
+
+.config-buttons-item-close:hover:not(:disabled) {
+  background-color: var(--config-light);
+  border-color: var(--config-text-secondary);
 }
 
 /* Mobile Responsive */
@@ -188,14 +189,12 @@
 
   .config-form {
     gap: var(--config-spacing);
-  }
-
-  .form-row {
     max-width: 100%;
   }
 
   .config-buttons-container {
-    gap: 6px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .config-buttons-item {
