@@ -30,19 +30,19 @@ function ConfigForm(props: configFormProps) {
         {Object.entries(props.data)
           .filter(([key]) => !props.ignoreKeys?.includes(key))
           .map(([key, value]) => (
-            <div key={key} className="form-row">
-              <label className="form-label">
-                {key.charAt(0).toUpperCase() + key.slice(1)}:
-                <input
-                  type="text"
-                  value={value}
-                  onChange={(e) => {
-                    props.data[key] = e.currentTarget.value;
-                    props.setData({ ...props.data });
-                  }}
-                  className="form-input"
-                />
-              </label>
+            <div className="form-row">
+              <div className="form-label">
+                {key.charAt(0).toUpperCase() + key.slice(1)}
+              </div>
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => {
+                  props.data[key] = e.currentTarget.value;
+                  props.setData({ ...props.data });
+                }}
+                className="form-input"
+              />
             </div>
           ))}
       </div>
