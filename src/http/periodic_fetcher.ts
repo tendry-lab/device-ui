@@ -20,6 +20,8 @@ export class PeriodicFetcher {
   stop() {
     if (this.timer) {
       clearInterval(this.timer);
+
+      this.timer = 0;
     }
   }
 
