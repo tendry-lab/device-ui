@@ -1,26 +1,23 @@
+@import './src/pipeline/tokens.css';
+
 /* CSS Custom Properties */
 :root {
   --app-font-family: Arial, sans-serif;
   --app-max-width: 80rem;
-  --app-padding: 1rem;
-  --app-padding-small: 0.5rem;
-  --app-spacing: 0.625rem;
-  --app-spacing-large: 1.5rem;
-  --app-text-color: #888;
   --app-shadow-color: #646cffaa;
   --app-shadow-preact: #673ab8aa;
 }
 
 /* Main Container */
 .app-container {
-  padding: var(--app-spacing);
+  padding: var(--spacing-small);
   font-family: var(--app-font-family);
 }
 
 #app {
   max-width: var(--app-max-width);
   margin: 0 auto;
-  padding: var(--app-padding);
+  padding: var(--spacing);
   text-align: center;
   box-sizing: border-box;
 }
@@ -28,7 +25,7 @@
 /* Logo Styles */
 .logo {
   height: 6rem;
-  padding: var(--app-spacing-large);
+  padding: var(--spacing-large);
 }
 
 .logo:hover {
@@ -46,16 +43,16 @@
 
 /* Documentation Link */
 .read-the-docs {
-  color: var(--app-text-color);
+  color: var(--color-text-secondary);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .app-container {
-    padding: var(--app-padding-small);
+    padding: var(--spacing-small);
   }
 
   #app {
-    padding: var(--app-padding-small);
+    padding: var(--spacing-small);
   }
 }
