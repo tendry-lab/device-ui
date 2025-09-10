@@ -27,7 +27,8 @@ import { Config } from "./device/config";
 import { HTTPConfig } from "./device/http_config";
 import { AnalogSensorComponent } from "./pipeline/sensor/soil/analog_sensor_component";
 
-import "./app.css";
+import "./pipeline/app.css";
+import "./pipeline/dashboard.css";
 
 type appProps = {};
 
@@ -85,14 +86,16 @@ export class App extends Component<appProps, {}> {
   render() {
     return (
       <>
-        <div className="app-container">
-          <AnalogSensorComponent
-            title="Soil Moisture"
-            prefix="sensor_soil"
-            fetcher={this.telemetryDataFetcher}
-            config={this.soilSensorConfig}
-            notificator={this.notificationDispatcher}
-          />
+        <div className="dashboard">
+          <div className="card-large">
+            <AnalogSensorComponent
+              title="Soil Moisture"
+              prefix="sensor_soil"
+              fetcher={this.telemetryDataFetcher}
+              config={this.soilSensorConfig}
+              notificator={this.notificationDispatcher}
+            />
+          </div>
         </div>
         <NotificationComponent
           maxNonModalNotificationCount={3}
