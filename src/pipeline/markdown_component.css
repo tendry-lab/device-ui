@@ -1,0 +1,93 @@
+@import './tokens.css';
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+}
+
+.markdown-modal {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: 0 1.5625rem 5rem rgba(0, 0, 0, 0.25);
+  max-width: 50rem;
+  max-height: 80vh;
+  width: calc(100vw - 4rem);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-button {
+  position: absolute;
+  top: var(--spacing);
+  right: var(--spacing);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  z-index: 1001;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-small);
+}
+
+.close-button:hover {
+  background: var(--color-bg);
+  color: var(--color-text-dark);
+}
+
+.markdown-content {
+  padding: var(--spacing-large);
+  overflow-y: auto;
+  line-height: 1.6;
+  text-align: left;
+  font-size: 1.25rem;
+}
+
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  color: var(--color-text-dark);
+  margin-top: 0;
+  margin-bottom: var(--spacing);
+}
+
+.markdown-content p {
+  margin-bottom: var(--spacing);
+  color: var(--color-text);
+}
+
+.markdown-content code {
+  background: var(--color-bg);
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-small);
+  font-family: monospace;
+}
+
+.markdown-content pre {
+  background: var(--color-bg);
+  padding: var(--spacing);
+  border-radius: var(--radius-small);
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .markdown-modal {
+    width: calc(100vw - 2rem);
+    max-height: 90vh;
+  }
+
+  .markdown-content {
+    padding: var(--spacing);
+    font-size: 1rem;
+  }
+}

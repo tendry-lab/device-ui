@@ -1,0 +1,189 @@
+import { Component, JSX } from "preact";
+
+import { Rebooter } from "../device/rebooter";
+import { Locator } from "../device/locator";
+import { Notificator } from "../system/notificator";
+import { NotificationSeverity } from "../system/notification";
+import { MarkdownComponent } from "./markdown_component";
+import { StateMonitor } from "../core/state_monitor";
+
+import "./dashboard.css";
+
+export type NavigationComponentProps = {
+  // Rebooter to reboot the device.
+  rebooter: Rebooter;
+
+  // Locator to control the device locating.
+  locator: Locator;
+
+  // Notificator to send notifications.
+  notificator: Notificator;
+
+  // Navigation bar logo.
+  logo: JSX.Element;
+
+  // Help documentation.
+  help: JSX.Element;
+};
+
+export class NavigationComponent extends Component<
+  NavigationComponentProps,
+  {}
+> {
+  constructor(props: NavigationComponentProps) {
+    super(props);
+
+    this.helpState = new StateMonitor<boolean>(false);
+  }
+
+  render() {
+    return (
+      <>
+        <nav className="nav-bar">
+          <div className="nav-logo">{this.props.logo}</div>
+
+          <input type="checkbox" id="menu-toggle" className="menu-toggle" />
+          <label htmlFor="menu-toggle" className="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+
+          <div className="nav-buttons">
+            <button className="nav-button" onClick={this.handleLocate}>
+              Locate
+            </button>
+            <button className="nav-button" onClick={this.handleReboot}>
+              Reboot
+            </button>
+            <button className="nav-button" onClick={this.handleHelp}>
+              Help
+            </button>
+          </div>
+        </nav>
+
+        <MarkdownComponent
+          stateMonitor={this.helpState}
+          data={this.props.help}
+        />
+      </>
+    );
+  }
+
+  componentWillUnmount() {
+    this.helpState.set(false);
+  }
+
+  private handleLocate = async () => {
+    const confirmResult = this.props.notificator.confirm(
+      "Toggle device locating?",
+      NotificationSeverity.Wrn,
+    );
+    if (confirmResult.error) {
+      const alertResult = this.props.notificator.alert(
+        `Unable to open confirm dialog: ${confirmResult.error}`,
+        NotificationSeverity.Err,
+      );
+      if (alertResult.error) {
+        console.error(
+          `navigation_component: failed to send notification: ${alertResult.error}`,
+        );
+      }
+
+      return;
+    }
+
+    const resultConfirmed = await confirmResult.promise;
+    if (!resultConfirmed) {
+      return;
+    }
+
+    const err = await this.props.locator.flip();
+    if (err) {
+      console.error(
+        "navigation_component: failed to toggle device locating:",
+        err,
+      );
+
+      const alertResult = this.props.notificator.alert(
+        `Error toggle device locating: ${err}`,
+        NotificationSeverity.Err,
+      );
+      if (alertResult.error) {
+        console.error(
+          `navigation_component: failed to send notification: ${alertResult.error}`,
+        );
+      }
+
+      return;
+    }
+
+    const alertResult = this.props.notificator.alert(
+      "Completed",
+      NotificationSeverity.Inf,
+    );
+    if (alertResult.error) {
+      console.error(
+        `navigation_component: failed to send notification: ${alertResult.error}`,
+      );
+    }
+  };
+
+  private handleReboot = async () => {
+    const confirmResult = this.props.notificator.confirm(
+      "Reboot device?",
+      NotificationSeverity.Wrn,
+    );
+    if (confirmResult.error) {
+      const alertResult = this.props.notificator.alert(
+        `Unable to open confirm dialog: ${confirmResult.error}`,
+        NotificationSeverity.Err,
+      );
+      if (alertResult.error) {
+        console.error(
+          `navigation_component: failed to send notification: ${alertResult.error}`,
+        );
+      }
+
+      return;
+    }
+
+    const resultConfirmed = await confirmResult.promise;
+    if (!resultConfirmed) {
+      return;
+    }
+
+    const alertResult = this.props.notificator.alert(
+      "Rebooting...",
+      NotificationSeverity.Inf,
+    );
+    if (alertResult.error) {
+      console.error(
+        `navigation_component: failed to send notification: ${alertResult.error}`,
+      );
+    }
+
+    const err = await this.props.rebooter.reboot();
+    if (err) {
+      console.error("navigation_component: failed to reboot the device:", err);
+
+      const alertResult = this.props.notificator.alert(
+        `Error rebooting device: ${err}`,
+        NotificationSeverity.Err,
+      );
+      if (alertResult.error) {
+        console.error(
+          `navigation_component: failed to send notification: ${alertResult.error}`,
+        );
+      }
+
+      return;
+    }
+  };
+
+  private handleHelp = () => {
+    this.helpState.set(true);
+  };
+
+  private helpState: StateMonitor<boolean>;
+}

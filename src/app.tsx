@@ -27,6 +27,15 @@ import { Config } from "./device/config";
 import { HTTPConfig } from "./device/http_config";
 import { AnalogSensorComponent } from "./pipeline/sensor/soil/analog_sensor_component";
 
+import { Rebooter } from "./device/rebooter";
+import { Locator } from "./device/locator";
+import { HTTPRebooter } from "./device/http_rebooter";
+import { HTTPLocator } from "./device/http_locator";
+import { NavigationComponent } from "./pipeline/navigation_component";
+import { BonsaiLogo } from "./pipeline/logo/bonsai";
+
+import { html as helpContent } from "./help.md";
+
 import "./pipeline/app.css";
 import "./pipeline/dashboard.css";
 
@@ -60,6 +69,9 @@ export class App extends Component<appProps, {}> {
       },
     );
 
+    this.deviceRebooter = new HTTPRebooter(`${App.apiBaseURL}/system/reboot`);
+    this.deviceLocator = new HTTPLocator(`${App.apiBaseURL}/system/locate`);
+
     this.telemetryHTTPFetcher = new HTTPFetcher(`${App.apiBaseURL}/telemetry`);
     this.telemetryFormatter = new JSONFormatter();
 
@@ -87,6 +99,14 @@ export class App extends Component<appProps, {}> {
     return (
       <>
         <div className="dashboard">
+          <NavigationComponent
+            rebooter={this.deviceRebooter}
+            locator={this.deviceLocator}
+            notificator={this.notificationDispatcher}
+            logo={<BonsaiLogo />}
+            help={<div dangerouslySetInnerHTML={{ __html: helpContent }} />}
+          />
+
           <div className="card-large">
             <AnalogSensorComponent
               title="Soil Moisture"
@@ -114,6 +134,9 @@ export class App extends Component<appProps, {}> {
   private notificationAlertQueue: AlertMonitorNotificationQueue;
   private notificationConfirmQueue: ConfirmMonitorNotificationQueue;
   private notificationDispatcher: NotificationDispatcher;
+
+  private deviceRebooter: Rebooter;
+  private deviceLocator: Locator;
 
   private static readonly telemetryFetchInterval: number = 10 * 1000;
   private telemetryHTTPFetcher: Fetcher;
