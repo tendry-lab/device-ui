@@ -126,11 +126,17 @@ export class AnalogSensorComponent extends Component<
         >
           <div className="sensor-title-row">
             <h3 className="sensor-title">{this.props.title}</h3>
-            <span
+            <div
               className={`expand-arrow ${this.state.expanded ? "expanded" : ""}`}
-            >
-              ▶
+            />
+          </div>
+
+          {/* Moisture percentage - prominent display */}
+          <div className="moisture-display">
+            <span className="moisture-value">
+              {this.state.data.moisture.toFixed(1)}
             </span>
+            <span className="moisture-unit">%</span>
           </div>
 
           {/* Main status display */}
@@ -142,14 +148,6 @@ export class AnalogSensorComponent extends Component<
             <span className="status-duration">
               for {formatDuration(this.state.data.curr_status_dur)}
             </span>
-          </div>
-
-          {/* Moisture percentage - prominent display */}
-          <div className="moisture-display">
-            <span className="moisture-value">
-              {this.state.data.moisture.toFixed(1)}
-            </span>
-            <span className="moisture-unit">%</span>
             <div className="progress-info">
               Progress: {this.state.data.status_progress}%
             </div>
@@ -176,23 +174,13 @@ export class AnalogSensorComponent extends Component<
               </div>
             </div>
 
-            {/* Configuration button */}
-            <div className="config-button-container">
-              <button
-                onClick={this.handleConfigBegin}
-                className="config-button"
-              >
-                Configure
-              </button>
-            </div>
-
             {/* Previous status */}
             <div className="previous-status">
               <div className="detail-label">Previous Status</div>
               <div className="prev-status-row">
                 <div className={`prev-status-indicator ${prevStatusClass}`} />
                 <span className="prev-status-text">
-                  {this.state.data.prev_status}
+                  {this.state.data.prev_status} for
                 </span>
                 <span className="prev-status-duration">
                   {formatDuration(this.state.data.prev_status_dur)}
@@ -209,6 +197,14 @@ export class AnalogSensorComponent extends Component<
                 notificator={this.props.notificator}
               />
             )}
+          </div>
+        )}
+
+        {this.state.expanded && !this.state.enableCalibration && (
+          <div className="config-button-container">
+            <button onClick={this.handleConfigBegin} className="config-button">
+              Configure
+            </button>
           </div>
         )}
       </div>

@@ -87,7 +87,7 @@ export class App extends Component<appProps, {}> {
       <>
         <div className="app-container">
           <AnalogSensorComponent
-            title="Moisture"
+            title="Soil Moisture"
             prefix="sensor_soil"
             fetcher={this.telemetryDataFetcher}
             config={this.soilSensorConfig}

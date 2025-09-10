@@ -1,23 +1,27 @@
-/* CSS Custom Properties */
 :root {
-  --sensor-bg: #ffffff;
-  --sensor-bg-details: #f8f9fa;
-  --sensor-border: #e9ecef;
-  --sensor-text-primary: #212529;
-  --sensor-text-secondary: #6c757d;
-  --sensor-accent: #007bff;
-  --sensor-accent-hover: #0056b3;
+  /* Spacing - will become global design system */
+  --sensor-spacing: 1rem;
+  --sensor-spacing-small: 0.5rem;
+  --sensor-spacing-large: 1.5rem;
+
+  /* Colors - will become global design system */
+  --sensor-bg: #f8fafc;
+  --sensor-border: #e2e8f0;
+  --sensor-text: #334155;
+  --sensor-text-secondary: #64748b;
+  --sensor-text-dark: #1e293b;
+  --sensor-white: #ffffff;
+  --sensor-primary: #3b82f6;
+
+  /* Effects - will become global design system */
   --sensor-radius: 0.75rem;
   --sensor-radius-small: 0.5rem;
   --sensor-radius-button: 0.375rem;
-  --sensor-spacing: 1.25rem;
-  --sensor-spacing-small: 0.75rem;
-  --sensor-spacing-large: 1rem;
-  --sensor-transition: 0.2s ease;
-  --sensor-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  --sensor-transition: 0.15s ease;
+  --sensor-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   --sensor-shadow-hover: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
 
-  /* Status Colors */
+  /* Status Colors - domain-specific, will stay sensor-specific */
   --status-none: #868e96;
   --status-saturated: #51cf66;
   --status-wet: #74c0fc;
@@ -28,13 +32,15 @@
 
 /* Main Container */
 .sensor-card {
-  background: var(--sensor-bg);
+  background: var(--sensor-white);
   border: 1px solid var(--sensor-border);
   border-radius: var(--sensor-radius);
   padding: 0;
   box-shadow: var(--sensor-shadow);
   overflow: hidden;
   transition: box-shadow var(--sensor-transition);
+  max-width: 25rem;
+  width: 100%;
 }
 
 .sensor-card:hover {
@@ -62,13 +68,17 @@
   margin: 0;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--sensor-text-primary);
+  color: var(--sensor-text-dark);
 }
 
 .expand-arrow {
-  font-size: 0.875rem;
-  color: var(--sensor-text-secondary);
+  width: 0;
+  height: 0;
+  border-left: 0.625rem solid var(--sensor-text-secondary);
+  border-top: 0.4375rem solid transparent;
+  border-bottom: 0.4375rem solid transparent;
   transition: transform var(--sensor-transition);
+  cursor: pointer;
 }
 
 .expand-arrow.expanded {
@@ -103,13 +113,13 @@
 .moisture-display {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: var(--sensor-spacing-small);
 }
 
 .moisture-value {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--sensor-text-primary);
+  color: var(--sensor-text-dark);
 }
 
 .moisture-unit {
@@ -126,12 +136,12 @@
 /* Details Section */
 .sensor-details {
   padding: var(--sensor-spacing);
-  background-color: var(--sensor-bg-details);
+  background-color: var(--sensor-bg);
 }
 
 .details-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
   gap: var(--sensor-spacing-small);
   margin-bottom: var(--sensor-spacing-large);
 }
@@ -145,33 +155,37 @@
 .detail-value {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--sensor-text-primary);
+  color: var(--sensor-text-dark);
 }
 
-/* Configuration */
+/* Configuration button */
 .config-button-container {
-  margin-bottom: var(--sensor-spacing-large);
+  padding: var(--sensor-spacing-small) var(--sensor-spacing);
+  border-top: 1px solid var(--sensor-border);
+  background-color: var(--sensor-bg);
 }
 
 .config-button {
-  padding: 0.5rem 1rem;
-  background-color: var(--sensor-accent);
+  width: 100%;
+  padding: var(--sensor-spacing-small);
+  background-color: #6b7280;
   color: white;
   border: none;
   border-radius: var(--sensor-radius-button);
   cursor: pointer;
   font-size: 0.875rem;
+  font-weight: 500;
   transition: background-color var(--sensor-transition);
 }
 
 .config-button:hover {
-  background-color: var(--sensor-accent-hover);
+  background-color: #4b5563;
 }
 
 /* Previous Status */
 .previous-status {
   padding: var(--sensor-spacing-small);
-  background-color: var(--sensor-bg);
+  background-color: var(--sensor-white);
   border-radius: var(--sensor-radius-small);
   border: 1px solid var(--sensor-border);
 }
@@ -179,7 +193,7 @@
 .prev-status-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sensor-spacing-small);
 }
 
 .prev-status-indicator {
@@ -191,7 +205,7 @@
 .prev-status-text {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--sensor-text-primary);
+  color: var(--sensor-text-dark);
 }
 
 .prev-status-duration {
@@ -223,12 +237,12 @@
 
   .sensor-header,
   .sensor-details {
-    padding: 1rem;
+    padding: var(--sensor-spacing);
   }
 
   .details-grid {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: var(--sensor-spacing-small);
   }
 
   .moisture-display {
