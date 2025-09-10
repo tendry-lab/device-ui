@@ -1,0 +1,159 @@
+@import './tokens.css';
+
+/* Dashboard Grid Container */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: var(--spacing);
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: var(--spacing);
+}
+
+/* Navigation Bar - spans full width */
+.nav-bar {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing);
+  box-shadow: var(--shadow);
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: var(--spacing-small);
+}
+
+.nav-button {
+  padding: var(--spacing-small) var(--spacing);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color var(--transition);
+}
+
+.nav-button:hover {
+  background: var(--color-border);
+}
+
+/* Large Cards - spans 2 columns */
+.card-large {
+  grid-column: span 2;
+}
+
+/* Small Cards - spans 1 column */
+.card-small {
+  grid-column: span 1;
+}
+
+/* System Configuration Section - spans full width */
+.system-config {
+  grid-column: 1 / -1;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing);
+  box-shadow: var(--shadow);
+}
+
+.system-config-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: 0 0 var(--spacing) 0;
+}
+
+.system-config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: var(--spacing-small);
+}
+
+.config-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: var(--spacing-small);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.config-card:hover {
+  background: var(--color-border);
+}
+
+/* Base Card Styles */
+.dashboard-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition);
+}
+
+.dashboard-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.dashboard-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: 0 0 var(--spacing) 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-large {
+    grid-column: span 2;
+  }
+
+  .card-small {
+    grid-column: span 1;
+  }
+
+  .system-config-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-small);
+    padding: var(--spacing-small);
+  }
+
+  .nav-bar {
+    flex-direction: column;
+    gap: var(--spacing-small);
+  }
+
+  .card-large,
+  .card-small {
+    grid-column: span 1;
+  }
+
+  .system-config-grid {
+    grid-template-columns: 1fr;
+  }
+}
