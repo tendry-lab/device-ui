@@ -1,40 +1,61 @@
+/* CSS Custom Properties */
+:root {
+  --app-font-family: Arial, sans-serif;
+  --app-max-width: 80rem;
+  --app-padding: 1rem;
+  --app-padding-small: 0.5rem;
+  --app-spacing: 0.625rem;
+  --app-spacing-large: 1.5rem;
+  --app-text-color: #888;
+  --app-shadow-color: #646cffaa;
+  --app-shadow-preact: #673ab8aa;
+}
+
+/* Main Container */
 .app-container {
-  padding: 10px;
-  font-family: Arial, sans-serif;
+  padding: var(--app-spacing);
+  font-family: var(--app-font-family);
 }
 
 #app {
-  max-width: 1280px;
+  max-width: var(--app-max-width);
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--app-padding);
   text-align: center;
   box-sizing: border-box;
 }
 
+/* Logo Styles */
+.logo {
+  height: 6rem;
+  padding: var(--app-spacing-large);
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2rem var(--app-shadow-color));
+}
+
+.logo.preact:hover {
+  filter: drop-shadow(0 0 2rem var(--app-shadow-preact));
+}
+
+/* Card Component */
+.card {
+  padding: 2rem;
+}
+
+/* Documentation Link */
+.read-the-docs {
+  color: var(--app-text-color);
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .app-container {
-    padding: 5px;
+    padding: var(--app-padding-small);
   }
+
   #app {
-    padding: 0.5rem;
+    padding: var(--app-padding-small);
   }
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.preact:hover {
-  filter: drop-shadow(0 0 2em #673ab8aa);
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
