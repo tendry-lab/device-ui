@@ -62,7 +62,7 @@ export class NotificationComponent
     const result = this.props.systemClock.getTimestamp();
     if (result.error) {
       console.error(
-        `notification-component: failed to get UNIX time: ${result.error}`,
+        `notification_component: failed to get UNIX time: ${result.error}`,
       );
     } else {
       timestamp = result.timestamp;
@@ -216,7 +216,7 @@ export class NotificationComponent
     const error = notification.resolve();
     if (error) {
       console.error(
-        `notification-component: failed to resolve alert: ${error}`,
+        `notification_component: failed to resolve alert: ${error}`,
       );
     }
   };
@@ -228,7 +228,7 @@ export class NotificationComponent
     const error = notification.resolve(result);
     if (error) {
       console.error(
-        `notification-component: failed to resolve confirm: ${error}`,
+        `notification_component: failed to resolve confirm: ${error}`,
       );
     }
   };
@@ -240,7 +240,7 @@ export class NotificationComponent
       const error = n.resolve();
       if (error) {
         console.error(
-          `notification-component: failed to resolve alert on unmount: ${error}`,
+          `notification_component: failed to resolve alert on unmount: ${error}`,
         );
       }
     });
@@ -251,7 +251,7 @@ export class NotificationComponent
       const error = n.resolve(false);
       if (error) {
         console.error(
-          `notification-component: failed to resolve confirm on unmount: ${error}`,
+          `notification_component: failed to resolve confirm on unmount: ${error}`,
         );
       }
     });

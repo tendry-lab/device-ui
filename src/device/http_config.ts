@@ -47,7 +47,7 @@ export class HTTPConfig implements Config {
     try {
       const text = new TextDecoder().decode(fetchResult.data!);
       if (text != "OK") {
-        err = new Error(`http-config: write failed, invalid response: ${text}`);
+        err = new Error(`http_config: write failed, invalid response: ${text}`);
       }
     } catch (error) {
       err = error instanceof Error ? error : new Error(String(error));

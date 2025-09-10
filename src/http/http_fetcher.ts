@@ -15,14 +15,14 @@ export class HTTPFetcher implements Fetcher {
         ret = await response.bytes();
       } else {
         err = new Error(
-          `http-fetcher: failed to fetch data: ${response.statusText}`,
+          `http_fetcher: failed to fetch data: ${response.statusText}`,
         );
       }
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : "unknown error";
 
-      err = new Error(`http-fetcher: error fetching data: ${errorMessage}`);
+      err = new Error(`http_fetcher: error fetching data: ${errorMessage}`);
     }
 
     return { data: ret, error: err };

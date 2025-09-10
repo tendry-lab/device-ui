@@ -94,7 +94,7 @@ export class NotificationDispatcher implements Notificator {
         const error = notification.resolve(resolveValue);
         if (error) {
           console.error(
-            `notification-dispatcher: failed to resolve notification on timeout: ${error}`,
+            `notification_dispatcher: failed to resolve notification on timeout: ${error}`,
           );
         }
       }, opts.timeout);
@@ -112,7 +112,7 @@ export class NotificationDispatcher implements Notificator {
     const result = this.systemClock.getTimestamp();
     if (result.error) {
       console.log(
-        `notification-dispatcher: failed to get UNIX timestamp: ${result.error}`,
+        `notification_dispatcher: failed to get UNIX timestamp: ${result.error}`,
       );
     } else {
       timestamp = result.timestamp;
