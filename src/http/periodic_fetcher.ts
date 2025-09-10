@@ -29,7 +29,7 @@ export class PeriodicFetcher {
     const result = await this.fetcher.fetch();
     if (result.error) {
       console.error(
-        `periodic-fetcher: failed to fetch data: err=${result.error}`,
+        `periodic_fetcher: failed to fetch data: err=${result.error}`,
       );
 
       return;

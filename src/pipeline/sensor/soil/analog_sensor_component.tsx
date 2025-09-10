@@ -77,7 +77,7 @@ export class AnalogSensorComponent extends Component<
     const error = this.props.fetcher.add(this);
     if (error) {
       console.error(
-        `analog-sensor-component: failed to register for data changes: ${error}`,
+        `analog_sensor_component: failed to register for data changes: ${error}`,
       );
     }
   }
@@ -86,7 +86,7 @@ export class AnalogSensorComponent extends Component<
     const error = this.props.fetcher.remove(this);
     if (error) {
       console.error(
-        `analog-sensor-component: failed to unregister for data changes: ${error}`,
+        `analog_sensor_component: failed to unregister for data changes: ${error}`,
       );
     }
 

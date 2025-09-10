@@ -64,7 +64,7 @@ export abstract class BasicConfigComponent extends Component<
       );
       if (alertResult.error) {
         console.error(
-          `basic-config-component: failed to send notification: ${alertResult.error}`,
+          `basic_config_component: failed to send notification: ${alertResult.error}`,
         );
       }
 
@@ -78,7 +78,7 @@ export abstract class BasicConfigComponent extends Component<
 
     const err = await this.props.config.write(this.state.data!);
     if (err) {
-      console.error(`basic-config-component: error updating config: ${err}`);
+      console.error(`basic_config_component: error updating config: ${err}`);
 
       const alertResult = this.props.notificator.alert(
         `Error updating configuration: ${err}`,
@@ -86,7 +86,7 @@ export abstract class BasicConfigComponent extends Component<
       );
       if (alertResult.error) {
         console.error(
-          `basic-config-component: failed to send notification: ${alertResult.error}`,
+          `basic_config_component: failed to send notification: ${alertResult.error}`,
         );
       }
 
@@ -99,7 +99,7 @@ export abstract class BasicConfigComponent extends Component<
     );
     if (alertResult.error) {
       console.error(
-        `basic-config-component: failed to send notification: ${alertResult.error}`,
+        `basic_config_component: failed to send notification: ${alertResult.error}`,
       );
     }
 
@@ -119,7 +119,7 @@ export abstract class BasicConfigComponent extends Component<
       );
       if (alertResult.error) {
         console.error(
-          `basic-config-component: failed to send notification: ${alertResult.error}`,
+          `basic_config_component: failed to send notification: ${alertResult.error}`,
         );
       }
 
@@ -133,7 +133,7 @@ export abstract class BasicConfigComponent extends Component<
 
     const err = await this.props.config.reset();
     if (err) {
-      console.error("basic-config-component: error resetting config:", err);
+      console.error("basic_config_component: error resetting config:", err);
 
       const alertResult = this.props.notificator.alert(
         `Error resetting configuration: ${err}`,
@@ -141,7 +141,7 @@ export abstract class BasicConfigComponent extends Component<
       );
       if (alertResult.error) {
         console.error(
-          `basic-config-component: failed to send notification: ${alertResult.error}`,
+          `basic_config_component: failed to send notification: ${alertResult.error}`,
         );
       }
 
@@ -154,7 +154,7 @@ export abstract class BasicConfigComponent extends Component<
     );
     if (alertResult.error) {
       console.error(
-        `basic-config-component: failed to send notification: ${alertResult.error}`,
+        `basic_config_component: failed to send notification: ${alertResult.error}`,
       );
     }
 
@@ -172,7 +172,7 @@ export abstract class BasicConfigComponent extends Component<
     const readResult = await this.props.config.read();
     if (readResult.error) {
       console.error(
-        `basic-config-component: failed to read: ${readResult.error}`,
+        `basic_config_component: failed to read: ${readResult.error}`,
       );
     }
 
