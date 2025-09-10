@@ -135,7 +135,7 @@ export class AnalogSensorComponent extends Component<
 
           {/* Main status display */}
           <div className="status-row">
-            <div className={`status-indicator ${statusClass}`}></div>
+            <div className={`status-indicator ${statusClass}`} />
             <span className={`status-text ${statusClass}`}>
               {this.state.data.curr_status}
             </span>
@@ -190,14 +190,12 @@ export class AnalogSensorComponent extends Component<
             <div className="previous-status">
               <div className="detail-label">Previous Status</div>
               <div className="prev-status-row">
-                <div
-                  className={`prev-status-indicator ${prevStatusClass}`}
-                ></div>
+                <div className={`prev-status-indicator ${prevStatusClass}`} />
                 <span className="prev-status-text">
                   {this.state.data.prev_status}
                 </span>
                 <span className="prev-status-duration">
-                  ({formatDuration(this.state.data.prev_status_dur)})
+                  {formatDuration(this.state.data.prev_status_dur)}
                 </span>
               </div>
             </div>
