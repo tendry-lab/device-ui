@@ -3,6 +3,27 @@ import preact from "@preact/preset-vite";
 import compression from "vite-plugin-compression";
 import checker from "vite-plugin-checker";
 
+function createProxyConfig(target) {
+  return {
+    target,
+    changeOrigin: true,
+    configure: (proxy, options) => {
+      proxy.on("proxyReq", (proxyReq) => {
+        // Remove headers that can accumulate and cause
+        // 431 status (Request Header Fields Too Large)
+        proxyReq.removeHeader("authorization");
+        proxyReq.removeHeader("cookie");
+        proxyReq.removeHeader("x-forwarded-for");
+        proxyReq.removeHeader("x-forwarded-proto");
+        proxyReq.removeHeader("x-forwarded-host");
+        // Keep only essential headers
+        proxyReq.setHeader("user-agent", "Vite-Dev-Proxy");
+        proxyReq.setHeader("accept", "application/json");
+      });
+    },
+  };
+}
+
 export default defineConfig({
   plugins: [
     preact(),
@@ -19,18 +40,9 @@ export default defineConfig({
   ],
   server: {
     proxy: {
-      "/api/v1/telemetry": {
-        target: "http://192.168.1.22",
-        changeOrigin: true, // Fixes cross-origin issues
-      },
-      "/api/v1/registration": {
-        target: "http://192.168.1.22",
-        changeOrigin: true, // Fix cross-origin issues
-      },
-      "/api/v1/config/sensor/analog": {
-        target: "http://192.168.1.22",
-        changeOrigin: true, // Fix cross-origin issues
-      },
+      "/api/v1/telemetry": createProxyConfig("http://192.168.1.22"),
+      "/api/v1/registration": createProxyConfig("http://192.168.1.22"),
+      "/api/v1/config/sensor/analog": createProxyConfig("http://192.168.1.22"),
     },
   },
   build: {
