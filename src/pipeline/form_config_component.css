@@ -16,15 +16,15 @@
   --config-border-input: #d1d5db;
   --config-focus: rgba(59, 130, 246, 0.1);
   --config-focus-ring: rgba(59, 130, 246, 0.5);
-  --config-radius: 12px;
-  --config-radius-small: 8px;
-  --config-radius-button: 6px;
-  --config-spacing: 16px;
-  --config-spacing-small: 8px;
-  --config-spacing-large: 24px;
+  --config-radius: 0.75rem;
+  --config-radius-small: 0.5rem;
+  --config-radius-button: 0.375rem;
+  --config-spacing: 1rem;
+  --config-spacing-small: 0.5rem;
+  --config-spacing-large: 1.5rem;
   --config-transition: 0.15s ease;
   --config-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --config-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --config-shadow-hover: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
 }
 
 /* Main Container */
@@ -39,9 +39,9 @@
 }
 
 .config-title {
-  margin: 0 0 20px 0;
+  margin: 0 0 1.25rem 0;
   color: var(--config-text);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
@@ -79,23 +79,23 @@
 }
 
 .form-label {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--config-text-dark);
   text-align: right;
-  margin-right: 10px;
+  margin-right: 0.625rem;
 }
 
 .form-input {
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   border: 2px solid var(--config-border-input);
   border-radius: var(--config-radius-small);
-  font-size: 14px;
+  font-size: 0.875rem;
   background-color: var(--config-white);
   transition: all var(--config-transition);
   font-family: inherit;
   text-align: left;
-  width: 80px;
+  width: 5rem;
 }
 
 .form-input:focus {
@@ -112,20 +112,20 @@
 /* Button Container */
 .config-buttons-container {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
   justify-content: center;
   margin-top: var(--config-spacing);
 }
 
 .config-buttons-item {
-  padding: 12px 20px;
+  padding: 0.75rem 1.25rem;
   border: none;
   border-radius: var(--config-radius-button);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   transition: all var(--config-transition);
-  min-width: 80px;
+  min-width: 5rem;
   box-shadow: var(--config-shadow);
 }
 
@@ -183,8 +183,8 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .config-container {
-    margin-top: 12px;
-    padding: 16px;
+    margin-top: 0.75rem;
+    padding: 1rem;
   }
 
   .config-form {
@@ -193,12 +193,12 @@
   }
 
   .config-buttons-container {
-    gap: 8px;
+    gap: 0.5rem;
     flex-wrap: wrap;
   }
 
   .config-buttons-item {
     flex: 1;
-    min-width: 70px;
+    min-width: 4.375rem;
   }
 }
