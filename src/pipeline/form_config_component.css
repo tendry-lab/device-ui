@@ -1,53 +1,38 @@
+@import './tokens.css';
+
 /* CSS Custom Properties */
 :root {
-  --config-bg: #f8fafc;
-  --config-border: #e2e8f0;
-  --config-text: #334155;
-  --config-text-secondary: #64748b;
-  --config-text-dark: #1e293b;
   --config-success: #10b981;
   --config-success-hover: #059669;
   --config-danger: #ef4444;
   --config-danger-hover: #dc2626;
-  --config-primary: #3b82f6;
   --config-secondary: #6b7280;
-  --config-light: #f9fafb;
-  --config-white: #ffffff;
   --config-border-input: #d1d5db;
   --config-focus: rgba(59, 130, 246, 0.1);
   --config-focus-ring: rgba(59, 130, 246, 0.5);
-  --config-radius: 0.75rem;
-  --config-radius-small: 0.5rem;
-  --config-radius-button: 0.375rem;
-  --config-spacing: 1rem;
-  --config-spacing-small: 0.5rem;
-  --config-spacing-large: 1.5rem;
-  --config-transition: 0.15s ease;
-  --config-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --config-shadow-hover: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
 }
 
 /* Main Container */
 .config-container {
-  margin-top: var(--config-spacing);
-  padding: var(--config-spacing-large);
-  background-color: var(--config-bg);
-  border: 1px solid var(--config-border);
-  border-radius: var(--config-radius);
-  box-shadow: var(--config-shadow);
+  margin-top: var(--spacing);
+  padding: var(--spacing-large);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   text-align: center;
 }
 
 .config-title {
   margin: 0 0 1.25rem 0;
-  color: var(--config-text);
+  color: var(--color-text);
   font-size: 1rem;
   font-weight: 600;
 }
 
 /* Status Messages */
 .config-loading {
-  color: var(--config-text-secondary);
+  color: var(--color-text-secondary);
   font-style: italic;
   margin: 0;
 }
@@ -60,7 +45,7 @@
 
 /* Form Styling */
 .config-form {
-  margin-bottom: var(--config-spacing-large);
+  margin-bottom: var(--spacing-large);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,18 +66,18 @@
 .form-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--config-text-dark);
+  color: var(--color-text-dark);
   text-align: right;
   margin-right: 0.625rem;
 }
 
 .form-input {
-  padding: 0.5rem 0.75rem;
+  padding: var(--spacing-small) 0.75rem;
   border: 2px solid var(--config-border-input);
-  border-radius: var(--config-radius-small);
+  border-radius: var(--radius-small);
   font-size: 0.875rem;
-  background-color: var(--config-white);
-  transition: all var(--config-transition);
+  background-color: var(--color-white);
+  transition: all var(--transition);
   font-family: inherit;
   text-align: left;
   width: 5rem;
@@ -100,13 +85,13 @@
 
 .form-input:focus {
   outline: none;
-  border-color: var(--config-primary);
+  border-color: var(--color-primary);
   background-color: var(--config-focus);
   box-shadow: 0 0 0 3px var(--config-focus-ring);
 }
 
 .form-input:hover:not(:focus) {
-  border-color: var(--config-text-secondary);
+  border-color: var(--color-text-secondary);
 }
 
 /* Button Container */
@@ -114,24 +99,24 @@
   display: flex;
   gap: 0.75rem;
   justify-content: center;
-  margin-top: var(--config-spacing);
+  margin-top: var(--spacing);
 }
 
 .config-buttons-item {
   padding: 0.75rem 1.25rem;
   border: none;
-  border-radius: var(--config-radius-button);
+  border-radius: var(--radius-button);
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: all var(--config-transition);
+  transition: all var(--transition);
   min-width: 5rem;
-  box-shadow: var(--config-shadow);
+  box-shadow: var(--shadow);
 }
 
 .config-buttons-item:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: var(--config-shadow-hover);
+  box-shadow: var(--shadow-hover);
 }
 
 .config-buttons-item:active {
@@ -146,14 +131,14 @@
 }
 
 .config-buttons-item:focus-visible {
-  outline: 2px solid var(--config-primary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 /* Button Variants */
 .config-buttons-item-apply {
   background-color: var(--config-success);
-  color: var(--config-white);
+  color: var(--color-white);
 }
 
 .config-buttons-item-apply:hover:not(:disabled) {
@@ -162,7 +147,7 @@
 
 .config-buttons-item-reset {
   background-color: var(--config-danger);
-  color: var(--config-white);
+  color: var(--color-white);
 }
 
 .config-buttons-item-reset:hover:not(:disabled) {
@@ -170,30 +155,30 @@
 }
 
 .config-buttons-item-close {
-  background-color: var(--config-white);
-  color: var(--config-text-dark);
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
   border: 2px solid var(--config-border-input);
 }
 
 .config-buttons-item-close:hover:not(:disabled) {
-  background-color: var(--config-light);
-  border-color: var(--config-text-secondary);
+  background-color: var(--color-bg);
+  border-color: var(--color-text-secondary);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .config-container {
     margin-top: 0.75rem;
-    padding: 1rem;
+    padding: var(--spacing);
   }
 
   .config-form {
-    gap: var(--config-spacing);
+    gap: var(--spacing);
     max-width: 100%;
   }
 
   .config-buttons-container {
-    gap: 0.5rem;
+    gap: var(--spacing-small);
     flex-wrap: wrap;
   }
 
