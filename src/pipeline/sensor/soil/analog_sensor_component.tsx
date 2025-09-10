@@ -35,7 +35,7 @@ function formatDuration(seconds: number): string {
 }
 
 type analogSensorState = {
-  data: Record<string, any> | null;
+  data: AnalogSensorData | null;
   expanded: boolean;
   enableCalibration: boolean;
 };
