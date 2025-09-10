@@ -8,7 +8,7 @@
   --notification-border: #e2e8f0;
   --notification-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.08);
   --notification-radius: 0.75rem;
-  --notification-padding: 1.25rem;
+  --notification-padding: 1.5rem;
   --animation-duration: 0.25s;
   --animation-easing: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -215,7 +215,6 @@
   }
 
   .notification.non-modal {
-    padding: 0.75rem 1rem;
     text-align: right;
     width: fit-content;
     max-width: calc(100vw - 4rem);
