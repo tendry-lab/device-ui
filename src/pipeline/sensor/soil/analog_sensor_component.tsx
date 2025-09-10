@@ -180,10 +180,10 @@ export class AnalogSensorComponent extends Component<
               <div className="prev-status-row">
                 <div className={`prev-status-indicator ${prevStatusClass}`} />
                 <span className="prev-status-text">
-                  {this.state.data.prev_status} for
+                  {this.state.data.prev_status}
                 </span>
                 <span className="prev-status-duration">
-                  {formatDuration(this.state.data.prev_status_dur)}
+                  ({formatDuration(this.state.data.prev_status_dur)})
                 </span>
               </div>
             </div>
