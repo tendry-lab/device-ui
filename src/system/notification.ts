@@ -20,10 +20,10 @@ export class Notification<T> {
   //  - @p modality - notification modality (modal/non-modal).
   //  - @p resolveCb - optional callback to be called when the notification is resolved.
   constructor(
-    public readonly timestamp: number,
-    public readonly message: string,
-    public readonly severity: NotificationSeverity,
-    public readonly modality: NotificationModality,
+    readonly timestamp: number,
+    readonly message: string,
+    readonly severity: NotificationSeverity,
+    readonly modality: NotificationModality,
     private resolveCb?: (notification: Notification<T>) => Error | null,
   ) {
     this.promise = new Promise<T>((resolve, reject) => {
@@ -33,7 +33,7 @@ export class Notification<T> {
   }
 
   // Promise to wait until the notification is resolved.
-  public readonly promise: Promise<T>;
+  readonly promise: Promise<T>;
 
   // Mark a notification as resolved.
   //
