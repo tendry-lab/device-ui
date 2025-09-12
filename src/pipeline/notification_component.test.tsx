@@ -28,7 +28,7 @@ import { ObjectMonitor } from "../core/object_monitor";
 import { NotificationComponent } from "./notification_component";
 
 class testObjectMonitor implements ObjectMonitor {
-  public callCount: number = 0;
+  callCount: number = 0;
 
   notifyChanged(): void {
     this.callCount++;

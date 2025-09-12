@@ -24,7 +24,7 @@ import { ObjectMonitor } from "../core/object_monitor";
 import { TestSystemClock } from "./../tests/test_system_clock";
 
 class testObjectMonitor implements ObjectMonitor {
-  public callCount: number = 0;
+  callCount: number = 0;
 
   notifyChanged(): void {
     this.callCount++;
