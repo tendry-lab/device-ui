@@ -2,7 +2,7 @@
 
 ## Introduction
 
-`device-ui` is a set of components used to build a Web GUI for the embedded devices. It is designed to be very reliable and tiny, up to 50KB gzipped.
+`device-ui` is a set of components used to build a Web GUI for the embedded devices. It is designed to be very tiny, up to 50KB gzipped.
 
 ## Development
 
