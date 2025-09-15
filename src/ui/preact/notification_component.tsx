@@ -5,15 +5,15 @@ import {
   ConfirmNotification,
   AlertMonitorNotificationQueue,
   ConfirmMonitorNotificationQueue,
-} from "../system/notification_types";
+} from "../../lib/system/notification_types";
 
 import {
   NotificationSeverity,
   NotificationModality,
-} from "../system/notification";
+} from "../../lib/system/notification";
 
-import { ObjectMonitor } from "../core/object_monitor";
-import { SystemClock } from "../system/system_clock";
+import { ObjectMonitor } from "../../lib/core/object_monitor";
+import { SystemClock } from "../../lib/system/system_clock";
 
 import "./notification_component.css";
 

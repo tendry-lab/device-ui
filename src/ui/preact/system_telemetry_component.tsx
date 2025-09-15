@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 
-import { SystemTelemetryData } from "../device/data_types";
+import { SystemTelemetryData } from "../../lib/device/data_types";
 
 // System telemetry settings used during the rendering process.
 export type SystemTelemetryProps = {

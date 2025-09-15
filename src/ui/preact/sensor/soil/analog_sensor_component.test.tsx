@@ -4,13 +4,13 @@ import { describe, test, expect } from "vitest";
 
 import { AnalogSensorComponent } from "./analog_sensor_component";
 
-import { DefaultNotificator } from "../../../system/default_notificator";
-import { PeriodicDataFetcher } from "../../../device/periodic_data_fetcher";
-import { JSONFormatter } from "../../../fmt/json_formatter";
-import { Fetcher } from "../../../http/fetcher";
+import { DefaultNotificator } from "../../../../lib/system/default_notificator";
+import { PeriodicDataFetcher } from "../../../../lib/device/periodic_data_fetcher";
+import { JSONFormatter } from "../../../../lib/fmt/json_formatter";
+import { Fetcher } from "../../../../lib/http/fetcher";
 
-import { TestFetcher } from "../../../tests/test_fetcher";
-import { TestConfig } from "../../../tests/test_config";
+import { TestFetcher } from "../../../../lib/tests/test_fetcher";
+import { TestConfig } from "../../../../lib/tests/test_config";
 
 describe("Analog Soil Sensor Component", () => {
   test("Queue state management on mount/unmount", async () => {

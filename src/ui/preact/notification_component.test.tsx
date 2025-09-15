@@ -2,9 +2,8 @@ import { render } from "@testing-library/preact";
 
 import { describe, test, expect } from "vitest";
 
-import { MonitorNotificationQueue } from "../system/monitor_notification_queue";
-
-import { NotificationDispatcher } from "../system/notification_dispatcher";
+import { MonitorNotificationQueue } from "../../lib/system/monitor_notification_queue";
+import { NotificationDispatcher } from "../../lib/system/notification_dispatcher";
 
 import {
   AlertNotification,
@@ -13,17 +12,17 @@ import {
   ConfirmArrayQueue,
   AlertLimitNotificationQueue,
   ConfirmLimitNotificationQueue,
-} from "../system/notification_types";
+} from "../../lib/system/notification_types";
 
 import {
   Notification,
   NotificationSeverity,
   NotificationModality,
-} from "../system/notification";
+} from "../../lib/system/notification";
 
-import { TestSystemClock } from "../tests/test_system_clock";
+import { TestSystemClock } from "../../lib/tests/test_system_clock";
 
-import { ObjectMonitor } from "../core/object_monitor";
+import { ObjectMonitor } from "../../lib/core/object_monitor";
 
 import { NotificationComponent } from "./notification_component";
 
