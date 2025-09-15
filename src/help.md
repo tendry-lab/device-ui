@@ -29,7 +29,7 @@ Once the device has been powered up, the next step is to connect to the device's
 
 **SECURITY WARNING**
 
-It is highly recommended to update the default WiFi password to a more secure one.
+It is highly recommended to update the default WiFi password to a more secure one. The new password should be at least 8 characters.
 
 ## mDNS Configuration
 
