@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [preact()],
   test: {
     environment: "jsdom",
-    setupFiles: ["./src/tests/main.ts"],
+    setupFiles: ["./src/lib/tests/main.ts"],
     watch: false,
   },
 });

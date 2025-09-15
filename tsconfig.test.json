@@ -1,12 +1,9 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "types": ["vitest/globals", "node"],
-    "lib": ["dom", "es2024"]
-  },
+  "extends": "./tsconfig.test.base.json",
   "include": [
-    "src/**/*.test.ts",
-    "src/**/*.test.tsx",
-    "src/tests/**/*"
+    "src/**/**/*.test.ts",
+    "src/**/**/*.test.tsx",
+    "src/lib/tests/**/*"
   ]
 }

@@ -1,4 +1,4 @@
-import "./pipeline/index.css";
+import "./src/ui/preact/index.css";
 
 import { render } from "preact";
 

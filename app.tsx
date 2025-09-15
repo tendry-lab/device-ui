@@ -1,8 +1,8 @@
 import { Component } from "preact";
 
-import { Notificator } from "./system/notificator";
-import { NotificationDispatcher } from "./system/notification_dispatcher";
-import { NotificationComponent } from "./pipeline/notification_component";
+import { Notificator } from "./src/lib/system/notificator";
+import { NotificationDispatcher } from "./src/lib/system/notification_dispatcher";
+import { NotificationComponent } from "./src/ui/preact/notification_component";
 
 import {
   AlertArrayQueue,
@@ -11,33 +11,33 @@ import {
   ConfirmMonitorNotificationQueue,
   AlertLimitNotificationQueue,
   ConfirmLimitNotificationQueue,
-} from "./system/notification_types";
+} from "./src/lib/system/notification_types";
 
-import { NotificationModality } from "./system/notification";
+import { NotificationModality } from "./src/lib/system/notification";
 
-import { SystemClock } from "./system/system_clock";
-import { LocalSystemClock } from "./system/local_system_clock";
+import { SystemClock } from "./src/lib/system/system_clock";
+import { LocalSystemClock } from "./src/lib/system/local_system_clock";
 
-import { Fetcher } from "./http/fetcher";
-import { Formatter } from "./fmt/formatter";
-import { HTTPFetcher } from "./http/http_fetcher";
-import { PeriodicDataFetcher } from "./device/periodic_data_fetcher";
-import { JSONFormatter } from "./fmt/json_formatter";
-import { Config } from "./device/config";
-import { HTTPConfig } from "./device/http_config";
-import { AnalogSensorComponent } from "./pipeline/sensor/soil/analog_sensor_component";
+import { Fetcher } from "./src/lib/http/fetcher";
+import { Formatter } from "./src/lib/fmt/formatter";
+import { HTTPFetcher } from "./src/lib/http/http_fetcher";
+import { PeriodicDataFetcher } from "./src/lib/device/periodic_data_fetcher";
+import { JSONFormatter } from "./src/lib/fmt/json_formatter";
+import { Config } from "./src/lib/device/config";
+import { HTTPConfig } from "./src/lib/device/http_config";
+import { AnalogSensorComponent } from "./src/ui/preact/sensor/soil/analog_sensor_component";
 
-import { Rebooter } from "./device/rebooter";
-import { Locator } from "./device/locator";
-import { HTTPRebooter } from "./device/http_rebooter";
-import { HTTPLocator } from "./device/http_locator";
-import { NavigationComponent } from "./pipeline/navigation_component";
-import { BonsaiLogo } from "./pipeline/logo/bonsai";
+import { Rebooter } from "./src/lib/device/rebooter";
+import { Locator } from "./src/lib/device/locator";
+import { HTTPRebooter } from "./src/lib/device/http_rebooter";
+import { HTTPLocator } from "./src/lib/device/http_locator";
+import { NavigationComponent } from "./src/ui/preact/navigation_component";
+import { BonsaiLogo } from "./src/ui/preact/logo/bonsai";
 
 import { html as helpContent } from "./help.md";
 
-import "./pipeline/app.css";
-import "./pipeline/dashboard.css";
+import "./src/ui/preact/app.css";
+import "./src/ui/preact/dashboard.css";
 
 type appProps = {};
 

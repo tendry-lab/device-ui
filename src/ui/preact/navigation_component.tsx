@@ -1,11 +1,11 @@
 import { Component, JSX } from "preact";
 
-import { Rebooter } from "../device/rebooter";
-import { Locator } from "../device/locator";
-import { Notificator } from "../system/notificator";
-import { NotificationSeverity } from "../system/notification";
+import { Rebooter } from "../../lib/device/rebooter";
+import { Locator } from "../../lib/device/locator";
+import { Notificator } from "../../lib/system/notificator";
+import { NotificationSeverity } from "../../lib/system/notification";
 import { MarkdownComponent } from "./markdown_component";
-import { StateMonitor } from "../core/state_monitor";
+import { StateMonitor } from "../../lib/core/state_monitor";
 
 import "./dashboard.css";
 

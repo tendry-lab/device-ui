@@ -1,7 +1,7 @@
 import { Component, JSX } from "preact";
 
-import { ObjectMonitor } from "../core/object_monitor";
-import { StateMonitor } from "../core/state_monitor";
+import { ObjectMonitor } from "../../lib/core/object_monitor";
+import { StateMonitor } from "../../lib/core/state_monitor";
 
 import "./markdown_component.css";
 
