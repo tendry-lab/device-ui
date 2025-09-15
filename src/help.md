@@ -23,7 +23,7 @@ Once the device has been powered up, the next step is to connect to the device's
 
 - Power up the device, and open the WiFi Settings on your phone (or laptop), you should see the new WiFi AP with SSID (name) similar to "bonsai-123456ABCDEF10202", where the "bonsai" is the product name, and "123456ABCDEF10202" are the unique symbols for each device (device ID).
 
-- Try to connect to the WiFi AP, you will be prompted to enter the password. The password is the product name followed by the first twelve characters of the device ID. For the example, for the "bonsai-123456ABCDEF10202" WiFi SSID, the password would be "bonsai-123456ABCDEF".
+- Try to connect to the WiFi AP, you will be prompted to enter the password. The password is the product name followed by the first 12 characters of the device ID. For the example, for the "bonsai-123456ABCDEF10202" WiFi SSID, the password would be "bonsai-123456ABCDEF".
 
 - Once connected, try to accesse the Web GUI, by entering `bonsai-zero-a-1-k.local` into your web browser.
 
