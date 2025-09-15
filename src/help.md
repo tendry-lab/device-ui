@@ -58,3 +58,13 @@ On this step WiFi network is properly configured and it's time to configure the 
 ## Device Hub Configuration
 
 [device-hub](https://github.com/tendry-lab/device-hub) is another Tendry Lab project that can be used together with `bonsai-zero-a-1-k` device. It periodically fetches the data from the device and stores it in the persistent storage for further advanced analysis. There is no need to manually add the `bonsai-zero-a-1-k` to the `device-hub`, just ensure that they are connected to the same WiFi network. Then enter `device-hub.local/api/v1/device/list` into your web browser, and check if the `bonsai-zero-a-1-k` is present in the list of registered devices. For more information, see the detailed device-hub [documentation](https://github.com/tendry-lab/device-hub/tree/master/docs/install/rpi).
+
+## Troubleshooting Guide
+
+If you are unable to connect to the Web GUI or the WiFi AP does not appear in the list of available networks on your device, or if you experience any other issues, try performing a Factory Settings Reset (FSR). During the FSR, all of the device's settings will be reset to their default values, with the exception of the sensor configuration.
+
+You can complete the FSR by following these steps:
+- Find a small hole on the front panel, next to the sensor connector.
+- Use a needle, or a screwdriver, or anything thin to press the button inside the hole.
+- Wait for at least 5 seconds. The green LED on the device should blink once, confirming that the FSR has been started.
+- Release the button. The device should blink 3 times, confirming that the FSR has been completed. After that the device will be automatically rebooted.
