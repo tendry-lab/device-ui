@@ -1,9 +1,9 @@
-import { ObjectMonitor } from "../core/object_monitor";
-import { ArrayQueue } from "../core/array_queue";
-import { Formatter } from "../fmt/formatter";
-import { Fetcher } from "../http/fetcher";
-import { FetchHandler } from "../http/fetch_handler";
-import { PeriodicFetcher } from "../http/periodic_fetcher";
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
+import { ArrayQueue } from "@device-ui/lib/core/array_queue";
+import { Formatter } from "@device-ui/lib/fmt/formatter";
+import { Fetcher } from "@device-ui/lib/http/fetcher";
+import { FetchHandler } from "@device-ui/lib/http/fetch_handler";
+import { PeriodicFetcher } from "@device-ui/lib/http/periodic_fetcher";
 
 // Periodically fetches data from the source.
 export class PeriodicDataFetcher

@@ -1,6 +1,8 @@
-import { AlertType, ConfirmType } from "./notification_types";
-
-import { NotificationSeverity } from "./notification";
+import {
+  AlertType,
+  ConfirmType,
+} from "@device-ui/lib/system/notification_types";
+import { NotificationSeverity } from "@device-ui/lib/system/notification";
 
 export type NotificationResult<T> = {
   promise: Promise<T> | null;

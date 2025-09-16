@@ -1,6 +1,6 @@
-import { BasicConfigComponent } from "./basic_config_component";
+import { BasicConfigComponent } from "@device-ui/ui/preact/basic_config_component";
 
-import "./form_config_component.css";
+import "@device-ui/ui/preact/form_config_component.css";
 
 // Loading state component.
 function ConfigLoading() {

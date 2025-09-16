@@ -1,4 +1,4 @@
-import { Fetcher } from "./fetcher";
+import { Fetcher } from "@device-ui/lib/http/fetcher";
 
 export class HTTPFetcher implements Fetcher {
   constructor(url: string) {

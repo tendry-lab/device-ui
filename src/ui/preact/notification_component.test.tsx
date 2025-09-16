@@ -2,8 +2,8 @@ import { render } from "@testing-library/preact";
 
 import { describe, test, expect } from "vitest";
 
-import { MonitorNotificationQueue } from "../../lib/system/monitor_notification_queue";
-import { NotificationDispatcher } from "../../lib/system/notification_dispatcher";
+import { MonitorNotificationQueue } from "@device-ui/lib/system/monitor_notification_queue";
+import { NotificationDispatcher } from "@device-ui/lib/system/notification_dispatcher";
 
 import {
   AlertNotification,
@@ -12,19 +12,18 @@ import {
   ConfirmArrayQueue,
   AlertLimitNotificationQueue,
   ConfirmLimitNotificationQueue,
-} from "../../lib/system/notification_types";
+} from "@device-ui/lib/system/notification_types";
 
 import {
   Notification,
   NotificationSeverity,
   NotificationModality,
-} from "../../lib/system/notification";
+} from "@device-ui/lib/system/notification";
 
-import { TestSystemClock } from "../../lib/tests/test_system_clock";
+import { TestSystemClock } from "@device-ui/lib/tests/test_system_clock";
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
 
-import { ObjectMonitor } from "../../lib/core/object_monitor";
-
-import { NotificationComponent } from "./notification_component";
+import { NotificationComponent } from "@device-ui/ui/preact/notification_component";
 
 class testObjectMonitor implements ObjectMonitor {
   callCount: number = 0;

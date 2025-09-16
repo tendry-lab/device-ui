@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 
-import { JSONFormatter } from "./json_formatter";
-import { Formatter } from "./formatter";
+import { JSONFormatter } from "@device-ui/lib/fmt/json_formatter";
+import { Formatter } from "@device-ui/lib/fmt/formatter";
 
 describe("JSONFormatter module", () => {
   test("format empty", () => {

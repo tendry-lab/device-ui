@@ -5,17 +5,17 @@ import {
   ConfirmNotification,
   AlertMonitorNotificationQueue,
   ConfirmMonitorNotificationQueue,
-} from "../../lib/system/notification_types";
+} from "@device-ui/lib/system/notification_types";
 
 import {
   NotificationSeverity,
   NotificationModality,
-} from "../../lib/system/notification";
+} from "@device-ui/lib/system/notification";
 
-import { ObjectMonitor } from "../../lib/core/object_monitor";
-import { SystemClock } from "../../lib/system/system_clock";
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
+import { SystemClock } from "@device-ui/lib/system/system_clock";
 
-import "./notification_component.css";
+import "@device-ui/ui/preact/notification_component.css";
 
 type notificationComponentState = {
   timestamp: number;

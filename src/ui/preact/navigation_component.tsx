@@ -1,13 +1,14 @@
 import { Component, JSX } from "preact";
 
-import { Rebooter } from "../../lib/device/rebooter";
-import { Locator } from "../../lib/device/locator";
-import { Notificator } from "../../lib/system/notificator";
-import { NotificationSeverity } from "../../lib/system/notification";
-import { MarkdownComponent } from "./markdown_component";
-import { StateMonitor } from "../../lib/core/state_monitor";
+import { Rebooter } from "@device-ui/lib/device/rebooter";
+import { Locator } from "@device-ui/lib/device/locator";
+import { Notificator } from "@device-ui/lib/system/notificator";
+import { NotificationSeverity } from "@device-ui/lib/system/notification";
+import { StateMonitor } from "@device-ui/lib/core/state_monitor";
 
-import "./dashboard.css";
+import { MarkdownComponent } from "@device-ui/ui/preact/markdown_component";
+
+import "@device-ui/ui/preact/dashboard.css";
 
 export type NavigationComponentProps = {
   // Rebooter to reboot the device.

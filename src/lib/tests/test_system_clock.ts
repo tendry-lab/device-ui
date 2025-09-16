@@ -1,4 +1,4 @@
-import { SystemClock } from "../system/system_clock";
+import { SystemClock } from "@device-ui/lib/system/system_clock";
 
 export class TestSystemClock implements SystemClock {
   ts: number = 0;

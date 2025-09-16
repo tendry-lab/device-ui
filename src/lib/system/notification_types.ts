@@ -1,8 +1,8 @@
-import { Queue } from "../core/queue";
-import { LimitQueue } from "../core/limit_queue";
-import { ArrayQueue } from "../core/array_queue";
-import { Notification } from "./notification";
-import { MonitorNotificationQueue } from "./monitor_notification_queue";
+import { Queue } from "@device-ui/lib/core/queue";
+import { LimitQueue } from "@device-ui/lib/core/limit_queue";
+import { ArrayQueue } from "@device-ui/lib/core/array_queue";
+import { Notification } from "@device-ui/lib/system/notification";
+import { MonitorNotificationQueue } from "@device-ui/lib/system/monitor_notification_queue";
 
 export type AlertType = void;
 export type ConfirmType = boolean;
