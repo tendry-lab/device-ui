@@ -20,7 +20,6 @@
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: box-shadow var(--transition);
-  max-width: 25rem;
   width: 100%;
 }
 
