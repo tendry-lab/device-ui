@@ -4,6 +4,7 @@ import { FormConfigComponent } from "@device-ui/ui/preact/form_config_component"
 import { Config } from "@device-ui/lib/device/config";
 import { Notificator } from "@device-ui/lib/system/notificator";
 import { PeriodicDataFetcher } from "@device-ui/lib/device/periodic_data_fetcher";
+import { TimeOps } from "@device-ui/lib/algo/time_ops";
 
 import "./analog_sensor_component.css";
 
@@ -30,18 +31,6 @@ function getStatusClass(status: string): string {
     Error: "status-error",
   };
   return statusMap[status] || "status-none";
-}
-
-// Format duration from seconds to readable format.
-function formatDuration(seconds: number): string {
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const secs = seconds % 60;
-
-  if (hours > 0) return `${hours}h ${minutes}m`;
-  if (minutes > 0) return `${minutes}m ${secs}s`;
-
-  return `${secs}s`;
 }
 
 type analogSensorState = {
@@ -156,7 +145,7 @@ export class AnalogSensorComponent extends Component<
               {this.state.data.curr_status}
             </span>
             <span className="status-duration">
-              for {formatDuration(this.state.data.curr_status_dur)}
+              for {TimeOps.formatDuration(this.state.data.curr_status_dur)}
             </span>
             <div className="progress-info">
               Progress: {this.state.data.status_progress}%
@@ -193,7 +182,7 @@ export class AnalogSensorComponent extends Component<
                   {this.state.data.prev_status}
                 </span>
                 <span className="prev-status-duration">
-                  ({formatDuration(this.state.data.prev_status_dur)})
+                  ({TimeOps.formatDuration(this.state.data.prev_status_dur)})
                 </span>
               </div>
             </div>
