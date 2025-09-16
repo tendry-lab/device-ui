@@ -3,11 +3,21 @@ import { Component } from "preact";
 import { FormConfigComponent } from "@device-ui/ui/preact/form_config_component";
 import { Config } from "@device-ui/lib/device/config";
 import { Notificator } from "@device-ui/lib/system/notificator";
-import { AnalogSensorData } from "@device-ui/lib/device/sensor/soil/data_types";
 import { PeriodicDataFetcher } from "@device-ui/lib/device/periodic_data_fetcher";
-import { TelemetryParser } from "@device-ui/lib/device/telemetry_parser";
 
 import "./analog_sensor_component.css";
+
+type sensorData = {
+  raw: number;
+  voltage: number;
+  moisture: number;
+  prev_status: string;
+  curr_status: string;
+  prev_status_dur: number;
+  curr_status_dur: number;
+  write_count: number;
+  status_progress: number;
+};
 
 // Get CSS class for status styling.
 function getStatusClass(status: string): string {
@@ -35,7 +45,7 @@ function formatDuration(seconds: number): string {
 }
 
 type analogSensorState = {
-  data: AnalogSensorData | null;
+  data: sensorData | null;
   expanded: boolean;
   enableCalibration: boolean;
 };
@@ -105,7 +115,7 @@ export class AnalogSensorComponent extends Component<
 
     this.setState({
       ...this.state,
-      data: TelemetryParser.parseAnalogSoilSensorData(this.props.prefix, data),
+      data: AnalogSensorComponent.parseData(this.props.prefix, data),
     });
   }
 
@@ -209,6 +219,23 @@ export class AnalogSensorComponent extends Component<
         )}
       </div>
     );
+  }
+
+  private static parseData(
+    prefix: string,
+    data: Record<string, any>,
+  ): sensorData {
+    return {
+      curr_status: data[`${prefix}_curr_status`],
+      curr_status_dur: data[`${prefix}_curr_status_dur`],
+      prev_status: data[`${prefix}_prev_status`],
+      prev_status_dur: data[`${prefix}_prev_status_dur`],
+      moisture: data[`${prefix}_moisture`],
+      raw: data[`${prefix}_raw`],
+      status_progress: data[`${prefix}_status_progress`],
+      voltage: data[`${prefix}_voltage`],
+      write_count: data[`${prefix}_write_count`],
+    };
   }
 
   // Note: use arrow function to properly capture `this`.
