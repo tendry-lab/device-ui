@@ -1,4 +1,5 @@
 @import '@device-ui/ui/preact/tokens.css';
+@import '@device-ui/ui/preact/components.css';
 
 :root {
   /* Status Colors - domain-specific, stays sensor-specific */
@@ -49,20 +50,6 @@
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-text-dark);
-}
-
-.expand-arrow {
-  width: 0;
-  height: 0;
-  border-left: 0.625rem solid var(--color-text-secondary);
-  border-top: 0.4375rem solid transparent;
-  border-bottom: 0.4375rem solid transparent;
-  transition: transform var(--transition);
-  cursor: pointer;
-}
-
-.expand-arrow.expanded {
-  transform: rotate(90deg);
 }
 
 /* Moisture Display */
