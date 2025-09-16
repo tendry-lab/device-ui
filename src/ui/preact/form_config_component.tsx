@@ -4,7 +4,7 @@ import "./form_config_component.css";
 
 // Loading state component.
 function ConfigLoading() {
-  return <p className="config-loading">Loading current configuration...</p>;
+  return <p className="config-loading">Loading configuration...</p>;
 }
 
 // Error state component.
