@@ -4,7 +4,7 @@ import {
   NotificationSeverity,
   NotificationModality,
   Notification,
-} from "./notification";
+} from "@device-ui/lib/system/notification";
 
 describe("Notification", () => {
   test("Resolve notification multiple times", async () => {

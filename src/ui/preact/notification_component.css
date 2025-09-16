@@ -1,4 +1,4 @@
-@import './tokens.css';
+@import '@device-ui/ui/preact/tokens.css';
 
 /* CSS Custom Properties */
 :root {

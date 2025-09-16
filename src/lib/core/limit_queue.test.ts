@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 
-import { LimitQueue } from "./limit_queue";
-import { ArrayQueue } from "./array_queue";
+import { LimitQueue } from "@device-ui/lib/core/limit_queue";
+import { ArrayQueue } from "@device-ui/lib/core/array_queue";
 
 describe("Limit Queue", () => {
   test("Invalid max size", () => {

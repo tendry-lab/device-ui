@@ -1,8 +1,8 @@
 import { Component } from "preact";
 
-import { Config } from "../../lib/device/config";
-import { Notificator } from "../../lib/system/notificator";
-import { NotificationSeverity } from "../../lib/system/notification";
+import { Config } from "@device-ui/lib/device/config";
+import { Notificator } from "@device-ui/lib/system/notificator";
+import { NotificationSeverity } from "@device-ui/lib/system/notification";
 
 type configState = {
   data: Record<string, any> | null;

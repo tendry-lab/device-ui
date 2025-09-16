@@ -1,6 +1,6 @@
-import { Fetcher } from "../http/fetcher";
-import { HTTPFetcher } from "../http/http_fetcher";
-import { Rebooter } from "./rebooter";
+import { Fetcher } from "@device-ui/lib/http/fetcher";
+import { HTTPFetcher } from "@device-ui/lib/http/http_fetcher";
+import { Rebooter } from "@device-ui/lib/device/rebooter";
 
 // Reboot device over HTTP.
 export class HTTPRebooter implements Rebooter {

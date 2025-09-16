@@ -1,5 +1,10 @@
-import { Notificator, AlertResult, ConfirmResult } from "./notificator";
-import { NotificationSeverity } from "./notification";
+import {
+  Notificator,
+  AlertResult,
+  ConfirmResult,
+} from "@device-ui/lib/system/notificator";
+
+import { NotificationSeverity } from "@device-ui/lib/system/notification";
 
 // Default browser-based notification.
 export class DefaultNotificator implements Notificator {

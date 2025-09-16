@@ -1,5 +1,5 @@
-import { Fetcher } from "./fetcher";
-import { FetchHandler } from "./fetch_handler";
+import { Fetcher } from "@device-ui/lib/http/fetcher";
+import { FetchHandler } from "@device-ui/lib/http/fetch_handler";
 
 export class PeriodicFetcher {
   constructor(handler: FetchHandler, fetcher: Fetcher, interval: number) {

@@ -1,4 +1,4 @@
-import { Formatter } from "./formatter";
+import { Formatter } from "@device-ui/lib/fmt/formatter";
 
 // Format an arbitrary data into JSON.
 export class JSONFormatter implements Formatter {

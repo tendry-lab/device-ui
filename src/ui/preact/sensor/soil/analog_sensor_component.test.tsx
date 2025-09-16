@@ -2,15 +2,15 @@ import { render } from "@testing-library/preact";
 
 import { describe, test, expect } from "vitest";
 
-import { AnalogSensorComponent } from "./analog_sensor_component";
+import { AnalogSensorComponent } from "@device-ui/ui/preact/sensor/soil/analog_sensor_component";
 
-import { DefaultNotificator } from "../../../../lib/system/default_notificator";
-import { PeriodicDataFetcher } from "../../../../lib/device/periodic_data_fetcher";
-import { JSONFormatter } from "../../../../lib/fmt/json_formatter";
-import { Fetcher } from "../../../../lib/http/fetcher";
+import { DefaultNotificator } from "@device-ui/lib/system/default_notificator";
+import { PeriodicDataFetcher } from "@device-ui/lib/device/periodic_data_fetcher";
+import { JSONFormatter } from "@device-ui/lib/fmt/json_formatter";
+import { Fetcher } from "@device-ui/lib/http/fetcher";
 
-import { TestFetcher } from "../../../../lib/tests/test_fetcher";
-import { TestConfig } from "../../../../lib/tests/test_config";
+import { TestFetcher } from "@device-ui/lib/tests/test_fetcher";
+import { TestConfig } from "@device-ui/lib/tests/test_config";
 
 describe("Analog Soil Sensor Component", () => {
   test("Queue state management on mount/unmount", async () => {

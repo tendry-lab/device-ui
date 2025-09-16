@@ -1,6 +1,6 @@
-import { NotificationQueue } from "./notification_types";
-import { ObjectMonitor } from "../core/object_monitor";
-import { Notification } from "./notification";
+import { NotificationQueue } from "@device-ui/lib/system/notification_types";
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
+import { Notification } from "@device-ui/lib/system/notification";
 
 export class MonitorNotificationQueue<T> implements NotificationQueue<T> {
   // Initialize.

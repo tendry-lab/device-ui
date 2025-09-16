@@ -1,5 +1,11 @@
 {
   "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@device-ui/*": ["src/*"]
+    }
+  },
   "include": ["src/**/**/*"],
   "exclude": ["src/**/**/*.test.ts", "src/**/**/*.test.tsx", "src/lib/tests/**/*"]
 }

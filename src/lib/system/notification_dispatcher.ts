@@ -3,7 +3,7 @@ import {
   NotificationResult,
   AlertResult,
   ConfirmResult,
-} from "./notificator";
+} from "@device-ui/lib/system/notificator";
 
 import {
   AlertNotificationQueue,
@@ -11,15 +11,15 @@ import {
   NotificationQueue,
   AlertType,
   ConfirmType,
-} from "./notification_types";
+} from "@device-ui/lib/system/notification_types";
 
 import {
   NotificationModality,
   NotificationSeverity,
   Notification,
-} from "./notification";
+} from "@device-ui/lib/system/notification";
 
-import { SystemClock } from "./system_clock";
+import { SystemClock } from "@device-ui/lib/system/system_clock";
 
 export type NotificationDispatcherOpts = {
   // Modal or non-modal notification.

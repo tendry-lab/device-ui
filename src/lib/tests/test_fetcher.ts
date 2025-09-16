@@ -1,4 +1,4 @@
-import { Fetcher } from "../http/fetcher";
+import { Fetcher } from "@device-ui/lib/http/fetcher";
 
 export class TestFetcher implements Fetcher {
   constructor(private data: Record<string, any>) {}

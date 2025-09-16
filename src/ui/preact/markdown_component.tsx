@@ -1,9 +1,9 @@
 import { Component, JSX } from "preact";
 
-import { ObjectMonitor } from "../../lib/core/object_monitor";
-import { StateMonitor } from "../../lib/core/state_monitor";
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
+import { StateMonitor } from "@device-ui/lib/core/state_monitor";
 
-import "./markdown_component.css";
+import "@device-ui/ui/preact/markdown_component.css";
 
 export type MarkdownComponentProps = {
   // Monitor to handle the state changes.

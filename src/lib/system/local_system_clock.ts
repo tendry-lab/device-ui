@@ -1,4 +1,4 @@
-import { SystemClock } from "./system_clock";
+import { SystemClock } from "@device-ui/lib/system/system_clock";
 
 export class LocalSystemClock implements SystemClock {
   // Set the UNIX system time.

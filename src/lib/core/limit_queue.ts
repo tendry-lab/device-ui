@@ -1,4 +1,4 @@
-import { Queue } from "./queue";
+import { Queue } from "@device-ui/lib/core/queue";
 
 // Limit maximum number of elements in the queue.
 export class LimitQueue<T> implements Queue<T> {

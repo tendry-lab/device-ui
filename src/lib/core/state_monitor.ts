@@ -1,4 +1,4 @@
-import { ObjectMonitor } from "./object_monitor";
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
 
 export class StateMonitor<T> {
   // Initialize.

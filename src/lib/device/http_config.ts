@@ -1,7 +1,7 @@
-import { Formatter } from "../fmt/formatter";
-import { Config } from "./config";
-import { HTTPOps } from "./../algo/http_ops";
-import { HTTPFetcher } from "./../http/http_fetcher";
+import { Formatter } from "@device-ui/lib/fmt/formatter";
+import { HTTPOps } from "@device-ui/lib/algo/http_ops";
+import { HTTPFetcher } from "@device-ui/lib/http/http_fetcher";
+import { Config } from "@device-ui/lib/device/config";
 
 // Read configuration over HTTP.
 export class HTTPConfig implements Config {

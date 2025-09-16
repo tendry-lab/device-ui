@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 
-import { StateMonitor } from "./state_monitor";
-import { ObjectMonitor } from "./object_monitor";
+import { StateMonitor } from "@device-ui/lib/core/state_monitor";
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
 
 class testObjectMonitor implements ObjectMonitor {
   callCount: number = 0;

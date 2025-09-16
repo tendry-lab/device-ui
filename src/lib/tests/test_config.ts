@@ -1,4 +1,4 @@
-import { Config } from "../device/config";
+import { Config } from "@device-ui/lib/device/config";
 
 export class TestConfig implements Config {
   constructor(private readonly defaults: Record<string, any>) {}

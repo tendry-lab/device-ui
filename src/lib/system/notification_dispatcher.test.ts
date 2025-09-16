@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 
-import { NotificationDispatcher } from "./notification_dispatcher";
-import { MonitorNotificationQueue } from "./monitor_notification_queue";
+import { NotificationDispatcher } from "@device-ui/lib/system/notification_dispatcher";
+import { MonitorNotificationQueue } from "@device-ui/lib/system/monitor_notification_queue";
 
 import {
   AlertArrayQueue,

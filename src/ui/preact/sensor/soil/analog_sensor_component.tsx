@@ -1,11 +1,11 @@
 import { Component } from "preact";
 
-import { FormConfigComponent } from "../../../../ui/preact/form_config_component";
-import { Config } from "../../../../lib/device/config";
-import { Notificator } from "../../../../lib/system/notificator";
-import { AnalogSensorData } from "../../../../lib/device/sensor/soil/data_types";
-import { PeriodicDataFetcher } from "../../../../lib/device/periodic_data_fetcher";
-import { TelemetryParser } from "../../../../lib/device/telemetry_parser";
+import { FormConfigComponent } from "@device-ui/ui/preact/form_config_component";
+import { Config } from "@device-ui/lib/device/config";
+import { Notificator } from "@device-ui/lib/system/notificator";
+import { AnalogSensorData } from "@device-ui/lib/device/sensor/soil/data_types";
+import { PeriodicDataFetcher } from "@device-ui/lib/device/periodic_data_fetcher";
+import { TelemetryParser } from "@device-ui/lib/device/telemetry_parser";
 
 import "./analog_sensor_component.css";
 
