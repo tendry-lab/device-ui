@@ -1,0 +1,196 @@
+@import '@device-ui/ui/preact/tokens.css';
+@import '@device-ui/ui/preact/components.css';
+
+:root {
+  /* Status Colors */
+  --status-online: #10b981;
+  --status-offline: #6b7280;
+  --status-unknown: #f59e0b;
+}
+
+/* Main Container */
+.device-status-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+  max-width: 100%;
+  width: 100%;
+}
+
+.device-status-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Header Section */
+.device-status-header {
+  padding: var(--spacing);
+  cursor: pointer;
+}
+
+.device-status-header.expanded {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.device-status-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-small);
+}
+
+.device-status-title {
+  margin: 0;
+  font-size: var(--font-size-l);
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+/* Status Display */
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+}
+
+.status-indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.status-text {
+  font-size: var(--font-size-m);
+  font-weight: 500;
+}
+
+/* Status Colors */
+.status-indicator.status-online { background-color: var(--status-online); }
+.status-indicator.status-offline { background-color: var(--status-offline); }
+.status-indicator.status-unknown { background-color: var(--status-unknown); }
+
+.status-text.status-online { color: var(--status-online); }
+.status-text.status-offline { color: var(--status-offline); }
+.status-text.status-unknown { color: var(--status-unknown); }
+
+/* Primary Info */
+.primary-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-s);
+  color: var(--color-text-secondary);
+  gap: var(--spacing);
+  flex-wrap: wrap;
+}
+
+/* Loading State */
+.device-status-loading {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+  padding: var(--spacing);
+}
+
+/* Details Section */
+.device-status-details {
+  padding: var(--spacing);
+  background-color: var(--color-bg);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: var(--spacing-small) var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+.detail-item {
+  text-align: center;
+}
+
+.detail-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.detail-value {
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  color: var(--color-text-dark);
+  word-break: break-word;
+}
+
+/* Device ID Button */
+.device-id-button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+  transition: all var(--transition);
+  box-shadow: var(--shadow);
+  background: var(--color-bg);
+  font-family: inherit;
+  text-align: left;
+  user-select: none;
+}
+
+.device-id-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .device-status-header,
+  .device-status-details {
+    padding: var(--spacing);
+  }
+
+  .details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    gap: var(--spacing-small);
+  }
+
+  .primary-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .detail-value {
+    font-size: var(--font-size-s);
+  }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .details-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .device-status-title {
+    font-size: var(--font-size-m);
+  }
+
+  .primary-info {
+    font-size: var(--font-size-xs);
+  }
+
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -4,11 +4,12 @@ import { Formatter } from "@device-ui/lib/fmt/formatter";
 import { Fetcher } from "@device-ui/lib/http/fetcher";
 import { FetchHandler } from "@device-ui/lib/http/fetch_handler";
 import { PeriodicFetcher } from "@device-ui/lib/http/periodic_fetcher";
+import { DataHolder } from "@device-ui/lib/device/data_holder";
 
 // Periodically fetches data from the source.
 export class PeriodicDataFetcher
   extends ArrayQueue<ObjectMonitor>
-  implements FetchHandler
+  implements FetchHandler, DataHolder
 {
   // Initialize.
   //
