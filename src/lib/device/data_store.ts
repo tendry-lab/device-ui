@@ -27,7 +27,7 @@ export class DataStore
   handleFetched(data: Uint8Array): void {
     const result = this.formatter.format(data);
     if (result.error) {
-      console.error(`data_handler: failed to format data: err=${result.error}`);
+      console.error(`data_store: failed to format data: err=${result.error}`);
 
       return;
     }
