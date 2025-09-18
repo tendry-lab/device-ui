@@ -77,7 +77,7 @@
 }
 
 .notification-message {
-  font-size: 0.9375rem;
+  font-size: var(--font-size-m);
   color: var(--notification-text);
   font-weight: 500;
   line-height: 1.4;
@@ -129,7 +129,7 @@
   border: none;
   border-radius: var(--radius-small);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   font-weight: 500;
   transition: all var(--transition);
   min-width: 4.5rem;

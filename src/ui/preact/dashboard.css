@@ -27,7 +27,7 @@
 }
 
 .nav-logo {
-  font-size: 1.25rem;
+  font-size: var(--font-size-xl);
   font-weight: 600;
   color: var(--color-text-dark);
   display: flex;
@@ -81,7 +81,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-button);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   color: var(--color-text-dark);
   transition: background-color var(--transition);
   -webkit-appearance: none;
@@ -113,7 +113,7 @@
 }
 
 .system-config-title {
-  font-size: 1.125rem;
+  font-size: var(--font-size-l);
   font-weight: 600;
   color: var(--color-text-dark);
   margin: 0 0 var(--spacing) 0;
@@ -154,7 +154,7 @@
 }
 
 .dashboard-card-title {
-  font-size: 1.125rem;
+  font-size: var(--font-size-l);
   font-weight: 600;
   color: var(--color-text-dark);
   margin: 0 0 var(--spacing) 0;
