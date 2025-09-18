@@ -21,24 +21,24 @@ export type DeviceStatusComponentProps = {
 
 class TelemetryData {
   constructor(
-    public readonly lifetime: number = 0,
-    public readonly uptime: number = 0,
-    public readonly memoryHeap: number = 0,
-    public readonly memoryHeapMin: number = 0,
-    public readonly resetReason: string = "",
-    public readonly timestamp: number = 0,
+    readonly lifetime: number = 0,
+    readonly uptime: number = 0,
+    readonly memoryHeap: number = 0,
+    readonly memoryHeapMin: number = 0,
+    readonly resetReason: string = "",
+    readonly timestamp: number = 0,
   ) {}
 }
 
 class RegistrationData {
   constructor(
-    public readonly deviceID: string = "",
-    public readonly toolchainName: string = "",
-    public readonly toolchainVersion: string = "",
-    public readonly fwName: string = "",
-    public readonly fwVersion: string = "",
-    public readonly fwDescription: string = "",
-    public readonly productName: string = "",
+    readonly deviceID: string = "",
+    readonly toolchainName: string = "",
+    readonly toolchainVersion: string = "",
+    readonly fwName: string = "",
+    readonly fwVersion: string = "",
+    readonly fwDescription: string = "",
+    readonly productName: string = "",
   ) {}
 }
 
