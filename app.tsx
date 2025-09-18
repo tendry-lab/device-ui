@@ -83,7 +83,7 @@ export class App extends Component<appProps, {}> {
         this.telemetryStore,
       ),
       null,
-      this.telemetryFetchInterval,
+      App.telemetryFetchInterval,
     );
 
     this.soilSensorConfig = new HTTPConfig(
