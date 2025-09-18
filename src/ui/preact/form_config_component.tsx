@@ -87,7 +87,7 @@ export class FormConfigComponent extends BasicConfigComponent {
             onClose={this.props.onClose}
             data={this.state.data}
             setData={this.setData}
-            ignoreKeys={this.props.ignoreKeys}
+            ignoreKeys={this.props.ignoreKeys ?? []}
           />
         )}
 

@@ -71,7 +71,7 @@ export class NavigationComponent extends Component<
     );
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
     this.helpState.set(false);
   }
 

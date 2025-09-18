@@ -47,12 +47,12 @@ export class NotificationComponent
     };
   }
 
-  componentDidMount() {
+  override componentDidMount() {
     this.props.alertQueue.setMonitor(this);
     this.props.confirmQueue.setMonitor(this);
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
     this.resetNotifications();
   }
 

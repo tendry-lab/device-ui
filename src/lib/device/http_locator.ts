@@ -1,4 +1,3 @@
-import { Fetcher } from "@device-ui/lib/http/fetcher";
 import { HTTPFetcher } from "@device-ui/lib/http/http_fetcher";
 import { HTTPOps } from "@device-ui/lib/algo/http_ops";
 import { Locator } from "@device-ui/lib/device/locator";

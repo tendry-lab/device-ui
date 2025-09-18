@@ -86,7 +86,7 @@ export class DeviceStatusComponent
     };
   }
 
-  async componentDidMount() {
+  override async componentDidMount() {
     let error: Error | null = null;
 
     error = this.props.telemetryStore.add(this);
@@ -111,7 +111,7 @@ export class DeviceStatusComponent
     }
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
     let error: Error | null = null;
 
     error = this.props.telemetryStore.remove(this);

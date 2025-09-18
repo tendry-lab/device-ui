@@ -77,7 +77,7 @@ export class NotificationDispatcher implements Notificator {
       severity,
       opts.modality,
       (n) => {
-        return queue.remove(notification);
+        return queue.remove(n);
       },
     );
 
