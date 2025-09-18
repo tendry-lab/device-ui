@@ -1,7 +1,6 @@
 import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
 import { ArrayQueue } from "@device-ui/lib/core/array_queue";
 import { Formatter } from "@device-ui/lib/fmt/formatter";
-import { Fetcher } from "@device-ui/lib/http/fetcher";
 import { FetchHandler } from "@device-ui/lib/http/fetch_handler";
 import { DataHolder } from "@device-ui/lib/device/data_holder";
 

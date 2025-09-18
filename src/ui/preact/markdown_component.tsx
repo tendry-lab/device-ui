@@ -26,11 +26,11 @@ export class MarkdownComponent
     this.state = { isOpen: false };
   }
 
-  async componentDidMount() {
+  override async componentDidMount() {
     this.props.stateMonitor.setMonitor(this);
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
     this.props.stateMonitor.setMonitor(null);
     this.close();
   }

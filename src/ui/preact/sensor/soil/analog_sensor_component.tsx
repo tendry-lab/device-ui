@@ -20,15 +20,15 @@ class SensorData {
   readonly status_progress: number;
 
   constructor(data: Record<string, any> = {}) {
-    this.raw = data.raw ?? 0;
-    this.voltage = data.voltage ?? 0;
-    this.moisture = data.moisture ?? 0;
-    this.prev_status = data.prev_status ?? "";
-    this.curr_status = data.curr_status ?? "";
-    this.prev_status_dur = data.prev_status_dur ?? 0;
-    this.curr_status_dur = data.curr_status_dur ?? 0;
-    this.write_count = data.write_count ?? 0;
-    this.status_progress = data.status_progress ?? 0;
+    this.raw = data["raw"] ?? 0;
+    this.voltage = data["voltage"] ?? 0;
+    this.moisture = data["moisture"] ?? 0;
+    this.prev_status = data["prev_status"] ?? "";
+    this.curr_status = data["curr_status"] ?? "";
+    this.prev_status_dur = data["prev_status_dur"] ?? 0;
+    this.curr_status_dur = data["curr_status_dur"] ?? 0;
+    this.write_count = data["write_count"] ?? 0;
+    this.status_progress = data["status_progress"] ?? 0;
   }
 }
 
@@ -84,7 +84,7 @@ export class AnalogSensorComponent extends Component<
     };
   }
 
-  async componentDidMount() {
+  override async componentDidMount() {
     const error = this.props.store.add(this);
     if (error) {
       console.error(
@@ -93,7 +93,7 @@ export class AnalogSensorComponent extends Component<
     }
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
     const error = this.props.store.remove(this);
     if (error) {
       console.error(

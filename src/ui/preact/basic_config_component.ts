@@ -39,11 +39,11 @@ export abstract class BasicConfigComponent extends Component<
   }
 
   // Read config on component mounting.
-  async componentDidMount() {
+  override async componentDidMount() {
     await this.readConfig();
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
     this.setState({
       data: null,
       loading: false,
