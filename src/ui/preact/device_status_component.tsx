@@ -370,12 +370,12 @@ export class DeviceStatusComponent
 
   private static formatTelemetryData(src: Record<string, any>): TelemetryData {
     return new TelemetryData(
-      src["c_sys_lifetime"],
-      src["c_sys_uptime"],
-      src["system_memory_heap"],
-      src["system_memory_heap_min"],
-      src["system_reset_reason"],
-      src["timestamp"],
+      src["c_sys_lifetime"] ?? 0,
+      src["c_sys_uptime"] ?? 0,
+      src["system_memory_heap"] ?? 0,
+      src["system_memory_heap_min"] ?? 0,
+      src["system_reset_reason"] ?? 0,
+      src["timestamp"] ?? 0,
     );
   }
 
@@ -383,13 +383,13 @@ export class DeviceStatusComponent
     src: Record<string, any>,
   ): RegistrationData {
     return new RegistrationData(
-      src["device_id"],
-      src["toolchain_name"],
-      src["toolchain_version"],
-      src["fw_name"],
-      src["fw_version"],
-      src["fw_description"],
-      src["product_name"],
+      src["device_id"] ?? "None",
+      src["toolchain_name"] ?? "None",
+      src["toolchain_version"] ?? "None",
+      src["fw_name"] ?? "None",
+      src["fw_version"] ?? "None",
+      src["fw_description"] ?? "None",
+      src["product_name"] ?? "None",
     );
   }
 
