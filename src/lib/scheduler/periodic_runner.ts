@@ -12,7 +12,11 @@ export class PeriodicRunner {
     private runner: Runner,
     private handler: ErrorHandler | null,
     private readonly interval: number,
-  ) {}
+  ) {
+    if (interval == undefined || interval <= 0) {
+      throw new Error(`invalid interval: ${interval}`);
+    }
+  }
 
   // Start periodic operational loop.
   async start() {
