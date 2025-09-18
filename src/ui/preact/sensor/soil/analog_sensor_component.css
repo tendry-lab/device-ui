@@ -46,7 +46,7 @@
 
 .sensor-title {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: var(--font-size-l);
   font-weight: 600;
   color: var(--color-text-dark);
 }
@@ -60,19 +60,19 @@
 }
 
 .moisture-value {
-  font-size: 2rem;
+  font-size: var(--font-size-3xl);
   font-weight: 700;
   color: var(--color-text-dark);
 }
 
 .moisture-unit {
-  font-size: 1.125rem;
+  font-size: var(--font-size-l);
   color: var(--color-text-secondary);
 }
 
 .progress-info {
   margin-left: auto;
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
 }
 
@@ -90,12 +90,12 @@
 }
 
 .status-text {
-  font-size: 1rem;
+  font-size: var(--font-size-m);
   font-weight: 500;
 }
 
 .status-duration {
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   color: var(--color-text-secondary);
 }
 
@@ -113,13 +113,13 @@
 }
 
 .detail-label {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
   margin-bottom: 0.25rem;
 }
 
 .detail-value {
-  font-size: 1rem;
+  font-size: var(--font-size-m);
   font-weight: 500;
   color: var(--color-text-dark);
 }
@@ -139,7 +139,7 @@
   border: none;
   border-radius: var(--radius-button);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   font-weight: 500;
   transition: background-color var(--transition);
 }
@@ -169,13 +169,13 @@
 }
 
 .prev-status-text {
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   font-weight: 500;
   color: var(--color-text-dark);
 }
 
 .prev-status-duration {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   color: var(--color-text-secondary);
 }
 
@@ -216,6 +216,6 @@
   }
 
   .moisture-value {
-    font-size: 1.75rem;
+    font-size: var(--font-size-2xl);
   }
 }
