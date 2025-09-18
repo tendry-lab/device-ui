@@ -33,7 +33,7 @@ class TestHolder implements DataHolder {
 }
 
 describe("Connection Monitor", () => {
-  test("Receive invalid timestamp on initialization", () => {
+  test("Receive invalid timestamp on initialization", async () => {
     const threshold: number = 10;
 
     const handler = new TestHandler();
@@ -51,13 +51,13 @@ describe("Connection Monitor", () => {
     expect(handler.connectedCallCount).toBe(0);
     expect(handler.disconnectedCallCount).toBe(0);
 
-    expect(monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
 
     expect(handler.connected).toBe(false);
     expect(handler.connectedCallCount).toBe(0);
     expect(handler.disconnectedCallCount).toBe(0);
   });
-  test("Handle connect-disconnect", () => {
+  test("Handle connect-disconnect", async () => {
     const threshold: number = 10;
 
     const handler = new TestHandler();
@@ -82,9 +82,9 @@ describe("Connection Monitor", () => {
     clock.ts = now;
     monitor.notifyChanged();
 
-    expect(monitor.run()).toBeNull();
-    expect(monitor.run()).toBeNull();
-    expect(monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
 
     expect(handler.connected).toBe(true);
     expect(handler.connectedCallCount).toBe(1);
@@ -92,21 +92,21 @@ describe("Connection Monitor", () => {
 
     // Prepare for the disconnection process.
     clock.ts += threshold - 1;
-    expect(monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
     expect(handler.connected).toBe(true);
     expect(handler.connectedCallCount).toBe(1);
     expect(handler.disconnectedCallCount).toBe(0);
 
     // Begin the disconnection process.
     clock.ts += 1;
-    expect(monitor.run()).toBeNull();
-    expect(monitor.run()).toBeNull();
-    expect(monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
     expect(handler.connected).toBe(false);
     expect(handler.connectedCallCount).toBe(1);
     expect(handler.disconnectedCallCount).toBe(1);
   });
-  test("Disconnected after receiving invalid timestamp", () => {
+  test("Disconnected after receiving invalid timestamp", async () => {
     const threshold: number = 10;
 
     const handler = new TestHandler();
@@ -131,7 +131,7 @@ describe("Connection Monitor", () => {
     clock.ts = now;
     monitor.notifyChanged();
 
-    expect(monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
 
     expect(handler.connected).toBe(true);
     expect(handler.connectedCallCount).toBe(1);
@@ -139,7 +139,7 @@ describe("Connection Monitor", () => {
 
     // Begin the disconnection process.
     holder.timestamp = -1;
-    expect(monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
     expect(handler.connected).toBe(false);
     expect(handler.connectedCallCount).toBe(1);
     expect(handler.disconnectedCallCount).toBe(1);
@@ -174,7 +174,7 @@ describe("Connection Monitor", () => {
     expect(handler.connectedCallCount).toBe(1);
     expect(handler.disconnectedCallCount).toBe(0);
   });
-  test("Ignore connection status updates on clock error", () => {
+  test("Ignore connection status updates on clock error", async () => {
     const threshold: number = 10;
 
     const handler = new TestHandler();
@@ -205,11 +205,11 @@ describe("Connection Monitor", () => {
     expect(handler.connectedCallCount).toBe(0);
     expect(handler.disconnectedCallCount).toBe(0);
 
-    expect(monitor.run()).toEqual(new Error("invalid timestamp"));
+    expect(await monitor.run()).toStrictEqual(new Error("invalid timestamp"));
 
     clock.error = null;
   });
-  test("Ignore connection status updates when there is no data update timestamp", () => {
+  test("Ignore connection status updates when there is no data update timestamp", async () => {
     const threshold: number = 10;
 
     const handler = new TestHandler();
@@ -240,11 +240,11 @@ describe("Connection Monitor", () => {
     expect(handler.connectedCallCount).toBe(0);
     expect(handler.disconnectedCallCount).toBe(0);
 
-    expect(monitor.run()).toEqual(new Error("invalid timestamp"));
+    expect(await monitor.run()).toStrictEqual(new Error("invalid timestamp"));
 
     clock.error = null;
 
-    expect(monitor.run()).toBeNull();
+    expect(await monitor.run()).toBeNull();
     expect(handler.connected).toBe(false);
     expect(handler.connectedCallCount).toBe(0);
     expect(handler.disconnectedCallCount).toBe(0);

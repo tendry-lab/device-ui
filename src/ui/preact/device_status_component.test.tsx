@@ -2,7 +2,7 @@ import { render } from "@testing-library/preact";
 
 import { describe, test, expect } from "vitest";
 
-import { PeriodicDataFetcher } from "@device-ui/lib/device/periodic_data_fetcher";
+import { DataStore } from "@device-ui/lib/device/data_store";
 import { JSONFormatter } from "@device-ui/lib/fmt/json_formatter";
 import { Fetcher } from "@device-ui/lib/http/fetcher";
 import { TestFetcher } from "@device-ui/lib/tests/test_fetcher";
@@ -12,49 +12,29 @@ import { DeviceStatusComponent } from "@device-ui/ui/preact/device_status_compon
 
 describe("Device Status Component", () => {
   test("Queue state management on mount/unmount", async () => {
-    const telemetryFetcher = new TestFetcher({
-      foo: 1,
-    });
-    const telemetryFormatter = new JSONFormatter();
-    const telemetryFetchInterval = 100;
+    const telemetryStore = new DataStore(new JSONFormatter());
+    expect(telemetryStore.len()).toBe(0);
 
-    const telemetryPeriodicFetcher = new PeriodicDataFetcher(
-      telemetryFetcher,
-      telemetryFormatter,
-      telemetryFetchInterval,
-    );
-    expect(telemetryPeriodicFetcher.len()).toBe(0);
-
-    const registrationFetcher = new TestFetcher({
-      foo: 1,
-    });
-    const registrationFormatter = new JSONFormatter();
-    const registrationFetchInterval = 100;
-
-    const registrationPeriodicFetcher = new PeriodicDataFetcher(
-      registrationFetcher,
-      registrationFormatter,
-      registrationFetchInterval,
-    );
-    expect(registrationPeriodicFetcher.len()).toBe(0);
+    const registrationStore = new DataStore(new JSONFormatter());
+    expect(registrationStore.len()).toBe(0);
 
     const connectionHandler = new FanoutConnectionHandler();
     expect(connectionHandler.len()).toBe(0);
 
     const { unmount } = render(
       <DeviceStatusComponent
-        telemetryFetcher={telemetryPeriodicFetcher}
-        registrationFetcher={registrationPeriodicFetcher}
+        telemetryStore={telemetryStore}
+        registrationStore={registrationStore}
         connectionHandler={connectionHandler}
       />,
     );
 
-    expect(telemetryPeriodicFetcher.len()).toBe(1);
-    expect(registrationPeriodicFetcher.len()).toBe(1);
+    expect(telemetryStore.len()).toBe(1);
+    expect(registrationStore.len()).toBe(1);
     expect(connectionHandler.len()).toBe(1);
     unmount();
-    expect(telemetryPeriodicFetcher.len()).toBe(0);
-    expect(registrationPeriodicFetcher.len()).toBe(0);
+    expect(telemetryStore.len()).toBe(0);
+    expect(registrationStore.len()).toBe(0);
     expect(connectionHandler.len()).toBe(0);
   });
 });

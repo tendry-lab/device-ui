@@ -1,8 +1,7 @@
 import { Component } from "preact";
 
-import { Notificator } from "./src/lib/system/notificator";
-import { NotificationDispatcher } from "./src/lib/system/notification_dispatcher";
-import { NotificationComponent } from "./src/ui/preact/notification_component";
+import { Notificator } from "@device-ui/lib/system/notificator";
+import { NotificationDispatcher } from "@device-ui/lib/system/notification_dispatcher";
 
 import {
   AlertArrayQueue,
@@ -11,28 +10,32 @@ import {
   ConfirmMonitorNotificationQueue,
   AlertLimitNotificationQueue,
   ConfirmLimitNotificationQueue,
-} from "./src/lib/system/notification_types";
+} from "@device-ui/lib/system/notification_types";
 
-import { NotificationModality } from "./src/lib/system/notification";
+import { NotificationModality } from "@device-ui/lib/system/notification";
 
-import { SystemClock } from "./src/lib/system/system_clock";
-import { LocalSystemClock } from "./src/lib/system/local_system_clock";
+import { SystemClock } from "@device-ui/lib/system/system_clock";
+import { LocalSystemClock } from "@device-ui/lib/system/local_system_clock";
 
-import { Fetcher } from "./src/lib/http/fetcher";
-import { Formatter } from "./src/lib/fmt/formatter";
-import { HTTPFetcher } from "./src/lib/http/http_fetcher";
-import { PeriodicDataFetcher } from "./src/lib/device/periodic_data_fetcher";
-import { JSONFormatter } from "./src/lib/fmt/json_formatter";
-import { Config } from "./src/lib/device/config";
-import { HTTPConfig } from "./src/lib/device/http_config";
-import { AnalogSensorComponent } from "./src/ui/preact/sensor/soil/analog_sensor_component";
+import { Formatter } from "@device-ui/lib/fmt/formatter";
+import { HTTPFetcher } from "@device-ui/lib/http/http_fetcher";
+import { DataStore } from "@device-ui/lib/device/data_store";
+import { JSONFormatter } from "@device-ui/lib/fmt/json_formatter";
+import { Config } from "@device-ui/lib/device/config";
+import { HTTPConfig } from "@device-ui/lib/device/http_config";
 
-import { Rebooter } from "./src/lib/device/rebooter";
-import { Locator } from "./src/lib/device/locator";
-import { HTTPRebooter } from "./src/lib/device/http_rebooter";
-import { HTTPLocator } from "./src/lib/device/http_locator";
-import { NavigationComponent } from "./src/ui/preact/navigation_component";
-import { BonsaiLogo } from "./src/ui/preact/logo/bonsai";
+import { Rebooter } from "@device-ui/lib/device/rebooter";
+import { Locator } from "@device-ui/lib/device/locator";
+import { HTTPRebooter } from "@device-ui/lib/device/http_rebooter";
+import { HTTPLocator } from "@device-ui/lib/device/http_locator";
+
+import { PeriodicRunner } from "@device-ui/lib/scheduler/periodic_runner";
+import { FetchRunner } from "@device-ui/lib/http/fetch_runner";
+
+import { NotificationComponent } from "@device-ui/ui/preact/notification_component";
+import { AnalogSensorComponent } from "@device-ui/ui/preact/sensor/soil/analog_sensor_component";
+import { NavigationComponent } from "@device-ui/ui/preact/navigation_component";
+import { BonsaiLogo } from "@device-ui/ui/preact/logo/bonsai";
 
 import { html as helpContent } from "./help.md";
 
@@ -72,13 +75,15 @@ export class App extends Component<appProps, {}> {
     this.deviceRebooter = new HTTPRebooter(`${App.apiBaseURL}/system/reboot`);
     this.deviceLocator = new HTTPLocator(`${App.apiBaseURL}/system/locate`);
 
-    this.telemetryHTTPFetcher = new HTTPFetcher(`${App.apiBaseURL}/telemetry`);
-    this.telemetryFormatter = new JSONFormatter();
+    this.telemetryStore = new DataStore(new JSONFormatter());
 
-    this.telemetryDataFetcher = new PeriodicDataFetcher(
-      this.telemetryHTTPFetcher,
-      this.telemetryFormatter,
-      App.telemetryFetchInterval,
+    this.telemetryRunner = new PeriodicRunner(
+      new FetchRunner(
+        new HTTPFetcher(`${App.apiBaseURL}/telemetry`),
+        this.telemetryStore,
+      ),
+      null,
+      this.telemetryFetchInterval,
     );
 
     this.soilSensorConfig = new HTTPConfig(
@@ -88,11 +93,11 @@ export class App extends Component<appProps, {}> {
   }
 
   async componentDidMount() {
-    this.telemetryDataFetcher.start();
+    this.telemetryRunner.start();
   }
 
   componentWillUnmount() {
-    this.telemetryDataFetcher.stop();
+    this.telemetryRunner.stop();
   }
 
   render() {
@@ -110,8 +115,8 @@ export class App extends Component<appProps, {}> {
           <div className="card-large">
             <AnalogSensorComponent
               title="Soil Moisture"
-              prefix="sensor_soil"
-              fetcher={this.telemetryDataFetcher}
+              prefix="s"
+              store={this.telemetryStore}
               config={this.soilSensorConfig}
               notificator={this.notificationDispatcher}
             />
@@ -139,9 +144,8 @@ export class App extends Component<appProps, {}> {
   private deviceLocator: Locator;
 
   private static readonly telemetryFetchInterval: number = 10 * 1000;
-  private telemetryHTTPFetcher: Fetcher;
-  private telemetryFormatter: Formatter;
-  private telemetryDataFetcher: PeriodicDataFetcher;
+  private telemetryStore: DataStore;
+  private telemetryRunner: PeriodicRunner;
 
   private soilSensorConfig: Config;
 }

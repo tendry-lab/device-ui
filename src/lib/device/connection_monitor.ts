@@ -32,13 +32,17 @@ export class ConnectionMonitor implements ObjectMonitor, Runner {
 
     this.timestamp = timestampResult.timestamp;
 
-    const error = this.run();
+    const error = this.update();
     if (error) {
-      console.error(`connection_monitor: failed to run: ${error}`);
+      console.error(`connection_monitor: failed to update: ${error}`);
     }
   }
 
-  run(): Error | null {
+  async run(): Promise<Error | null> {
+    return this.update();
+  }
+
+  private update(): Error | null {
     const timestamp = this.holder.getTimestamp();
     if (timestamp == -1) {
       if (this.connected) {
