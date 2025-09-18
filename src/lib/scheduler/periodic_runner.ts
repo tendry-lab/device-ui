@@ -17,6 +17,9 @@ export class PeriodicRunner {
   // Start periodic operational loop.
   async start() {
     this.stop();
+
+    await this.handleRun();
+
     this.timer = setInterval(this.handleRun, this.interval);
   }
 
@@ -29,8 +32,8 @@ export class PeriodicRunner {
     }
   }
 
-  private handleRun = () => {
-    const error = this.runner.run();
+  private handleRun = async () => {
+    const error = await this.runner.run();
     if (this.handler) {
       this.handler.handleError(error!);
     }

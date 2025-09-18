@@ -3,39 +3,19 @@ import { ArrayQueue } from "@device-ui/lib/core/array_queue";
 import { Formatter } from "@device-ui/lib/fmt/formatter";
 import { Fetcher } from "@device-ui/lib/http/fetcher";
 import { FetchHandler } from "@device-ui/lib/http/fetch_handler";
-import { PeriodicFetcher } from "@device-ui/lib/http/periodic_fetcher";
 import { DataHolder } from "@device-ui/lib/device/data_holder";
 
-// Periodically fetches data from the source.
-export class PeriodicDataFetcher
+// Format received data to key-value pairs.
+export class DataStore
   extends ArrayQueue<ObjectMonitor>
   implements FetchHandler, DataHolder
 {
   // Initialize.
   //
   // @params
-  //  - @p fetcher to fetch actual data.
   //  - @p formatter to format fetched data.
-  //  - @p interval - how often to fetch data.
-  constructor(fetcher: Fetcher, formatter: Formatter, interval: number) {
+  constructor(private formatter: Formatter) {
     super();
-
-    this.formatter = formatter;
-    this.periodicFetcher = new PeriodicFetcher(this, fetcher, interval);
-  }
-
-  // Start fetching data periodically.
-  async start() {
-    this.stopped = false;
-
-    this.periodicFetcher.start();
-  }
-
-  // Stop fetching data periodically.
-  stop() {
-    this.stopped = true;
-
-    this.periodicFetcher.stop();
   }
 
   // Return formated key-value data.
@@ -45,15 +25,9 @@ export class PeriodicDataFetcher
 
   // Notify registered object monitors about new data.
   handleFetched(data: Uint8Array): void {
-    if (this.stopped) {
-      return;
-    }
-
     const result = this.formatter.format(data);
     if (result.error) {
-      console.error(
-        `periodic_data_fetcher: failed to format data: err=${result.error}`,
-      );
+      console.error(`data_handler: failed to format data: err=${result.error}`);
 
       return;
     }
@@ -65,9 +39,5 @@ export class PeriodicDataFetcher
     });
   }
 
-  private formatter: Formatter;
-  private periodicFetcher: PeriodicFetcher;
-
   private data: Record<string, any> | null = null;
-  private stopped: boolean = false;
 }

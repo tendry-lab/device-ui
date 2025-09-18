@@ -1,7 +1,7 @@
 import { Component } from "preact";
 
 import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
-import { PeriodicDataFetcher } from "@device-ui/lib/device/periodic_data_fetcher";
+import { DataStore } from "@device-ui/lib/device/data_store";
 import { TimeOps } from "@device-ui/lib/algo/time_ops";
 import { ConnectionHandler } from "@device-ui/lib/device/connection_handler";
 import { FanoutConnectionHandler } from "@device-ui/lib/device/fanout_connection_handler";
@@ -10,10 +10,10 @@ import "@device-ui/ui/preact/device_status_component.css";
 
 export type DeviceStatusComponentProps = {
   // Telemetry fetcher to receive latest telemetry data.
-  telemetryFetcher: PeriodicDataFetcher;
+  telemetryStore: DataStore;
 
   // Registration fetcher to receive latest registration data.
-  registrationFetcher: PeriodicDataFetcher;
+  registrationStore: DataStore;
 
   // Connection handler to receive the device connection status.
   connectionHandler: FanoutConnectionHandler;
@@ -89,14 +89,14 @@ export class DeviceStatusComponent
   async componentDidMount() {
     let error: Error | null = null;
 
-    error = this.props.telemetryFetcher.add(this);
+    error = this.props.telemetryStore.add(this);
     if (error) {
       console.error(
         `device_status_component: failed to register for telemetry changes: ${error}`,
       );
     }
 
-    error = this.props.registrationFetcher.add(this);
+    error = this.props.registrationStore.add(this);
     if (error) {
       console.error(
         `device_status_component: failed to register for registration changes: ${error}`,
@@ -114,14 +114,14 @@ export class DeviceStatusComponent
   componentWillUnmount() {
     let error: Error | null = null;
 
-    error = this.props.telemetryFetcher.remove(this);
+    error = this.props.telemetryStore.remove(this);
     if (error) {
       console.error(
         `device_status_component: failed to unregister for telemetry changes: ${error}`,
       );
     }
 
-    error = this.props.registrationFetcher.remove(this);
+    error = this.props.registrationStore.remove(this);
     if (error) {
       console.error(
         `device_status_component: failed to unregister for registration changes: ${error}`,
@@ -276,12 +276,12 @@ export class DeviceStatusComponent
   }
 
   notifyChanged() {
-    const rawTelemetryData = this.props.telemetryFetcher.getData();
+    const rawTelemetryData = this.props.telemetryStore.getData();
     const telemetryData = rawTelemetryData
       ? DeviceStatusComponent.formatTelemetryData(rawTelemetryData)
       : null;
 
-    const rawRegistrationData = this.props.registrationFetcher.getData();
+    const rawRegistrationData = this.props.registrationStore.getData();
     const registrationData = rawRegistrationData
       ? DeviceStatusComponent.formatRegistrationData(rawRegistrationData)
       : null;

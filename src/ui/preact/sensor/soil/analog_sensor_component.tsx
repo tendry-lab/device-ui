@@ -3,7 +3,7 @@ import { Component } from "preact";
 import { FormConfigComponent } from "@device-ui/ui/preact/form_config_component";
 import { Config } from "@device-ui/lib/device/config";
 import { Notificator } from "@device-ui/lib/system/notificator";
-import { PeriodicDataFetcher } from "@device-ui/lib/device/periodic_data_fetcher";
+import { DataStore } from "@device-ui/lib/device/data_store";
 import { TimeOps } from "@device-ui/lib/algo/time_ops";
 
 import "./analog_sensor_component.css";
@@ -47,8 +47,8 @@ export type AnalogSensorComponentProps = {
   // Prefix of the sensor's data keys in telemetry.
   prefix: string;
 
-  // Fetcher to fetch and format soil sensor data.
-  fetcher: PeriodicDataFetcher;
+  // Store to get the device data.
+  store: DataStore;
 
   // Config to configure the sensor.
   config: Config;
@@ -73,7 +73,7 @@ export class AnalogSensorComponent extends Component<
   }
 
   async componentDidMount() {
-    const error = this.props.fetcher.add(this);
+    const error = this.props.store.add(this);
     if (error) {
       console.error(
         `analog_sensor_component: failed to register for data changes: ${error}`,
@@ -82,7 +82,7 @@ export class AnalogSensorComponent extends Component<
   }
 
   componentWillUnmount() {
-    const error = this.props.fetcher.remove(this);
+    const error = this.props.store.remove(this);
     if (error) {
       console.error(
         `analog_sensor_component: failed to unregister for data changes: ${error}`,
@@ -97,7 +97,7 @@ export class AnalogSensorComponent extends Component<
   }
 
   notifyChanged() {
-    const data = this.props.fetcher.getData();
+    const data = this.props.store.getData();
     if (!data) {
       return;
     }
