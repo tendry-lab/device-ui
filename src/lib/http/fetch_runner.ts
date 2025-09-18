@@ -6,8 +6,8 @@ export class FetchRunner implements Runner {
   // Initialize.
   //
   // @params
-  //  - @p handler to notify when data is received from @p fetcher.
   //  - @p fetcher to fetch the actual data.
+  //  - @p handler to notify when data is received from @p fetcher.
   constructor(
     private fetcher: Fetcher,
     private handler: FetchHandler,
