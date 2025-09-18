@@ -30,7 +30,7 @@
   right: var(--spacing);
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   cursor: pointer;
   color: var(--color-text-secondary);
   z-index: 1001;
@@ -52,7 +52,7 @@
   overflow-y: auto;
   line-height: 1.6;
   text-align: left;
-  font-size: 1.25rem;
+  font-size: var(--font-size-xl);
 }
 
 .markdown-content h1, .markdown-content h2, .markdown-content h3 {
@@ -88,6 +88,6 @@
 
   .markdown-content {
     padding: var(--spacing);
-    font-size: 1rem;
+    font-size: var(--font-size-m);
   }
 }

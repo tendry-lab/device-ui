@@ -26,7 +26,7 @@
 .config-title {
   margin: 0 0 1.25rem 0;
   color: var(--color-text);
-  font-size: 1rem;
+  font-size: var(--font-size-m);
   font-weight: 600;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .form-label {
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   font-weight: 600;
   color: var(--color-text-dark);
   text-align: right;
@@ -75,7 +75,7 @@
   padding: var(--spacing-small) 0.75rem;
   border: 2px solid var(--config-border-input);
   border-radius: var(--radius-small);
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   background-color: var(--color-white);
   transition: all var(--transition);
   font-family: inherit;
@@ -107,7 +107,7 @@
   border: none;
   border-radius: var(--radius-button);
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: var(--font-size-s);
   font-weight: 600;
   transition: all var(--transition);
   min-width: 5rem;
