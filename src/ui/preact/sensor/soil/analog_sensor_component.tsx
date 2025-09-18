@@ -8,17 +8,29 @@ import { TimeOps } from "@device-ui/lib/algo/time_ops";
 
 import "./analog_sensor_component.css";
 
-type sensorData = {
-  raw: number;
-  voltage: number;
-  moisture: number;
-  prev_status: string;
-  curr_status: string;
-  prev_status_dur: number;
-  curr_status_dur: number;
-  write_count: number;
-  status_progress: number;
-};
+class SensorData {
+  readonly raw: number;
+  readonly voltage: number;
+  readonly moisture: number;
+  readonly prev_status: string;
+  readonly curr_status: string;
+  readonly prev_status_dur: number;
+  readonly curr_status_dur: number;
+  readonly write_count: number;
+  readonly status_progress: number;
+
+  constructor(data: Record<string, any> = {}) {
+    this.raw = data.raw ?? 0;
+    this.voltage = data.voltage ?? 0;
+    this.moisture = data.moisture ?? 0;
+    this.prev_status = data.prev_status ?? "";
+    this.curr_status = data.curr_status ?? "";
+    this.prev_status_dur = data.prev_status_dur ?? 0;
+    this.curr_status_dur = data.curr_status_dur ?? 0;
+    this.write_count = data.write_count ?? 0;
+    this.status_progress = data.status_progress ?? 0;
+  }
+}
 
 // Get CSS class for status styling.
 function getStatusClass(status: string): string {
@@ -34,7 +46,7 @@ function getStatusClass(status: string): string {
 }
 
 type analogSensorState = {
-  data: sensorData | null;
+  data: SensorData | null;
   expanded: boolean;
   enableCalibration: boolean;
 };
@@ -213,8 +225,8 @@ export class AnalogSensorComponent extends Component<
   private static parseData(
     prefix: string,
     data: Record<string, any>,
-  ): sensorData {
-    return {
+  ): SensorData {
+    return new SensorData({
       curr_status: data[`${prefix}_curr_status`],
       curr_status_dur: data[`${prefix}_curr_status_dur`],
       prev_status: data[`${prefix}_prev_status`],
@@ -224,7 +236,7 @@ export class AnalogSensorComponent extends Component<
       status_progress: data[`${prefix}_status_progress`],
       voltage: data[`${prefix}_voltage`],
       write_count: data[`${prefix}_write_count`],
-    };
+    });
   }
 
   // Note: use arrow function to properly capture `this`.
