@@ -54,7 +54,7 @@ export abstract class BasicConfigComponent extends Component<
   // Note: use arrow function to properly capture `this`.
   protected writeConfig = async () => {
     const confirmResult = this.props.notificator.confirm(
-      "Are you sure you want to update configuration?",
+      "Update configuration?",
       NotificationSeverity.Wrn,
     );
     if (confirmResult.error) {
@@ -94,7 +94,7 @@ export abstract class BasicConfigComponent extends Component<
     }
 
     const alertResult = this.props.notificator.alert(
-      "Configuration updated successfully!",
+      "Configuration updated!",
       NotificationSeverity.Inf,
     );
     if (alertResult.error) {
@@ -109,7 +109,7 @@ export abstract class BasicConfigComponent extends Component<
   // Note: use arrow function to properly capture `this`.
   protected resetConfig = async () => {
     const confirmResult = this.props.notificator.confirm(
-      "Are you sure you want to reset configuration?",
+      "Reset configuration?",
       NotificationSeverity.Wrn,
     );
     if (confirmResult.error) {
@@ -149,7 +149,7 @@ export abstract class BasicConfigComponent extends Component<
     }
 
     const alertResult = this.props.notificator.alert(
-      "Configuration reseted successfully!",
+      "Configuration reseted!",
       NotificationSeverity.Inf,
     );
     if (alertResult.error) {
