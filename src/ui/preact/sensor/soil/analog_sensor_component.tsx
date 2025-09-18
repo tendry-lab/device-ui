@@ -9,27 +9,17 @@ import { TimeOps } from "@device-ui/lib/algo/time_ops";
 import "./analog_sensor_component.css";
 
 class SensorData {
-  readonly raw: number;
-  readonly voltage: number;
-  readonly moisture: number;
-  readonly prevStatus: string;
-  readonly currStatus: string;
-  readonly prevStatusDur: number;
-  readonly currStatusDur: number;
-  readonly writeCount: number;
-  readonly statusProgress: number;
-
-  constructor(data: Record<string, any> = {}) {
-    this.raw = data["raw"] ?? 0;
-    this.voltage = data["voltage"] ?? 0;
-    this.moisture = data["moisture"] ?? 0;
-    this.prevStatus = data["prev_status"] ?? "";
-    this.currStatus = data["curr_status"] ?? "";
-    this.prevStatusDur = data["prev_status_dur"] ?? 0;
-    this.currStatusDur = data["curr_status_dur"] ?? 0;
-    this.writeCount = data["write_count"] ?? 0;
-    this.statusProgress = data["status_progress"] ?? 0;
-  }
+  constructor(
+    readonly raw: number,
+    readonly voltage: number,
+    readonly moisture: number,
+    readonly prevStatus: string,
+    readonly currStatus: string,
+    readonly prevStatusDur: number,
+    readonly currStatusDur: number,
+    readonly writeCount: number,
+    readonly statusProgress: number,
+  ) {}
 }
 
 // Get CSS class for status styling.
@@ -226,17 +216,17 @@ export class AnalogSensorComponent extends Component<
     prefix: string,
     data: Record<string, any>,
   ): SensorData {
-    return new SensorData({
-      currStatus: data[`${prefix}_curr_status`],
-      currStatusDur: data[`${prefix}_curr_status_dur`],
-      prevStatus: data[`${prefix}_prev_status`],
-      prevStatusDur: data[`${prefix}_prev_status_dur`],
-      moisture: data[`${prefix}_moisture`],
-      raw: data[`${prefix}_raw`],
-      statusProgress: data[`${prefix}_status_progress`],
-      voltage: data[`${prefix}_voltage`],
-      writeCount: data[`${prefix}_write_count`],
-    });
+    return new SensorData(
+      data[`${prefix}_raw`] ?? 0,
+      data[`${prefix}_voltage`] ?? 0,
+      data[`${prefix}_moisture`] ?? 0,
+      data[`${prefix}_prev_status`] ?? "None",
+      data[`${prefix}_curr_status`] ?? "None",
+      data[`${prefix}_prev_status_dur`] ?? 0,
+      data[`${prefix}_curr_status_dur`] ?? 0,
+      data[`${prefix}_write_count`] ?? 0,
+      data[`${prefix}_status_progress`] ?? 0,
+    );
   }
 
   // Note: use arrow function to properly capture `this`.
