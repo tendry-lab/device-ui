@@ -12,23 +12,23 @@ class SensorData {
   readonly raw: number;
   readonly voltage: number;
   readonly moisture: number;
-  readonly prev_status: string;
-  readonly curr_status: string;
-  readonly prev_status_dur: number;
-  readonly curr_status_dur: number;
-  readonly write_count: number;
-  readonly status_progress: number;
+  readonly prevStatus: string;
+  readonly currStatus: string;
+  readonly prevStatusDur: number;
+  readonly currStatusDur: number;
+  readonly writeCount: number;
+  readonly statusProgress: number;
 
   constructor(data: Record<string, any> = {}) {
     this.raw = data["raw"] ?? 0;
     this.voltage = data["voltage"] ?? 0;
     this.moisture = data["moisture"] ?? 0;
-    this.prev_status = data["prev_status"] ?? "";
-    this.curr_status = data["curr_status"] ?? "";
-    this.prev_status_dur = data["prev_status_dur"] ?? 0;
-    this.curr_status_dur = data["curr_status_dur"] ?? 0;
-    this.write_count = data["write_count"] ?? 0;
-    this.status_progress = data["status_progress"] ?? 0;
+    this.prevStatus = data["prev_status"] ?? "";
+    this.currStatus = data["curr_status"] ?? "";
+    this.prevStatusDur = data["prev_status_dur"] ?? 0;
+    this.currStatusDur = data["curr_status_dur"] ?? 0;
+    this.writeCount = data["write_count"] ?? 0;
+    this.statusProgress = data["status_progress"] ?? 0;
   }
 }
 
@@ -125,8 +125,8 @@ export class AnalogSensorComponent extends Component<
       return <p>Loading sensor data...</p>;
     }
 
-    const statusClass = getStatusClass(this.state.data.curr_status);
-    const prevStatusClass = getStatusClass(this.state.data.prev_status);
+    const statusClass = getStatusClass(this.state.data.currStatus);
+    const prevStatusClass = getStatusClass(this.state.data.prevStatus);
 
     return (
       <div className="sensor-card">
@@ -154,13 +154,13 @@ export class AnalogSensorComponent extends Component<
           <div className="status-row">
             <div className={`status-indicator ${statusClass}`} />
             <span className={`status-text ${statusClass}`}>
-              {this.state.data.curr_status}
+              {this.state.data.currStatus}
             </span>
             <span className="status-duration">
-              for {TimeOps.formatDuration(this.state.data.curr_status_dur)}
+              for {TimeOps.formatDuration(this.state.data.currStatusDur)}
             </span>
             <div className="progress-info">
-              Progress: {this.state.data.status_progress}%
+              Progress: {this.state.data.statusProgress}%
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@ export class AnalogSensorComponent extends Component<
               <div className="detail-item">
                 <div className="detail-label">Write Count</div>
                 <div className="detail-value">
-                  {this.state.data.write_count.toLocaleString()}
+                  {this.state.data.writeCount.toLocaleString()}
                 </div>
               </div>
             </div>
@@ -191,10 +191,10 @@ export class AnalogSensorComponent extends Component<
               <div className="prev-status-row">
                 <div className={`prev-status-indicator ${prevStatusClass}`} />
                 <span className="prev-status-text">
-                  {this.state.data.prev_status}
+                  {this.state.data.prevStatus}
                 </span>
                 <span className="prev-status-duration">
-                  ({TimeOps.formatDuration(this.state.data.prev_status_dur)})
+                  ({TimeOps.formatDuration(this.state.data.prevStatusDur)})
                 </span>
               </div>
             </div>
@@ -227,15 +227,15 @@ export class AnalogSensorComponent extends Component<
     data: Record<string, any>,
   ): SensorData {
     return new SensorData({
-      curr_status: data[`${prefix}_curr_status`],
-      curr_status_dur: data[`${prefix}_curr_status_dur`],
-      prev_status: data[`${prefix}_prev_status`],
-      prev_status_dur: data[`${prefix}_prev_status_dur`],
+      currStatus: data[`${prefix}_curr_status`],
+      currStatusDur: data[`${prefix}_curr_status_dur`],
+      prevStatus: data[`${prefix}_prev_status`],
+      prevStatusDur: data[`${prefix}_prev_status_dur`],
       moisture: data[`${prefix}_moisture`],
       raw: data[`${prefix}_raw`],
-      status_progress: data[`${prefix}_status_progress`],
+      statusProgress: data[`${prefix}_status_progress`],
       voltage: data[`${prefix}_voltage`],
-      write_count: data[`${prefix}_write_count`],
+      writeCount: data[`${prefix}_write_count`],
     });
   }
 
