@@ -1,0 +1,209 @@
+@import '@device-ui/ui/preact/tokens.css';
+@import '@device-ui/ui/preact/components.css';
+
+:root {
+  /* Signal Strength Colors */
+  --status-excellent: #10b981;
+  --status-good: #22c55e;
+  --status-fair: #f59e0b;
+  --status-poor: #ef4444;
+  --status-unreliable: #dc2626;
+
+  /* Network Mode Colors */
+  --mode-sta: #3b82f6;
+  --mode-ap: #8b5cf6;
+}
+
+/* Main Container */
+.network-status-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+  max-width: 100%;
+  width: 100%;
+}
+
+.network-status-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Header Section */
+.network-status-header {
+  padding: var(--spacing);
+  cursor: pointer;
+}
+
+.network-status-header.expanded {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.network-status-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-small);
+}
+
+.network-status-title {
+  margin: 0;
+  font-size: var(--font-size-l);
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+/* Mode and Status Display */
+.mode-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+}
+
+.network-mode {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  color: white;
+}
+
+.network-mode.sta-mode {
+  background: var(--mode-sta);
+}
+
+.network-mode.ap-mode {
+  background: var(--mode-ap);
+}
+
+/* Status Indicators */
+.status-indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.status-text {
+  font-size: var(--font-size-s);
+  font-weight: 500;
+}
+
+/* Signal Strength Colors */
+.status-indicator.status-excellent { background-color: var(--status-excellent); }
+.status-indicator.status-good { background-color: var(--status-good); }
+.status-indicator.status-fair { background-color: var(--status-fair); }
+.status-indicator.status-poor { background-color: var(--status-poor); }
+.status-indicator.status-very-poor { background-color: var(--status-very-poor); }
+
+.status-text.status-excellent { color: var(--status-excellent); }
+.status-text.status-good { color: var(--status-good); }
+.status-text.status-fair { color: var(--status-fair); }
+.status-text.status-poor { color: var(--status-poor); }
+.status-text.status-very-poor { color: var(--status-very-poor); }
+
+/* Primary Info */
+.primary-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-s);
+  color: var(--color-text-secondary);
+  gap: var(--spacing-small);
+  flex-wrap: wrap;
+}
+
+/* Loading State */
+.network-status-loading {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+  padding: var(--spacing);
+}
+
+/* Details Section */
+.network-status-details {
+  padding: var(--spacing);
+  background-color: var(--color-bg);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: var(--spacing-small) var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+.detail-item {
+  text-align: center;
+}
+
+.detail-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.detail-value {
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  color: var(--color-text-dark);
+  word-break: break-word;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .network-status-header,
+  .network-status-details {
+    padding: var(--spacing);
+  }
+
+  .details-grid {
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    gap: var(--spacing-small);
+  }
+
+  .primary-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .mode-row {
+    flex-wrap: wrap;
+  }
+
+  .detail-value {
+    font-size: var(--font-size-s);
+  }
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .network-status-title {
+    font-size: var(--font-size-m);
+  }
+
+  .primary-info {
+    font-size: var(--font-size-xs);
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
