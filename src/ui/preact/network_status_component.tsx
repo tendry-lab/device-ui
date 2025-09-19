@@ -1,0 +1,233 @@
+import { Component } from "preact";
+
+import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
+import { DataStore } from "@device-ui/lib/device/data_store";
+
+import "@device-ui/ui/preact/network_status_component.css";
+
+export type NetworkStatusComponentProps = {
+  // Registration store to receive latest registration data.
+  registrationStore: DataStore;
+};
+
+class WiFiStaData {
+  constructor(
+    readonly ip: string = "",
+    readonly rssi: number = 0,
+    readonly ssid: string = "",
+    readonly signalStrength: string = "",
+  ) {}
+}
+
+class WiFiApData {
+  constructor(
+    readonly channel: number = 0,
+    readonly curConnNumber: number = 0,
+    readonly maxConnNumber: number = 0,
+  ) {}
+}
+
+type NetworkData = WiFiApData | WiFiStaData;
+
+type NetworkStatusComponentState = {
+  expanded: boolean;
+  data: NetworkData | null;
+};
+
+export class NetworkStatusComponent
+  extends Component<NetworkStatusComponentProps, NetworkStatusComponentState>
+  implements ObjectMonitor
+{
+  constructor(props: NetworkStatusComponentProps) {
+    super(props);
+
+    this.state = {
+      expanded: false,
+      data: null,
+    };
+  }
+
+  override async componentDidMount() {
+    let error: Error | null = null;
+
+    error = this.props.registrationStore.add(this);
+    if (error) {
+      console.error(
+        `network_status_component: failed to register for registration changes: ${error}`,
+      );
+    }
+  }
+
+  override componentWillUnmount() {
+    let error: Error | null = null;
+
+    error = this.props.registrationStore.remove(this);
+    if (error) {
+      console.error(
+        `network_status_component: failed to unregister for registration changes: ${error}`,
+      );
+    }
+
+    this.setState({
+      expanded: false,
+      data: null,
+    });
+  }
+
+  render() {
+    if (!this.state.data) {
+      return (
+        <div className="network-status-card">
+          <div className="network-status-header">
+            <div className="network-status-title-row">
+              <h3 className="network-status-title">Network Status</h3>
+            </div>
+            <p className="network-status-loading">Loading network data...</p>
+          </div>
+        </div>
+      );
+    }
+
+    const isStaMode = this.state.data instanceof WiFiStaData;
+    const isApMode = this.state.data instanceof WiFiApData;
+
+    // Determine signal status for STA mode
+    let signalStatus = "Unknown";
+    let signalClass = "status-unknown";
+
+    if (isStaMode) {
+      const staData = this.state.data as WiFiStaData;
+      signalStatus = staData.signalStrength;
+      signalClass = `status-${staData.signalStrength.toLowerCase().replace(" ", "-")}`;
+    }
+
+    return (
+      <div className="network-status-card">
+        {/* Header - always visible */}
+        <div
+          className={`network-status-header ${this.state.expanded ? "expanded" : ""}`}
+          onClick={this.toggleExpanded}
+        >
+          <div className="network-status-title-row">
+            <h3 className="network-status-title">Network Status</h3>
+            <div
+              className={`expand-arrow ${this.state.expanded ? "expanded" : ""}`}
+            />
+          </div>
+
+          {/* Mode and Status display */}
+          <div className="mode-row">
+            <span
+              className={`network-mode ${isStaMode ? "sta-mode" : isApMode ? "ap-mode" : ""}`}
+            >
+              {isStaMode ? "STA Mode" : isApMode ? "AP Mode" : "Unknown"}
+            </span>
+            {isStaMode && (
+              <>
+                <div className={`status-indicator ${signalClass}`} />
+                <span className={`status-text ${signalClass}`}>
+                  {signalStatus}
+                </span>
+              </>
+            )}
+          </div>
+
+          {/* Primary info */}
+          <div className="primary-info">
+            {isStaMode && <span>{(this.state.data as WiFiStaData).ip}</span>}
+            {isApMode && (
+              <span>
+                Clients: {(this.state.data as WiFiApData).curConnNumber}/
+                {(this.state.data as WiFiApData).maxConnNumber}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Expanded details */}
+        {this.state.expanded && (
+          <div className="network-status-details">
+            <div className="details-grid">
+              {isStaMode && (
+                <>
+                  <div className="detail-item">
+                    <div className="detail-label">SSID</div>
+                    <div className="detail-value">
+                      {(this.state.data as WiFiStaData).ssid}
+                    </div>
+                  </div>
+                  <div className="detail-item">
+                    <div className="detail-label">RSSI</div>
+                    <div className="detail-value">
+                      {(this.state.data as WiFiStaData).rssi} dBm
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {isApMode && (
+                <div className="detail-item">
+                  <div className="detail-label">Channel</div>
+                  <div className="detail-value">
+                    {(this.state.data as WiFiApData).channel}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  notifyChanged() {
+    let networkData: NetworkData | null = null;
+
+    const rawRegistrationData = this.props.registrationStore.getData();
+    if (rawRegistrationData) {
+      networkData = NetworkStatusComponent.formatNetworkData(
+        rawRegistrationData!,
+      );
+    }
+
+    this.setState({
+      ...this.state,
+      data: networkData,
+    });
+  }
+
+  private toggleExpanded = () => {
+    this.setState({
+      ...this.state,
+      expanded: !this.state.expanded,
+    });
+  };
+
+  private static formatNetworkData(
+    src: Record<string, any>,
+  ): NetworkData | null {
+    const opMode = src["network_op_mode"];
+    if (opMode == undefined) {
+      return null;
+    }
+
+    if (opMode == "ap") {
+      return new WiFiApData(
+        src["network_ap_channel"] ?? 0,
+        src["network_ap_cur_conn"] ?? 0,
+        src["network_ap_max_conn"] ?? 0,
+      );
+    }
+
+    if (opMode == "sta") {
+      return new WiFiStaData(
+        src["network_sta_ip"] ?? "None",
+        src["network_sta_rssi"] ?? 0,
+        src["network_sta_ssid"] ?? "None",
+        src["network_sta_signal_strength"] ?? "None",
+      );
+    }
+
+    return null;
+  }
+}
