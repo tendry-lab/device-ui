@@ -69,7 +69,6 @@ function formatResetReason(reason: string): string {
   return reasonMap[reason] || reason;
 }
 
-// Determine online status based on data freshness
 export class DeviceStatusComponent
   extends Component<DeviceStatusComponentProps, DeviceStatusComponentState>
   implements ObjectMonitor, ConnectionHandler
