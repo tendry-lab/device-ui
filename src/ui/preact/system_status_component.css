@@ -9,7 +9,7 @@
 }
 
 /* Main Container */
-.device-status-card {
+.system-status-card {
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -21,28 +21,28 @@
   width: 100%;
 }
 
-.device-status-card:hover {
+.system-status-card:hover {
   box-shadow: var(--shadow-hover);
 }
 
 /* Header Section */
-.device-status-header {
+.system-status-header {
   padding: var(--spacing);
   cursor: pointer;
 }
 
-.device-status-header.expanded {
+.system-status-header.expanded {
   border-bottom: 1px solid var(--color-border);
 }
 
-.device-status-title-row {
+.system-status-title-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--spacing-small);
 }
 
-.device-status-title {
+.system-status-title {
   margin: 0;
   font-size: var(--font-size-l);
   font-weight: 600;
@@ -89,7 +89,7 @@
 }
 
 /* Loading State */
-.device-status-loading {
+.system-status-loading {
   color: var(--color-text-secondary);
   font-style: italic;
   margin: 0;
@@ -98,7 +98,7 @@
 }
 
 /* Details Section */
-.device-status-details {
+.system-status-details {
   padding: var(--spacing);
   background-color: var(--color-bg);
 }
@@ -152,8 +152,8 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .device-status-header,
-  .device-status-details {
+  .system-status-header,
+  .system-status-details {
     padding: var(--spacing);
   }
 
@@ -182,7 +182,7 @@
 
 /* Extra Small Mobile */
 @media (max-width: 480px) {
-  .device-status-title {
+  .system-status-title {
     font-size: var(--font-size-m);
   }
 
