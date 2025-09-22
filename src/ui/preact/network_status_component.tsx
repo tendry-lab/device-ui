@@ -2,12 +2,24 @@ import { Component } from "preact";
 
 import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
 import { DataStore } from "@device-ui/lib/device/data_store";
+import { Config } from "@device-ui/lib/device/config";
+import { Notificator } from "@device-ui/lib/system/notificator";
+import { NetworkConfigBuilder } from "@device-ui/lib/device/network_config_builder";
+import { NetworkType } from "@device-ui/lib/device/types";
+
+import { FormConfigComponent } from "@device-ui/ui/preact/form_config_component";
 
 import "@device-ui/ui/preact/network_status_component.css";
 
 export type NetworkStatusComponentProps = {
   // Registration store to receive latest registration data.
   registrationStore: DataStore;
+
+  // Notificator to send various notifications.
+  notificator: Notificator;
+
+  // Builder to build network config.
+  builder: NetworkConfigBuilder;
 };
 
 class WiFiStaData {
@@ -31,6 +43,8 @@ type NetworkData = WiFiApData | WiFiStaData;
 
 type NetworkStatusComponentState = {
   expanded: boolean;
+  enableConfiguration: boolean;
+  config: Config | null;
   data: NetworkData | null;
 };
 
@@ -43,6 +57,8 @@ export class NetworkStatusComponent
 
     this.state = {
       expanded: false,
+      enableConfiguration: false,
+      config: null,
       data: null,
     };
   }
@@ -70,6 +86,8 @@ export class NetworkStatusComponent
 
     this.setState({
       expanded: false,
+      enableConfiguration: false,
+      config: null,
       data: null,
     });
   }
@@ -174,7 +192,50 @@ export class NetworkStatusComponent
                 </div>
               )}
             </div>
+
+            {/* Configuration mode */}
+            {this.state.enableConfiguration && (
+              <FormConfigComponent
+                config={this.state.config!}
+                onClose={this.handleConfigEnd}
+                notificator={this.props.notificator}
+              />
+            )}
           </div>
+        )}
+
+        {isStaMode &&
+          this.state.expanded &&
+          !this.state.enableConfiguration && (
+            <div className="config-button-container">
+              <button
+                onClick={this.handleConfigBeginWiFiSta}
+                className="config-button"
+              >
+                Configure
+              </button>
+            </div>
+          )}
+
+        {isApMode && this.state.expanded && !this.state.enableConfiguration && (
+          <>
+            <div className="config-button-container">
+              <button
+                onClick={this.handleConfigBeginWiFiAp}
+                className="config-button"
+              >
+                Configure WiFi AP
+              </button>
+            </div>
+            <div className="config-button-container">
+              <button
+                onClick={this.handleConfigBeginWiFiSta}
+                className="config-button"
+              >
+                Configure WiFi STA
+              </button>
+            </div>
+          </>
         )}
       </div>
     );
@@ -200,6 +261,37 @@ export class NetworkStatusComponent
     this.setState({
       ...this.state,
       expanded: !this.state.expanded,
+      enableConfiguration: false,
+    });
+  };
+
+  // Note: use arrow function to properly capture `this`.
+  private handleConfigEnd = () => {
+    this.setState({
+      ...this.state,
+      expanded: false,
+      config: null,
+      enableConfiguration: false,
+    });
+  };
+
+  // Note: use arrow function to properly capture `this`.
+  private handleConfigBeginWiFiSta = () => {
+    this.setState({
+      ...this.state,
+      expanded: true,
+      enableConfiguration: true,
+      config: this.props.builder.build(NetworkType.WiFiSTA),
+    });
+  };
+
+  // Note: use arrow function to properly capture `this`.
+  private handleConfigBeginWiFiAp = () => {
+    this.setState({
+      ...this.state,
+      expanded: true,
+      enableConfiguration: true,
+      config: this.props.builder.build(NetworkType.WiFiAP),
     });
   };
 

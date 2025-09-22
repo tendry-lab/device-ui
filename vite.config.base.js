@@ -42,6 +42,8 @@ export function createBaseConfig(deviceIP = "", projectConfig = {}) {
         "/api/v1/config/sensor/analog": createProxyConfig(deviceIP),
         "/api/v1/system/reboot": createProxyConfig(deviceIP),
         "/api/v1/system/locate": createProxyConfig(deviceIP),
+        "/api/v1/config/wifi/sta": createProxyConfig(deviceIP),
+        "/api/v1/config/wifi/ap": createProxyConfig(deviceIP),
       },
     },
     build: {
