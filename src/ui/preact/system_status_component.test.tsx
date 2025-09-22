@@ -8,9 +8,9 @@ import { Fetcher } from "@device-ui/lib/http/fetcher";
 import { TestFetcher } from "@device-ui/lib/tests/test_fetcher";
 import { FanoutConnectionHandler } from "@device-ui/lib/device/fanout_connection_handler";
 
-import { DeviceStatusComponent } from "@device-ui/ui/preact/device_status_component";
+import { SystemStatusComponent } from "@device-ui/ui/preact/system_status_component";
 
-describe("Device Status Component", () => {
+describe("System Status Component", () => {
   test("Queue state management on mount/unmount", async () => {
     const telemetryStore = new DataStore(new JSONFormatter());
     expect(telemetryStore.len()).toBe(0);
@@ -22,7 +22,7 @@ describe("Device Status Component", () => {
     expect(connectionHandler.len()).toBe(0);
 
     const { unmount } = render(
-      <DeviceStatusComponent
+      <SystemStatusComponent
         telemetryStore={telemetryStore}
         registrationStore={registrationStore}
         connectionHandler={connectionHandler}

@@ -6,13 +6,13 @@ import { TimeOps } from "@device-ui/lib/algo/time_ops";
 import { ConnectionHandler } from "@device-ui/lib/device/connection_handler";
 import { FanoutConnectionHandler } from "@device-ui/lib/device/fanout_connection_handler";
 
-import "@device-ui/ui/preact/device_status_component.css";
+import "@device-ui/ui/preact/system_status_component.css";
 
-export type DeviceStatusComponentProps = {
-  // Telemetry fetcher to receive latest telemetry data.
+export type SystemStatusComponentProps = {
+  // Telemetry store to receive latest telemetry data.
   telemetryStore: DataStore;
 
-  // Registration fetcher to receive latest registration data.
+  // Registration store to receive latest registration data.
   registrationStore: DataStore;
 
   // Connection handler to receive the device connection status.
@@ -42,7 +42,7 @@ class RegistrationData {
   ) {}
 }
 
-type DeviceStatusComponentState = {
+type SystemStatusComponentState = {
   expanded: boolean;
   connected: boolean;
   telemetry: TelemetryData | null;
@@ -69,11 +69,11 @@ function formatResetReason(reason: string): string {
   return reasonMap[reason] || reason;
 }
 
-export class DeviceStatusComponent
-  extends Component<DeviceStatusComponentProps, DeviceStatusComponentState>
+export class SystemStatusComponent
+  extends Component<SystemStatusComponentProps, SystemStatusComponentState>
   implements ObjectMonitor, ConnectionHandler
 {
-  constructor(props: DeviceStatusComponentProps) {
+  constructor(props: SystemStatusComponentProps) {
     super(props);
 
     this.state = {
@@ -91,21 +91,21 @@ export class DeviceStatusComponent
     error = this.props.telemetryStore.add(this);
     if (error) {
       console.error(
-        `device_status_component: failed to register for telemetry changes: ${error}`,
+        `system_status_component: failed to register for telemetry changes: ${error}`,
       );
     }
 
     error = this.props.registrationStore.add(this);
     if (error) {
       console.error(
-        `device_status_component: failed to register for registration changes: ${error}`,
+        `system_status_component: failed to register for registration changes: ${error}`,
       );
     }
 
     error = this.props.connectionHandler.add(this);
     if (error) {
       console.error(
-        `device_status_component: failed to register for connection changes: ${error}`,
+        `system_status_component: failed to register for connection changes: ${error}`,
       );
     }
   }
@@ -116,21 +116,21 @@ export class DeviceStatusComponent
     error = this.props.telemetryStore.remove(this);
     if (error) {
       console.error(
-        `device_status_component: failed to unregister for telemetry changes: ${error}`,
+        `system_status_component: failed to unregister for telemetry changes: ${error}`,
       );
     }
 
     error = this.props.registrationStore.remove(this);
     if (error) {
       console.error(
-        `device_status_component: failed to unregister for registration changes: ${error}`,
+        `system_status_component: failed to unregister for registration changes: ${error}`,
       );
     }
 
     error = this.props.connectionHandler.remove(this);
     if (error) {
       console.error(
-        `device_status_component: failed to unregister for connection changes: ${error}`,
+        `system_status_component: failed to unregister for connection changes: ${error}`,
       );
     }
 
@@ -146,12 +146,12 @@ export class DeviceStatusComponent
   render() {
     if (!this.state.telemetry && !this.state.registration) {
       return (
-        <div className="device-status-card">
-          <div className="device-status-header">
-            <div className="device-status-title-row">
-              <h3 className="device-status-title">Device Status</h3>
+        <div className="system-status-card">
+          <div className="system-status-header">
+            <div className="system-status-title-row">
+              <h3 className="system-status-title">System Status</h3>
             </div>
-            <p className="device-status-loading">Loading device data...</p>
+            <p className="system-status-loading">Loading device data...</p>
           </div>
         </div>
       );
@@ -161,14 +161,14 @@ export class DeviceStatusComponent
     const statusClass = `status-${deviceStatus.status}`;
 
     return (
-      <div className="device-status-card">
+      <div className="system-status-card">
         {/* Header - always visible */}
         <div
-          className={`device-status-header ${this.state.expanded ? "expanded" : ""}`}
+          className={`system-status-header ${this.state.expanded ? "expanded" : ""}`}
           onClick={this.toggleExpanded}
         >
-          <div className="device-status-title-row">
-            <h3 className="device-status-title">Device Status</h3>
+          <div className="system-status-title-row">
+            <h3 className="system-status-title">System Status</h3>
             <div
               className={`expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
@@ -208,7 +208,7 @@ export class DeviceStatusComponent
 
         {/* Expanded details */}
         {this.state.expanded && (
-          <div className="device-status-details">
+          <div className="system-status-details">
             <div className="details-grid">
               {this.state.telemetry && (
                 <>
@@ -277,12 +277,12 @@ export class DeviceStatusComponent
   notifyChanged() {
     const rawTelemetryData = this.props.telemetryStore.getData();
     const telemetryData = rawTelemetryData
-      ? DeviceStatusComponent.formatTelemetryData(rawTelemetryData)
+      ? SystemStatusComponent.formatTelemetryData(rawTelemetryData)
       : null;
 
     const rawRegistrationData = this.props.registrationStore.getData();
     const registrationData = rawRegistrationData
-      ? DeviceStatusComponent.formatRegistrationData(rawRegistrationData)
+      ? SystemStatusComponent.formatRegistrationData(rawRegistrationData)
       : null;
 
     this.setState({
@@ -361,7 +361,7 @@ export class DeviceStatusComponent
       }, 1500);
     } catch (error) {
       console.error(
-        "device_status_component: failed to copy device ID:",
+        "system_status_component: failed to copy device ID:",
         error,
       );
     }
