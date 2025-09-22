@@ -80,7 +80,7 @@
   transition: all var(--transition);
   font-family: inherit;
   text-align: left;
-  width: 5rem;
+  width: 8rem;
 }
 
 .form-input:focus {
