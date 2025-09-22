@@ -31,9 +31,7 @@ function ConfigForm(props: configFormProps) {
           .filter(([key]) => !props.ignoreKeys?.includes(key))
           .map(([key, value]) => (
             <div className="form-row">
-              <div className="form-label">
-                {key.charAt(0).toUpperCase() + key.slice(1)}
-              </div>
+              <div className="form-label">{key}</div>
               <input
                 type="text"
                 value={value}
