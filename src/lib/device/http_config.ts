@@ -5,10 +5,10 @@ import { Config } from "@device-ui/lib/device/config";
 
 // Read configuration over HTTP.
 export class HTTPConfig implements Config {
-  constructor(formatter: Formatter, url: string) {
-    this.url = url;
-    this.formatter = formatter;
-  }
+  constructor(
+    private formatter: Formatter,
+    private readonly url: string,
+  ) {}
 
   async read(): Promise<{
     data: Record<string, any> | null;
@@ -59,7 +59,4 @@ export class HTTPConfig implements Config {
   async reset(): Promise<Error | null> {
     return this.write({ reset: 1 });
   }
-
-  private url: string;
-  private formatter: Formatter;
 }
