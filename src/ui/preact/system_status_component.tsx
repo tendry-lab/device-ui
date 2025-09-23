@@ -5,6 +5,10 @@ import { DataStore } from "@device-ui/lib/device/data_store";
 import { TimeOps } from "@device-ui/lib/algo/time_ops";
 import { ConnectionHandler } from "@device-ui/lib/device/connection_handler";
 import { FanoutConnectionHandler } from "@device-ui/lib/device/fanout_connection_handler";
+import { Notificator } from "@device-ui/lib/system/notificator";
+import { Config } from "@device-ui/lib/device/config";
+
+import { FormConfigComponent } from "@device-ui/ui/preact/form_config_component";
 
 import "@device-ui/ui/preact/system_status_component.css";
 
@@ -17,6 +21,15 @@ export type SystemStatusComponentProps = {
 
   // Connection handler to receive the device connection status.
   connectionHandler: FanoutConnectionHandler;
+
+  // Notificator to send various notifications.
+  notificator: Notificator;
+
+  // Config to configure the mDNS.
+  mDNSConfig: Config;
+
+  // Config to configure the UNIX time.
+  systemTimeConfig: Config;
 };
 
 class TelemetryData {
@@ -45,6 +58,8 @@ class RegistrationData {
 type SystemStatusComponentState = {
   expanded: boolean;
   connected: boolean;
+  enableConfiguration: boolean;
+  config: Config | null;
   telemetry: TelemetryData | null;
   registration: RegistrationData | null;
   showCopied: boolean;
@@ -79,6 +94,8 @@ export class SystemStatusComponent
     this.state = {
       expanded: false,
       connected: false,
+      enableConfiguration: false,
+      config: null,
       telemetry: null,
       registration: null,
       showCopied: false,
@@ -137,6 +154,8 @@ export class SystemStatusComponent
     this.setState({
       expanded: false,
       connected: false,
+      enableConfiguration: false,
+      config: null,
       telemetry: null,
       registration: null,
       showCopied: false,
@@ -268,7 +287,37 @@ export class SystemStatusComponent
                 </>
               )}
             </div>
+            {/* Configuration mode */}
+            {this.state.enableConfiguration && (
+              <FormConfigComponent
+                config={this.state.config!}
+                onClose={this.handleConfigEnd}
+                notificator={this.props.notificator}
+              />
+            )}
           </div>
+        )}
+
+        {this.state.expanded && !this.state.enableConfiguration && (
+          <>
+            <div className="config-button-container">
+              <button
+                onClick={this.handleConfigBeginMdns}
+                className="config-button"
+              >
+                Configure mDNS
+              </button>
+            </div>
+
+            <div className="config-button-container">
+              <button
+                onClick={this.handleConfigBeginSystemTime}
+                className="config-button"
+              >
+                Configure System Time
+              </button>
+            </div>
+          </>
         )}
       </div>
     );
@@ -310,6 +359,31 @@ export class SystemStatusComponent
     this.setState({
       ...this.state,
       expanded: !this.state.expanded,
+    });
+  };
+
+  private handleConfigBeginMdns = () => {
+    this.setState({
+      ...this.state,
+      enableConfiguration: true,
+      config: this.props.mDNSConfig,
+    });
+  };
+
+  private handleConfigBeginSystemTime = () => {
+    this.setState({
+      ...this.state,
+      enableConfiguration: true,
+      config: this.props.systemTimeConfig,
+    });
+  };
+
+  private handleConfigEnd = () => {
+    this.setState({
+      ...this.state,
+      expanded: false,
+      enableConfiguration: false,
+      config: null,
     });
   };
 
