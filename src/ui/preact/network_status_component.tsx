@@ -269,7 +269,6 @@ export class NetworkStatusComponent
   private handleConfigEnd = () => {
     this.setState({
       ...this.state,
-      expanded: false,
       config: null,
       enableConfiguration: false,
     });
@@ -279,7 +278,6 @@ export class NetworkStatusComponent
   private handleConfigBeginWiFiSta = () => {
     this.setState({
       ...this.state,
-      expanded: true,
       enableConfiguration: true,
       config: this.props.builder.build(NetworkType.WiFiSTA),
     });
@@ -289,7 +287,6 @@ export class NetworkStatusComponent
   private handleConfigBeginWiFiAp = () => {
     this.setState({
       ...this.state,
-      expanded: true,
       enableConfiguration: true,
       config: this.props.builder.build(NetworkType.WiFiAP),
     });
