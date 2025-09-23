@@ -233,7 +233,6 @@ export class AnalogSensorComponent extends Component<
   private handleConfigEnd = () => {
     this.setState({
       ...this.state,
-      expanded: false,
       enableConfiguration: false,
     });
   };
@@ -242,18 +241,15 @@ export class AnalogSensorComponent extends Component<
   private handleConfigBegin = () => {
     this.setState({
       ...this.state,
-      expanded: true,
       enableConfiguration: true,
     });
   };
 
   // Note: use arrow function to properly capture `this`.
   private toggleExpanded = () => {
-    const wasExpanded = this.state.expanded;
-
     this.setState({
       ...this.state,
-      expanded: !wasExpanded,
+      expanded: !this.state.expanded,
       enableConfiguration: false,
     });
   };

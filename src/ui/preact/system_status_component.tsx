@@ -359,6 +359,7 @@ export class SystemStatusComponent
     this.setState({
       ...this.state,
       expanded: !this.state.expanded,
+      enableConfiguration: false,
     });
   };
 
@@ -381,7 +382,6 @@ export class SystemStatusComponent
   private handleConfigEnd = () => {
     this.setState({
       ...this.state,
-      expanded: false,
       enableConfiguration: false,
       config: null,
     });
