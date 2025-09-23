@@ -38,7 +38,7 @@ function getStatusClass(status: string): string {
 type analogSensorState = {
   data: SensorData | null;
   expanded: boolean;
-  enableCalibration: boolean;
+  enableConfiguration: boolean;
 };
 
 // Sensor settings used during the rendering process.
@@ -70,7 +70,7 @@ export class AnalogSensorComponent extends Component<
     this.state = {
       data: null,
       expanded: false,
-      enableCalibration: false,
+      enableConfiguration: false,
     };
   }
 
@@ -94,7 +94,7 @@ export class AnalogSensorComponent extends Component<
     this.setState({
       data: null,
       expanded: false,
-      enableCalibration: false,
+      enableConfiguration: false,
     });
   }
 
@@ -189,8 +189,8 @@ export class AnalogSensorComponent extends Component<
               </div>
             </div>
 
-            {/* Calibration mode */}
-            {this.state.enableCalibration && (
+            {/* Configuration mode */}
+            {this.state.enableConfiguration && (
               <FormConfigComponent
                 config={this.props.config}
                 ignoreKeys={["bitwidth"]}
@@ -201,7 +201,7 @@ export class AnalogSensorComponent extends Component<
           </div>
         )}
 
-        {this.state.expanded && !this.state.enableCalibration && (
+        {this.state.expanded && !this.state.enableConfiguration && (
           <div className="config-button-container">
             <button onClick={this.handleConfigBegin} className="config-button">
               Configure
@@ -234,7 +234,7 @@ export class AnalogSensorComponent extends Component<
     this.setState({
       ...this.state,
       expanded: false,
-      enableCalibration: false,
+      enableConfiguration: false,
     });
   };
 
@@ -243,7 +243,7 @@ export class AnalogSensorComponent extends Component<
     this.setState({
       ...this.state,
       expanded: true,
-      enableCalibration: true,
+      enableConfiguration: true,
     });
   };
 
@@ -254,7 +254,7 @@ export class AnalogSensorComponent extends Component<
     this.setState({
       ...this.state,
       expanded: !wasExpanded,
-      enableCalibration: false,
+      enableConfiguration: false,
     });
   };
 }
