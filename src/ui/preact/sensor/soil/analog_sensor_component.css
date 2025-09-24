@@ -51,6 +51,15 @@
   color: var(--devui-color-text-dark);
 }
 
+/* Loading State */
+.sensor-loading {
+  color: var(--devui-color-text-secondary);
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+  padding: var(--devui-spacing);
+}
+
 /* Moisture Display */
 .moisture-display {
   display: flex;

@@ -112,7 +112,16 @@ export class AnalogSensorComponent extends Component<
 
   render() {
     if (!this.state.data) {
-      return <p>Loading sensor data...</p>;
+      return (
+        <div className="sensor-card">
+          <div className="sensor-header">
+            <div className="sensor-title-row">
+              <h3 className="sensor-title">{this.props.title}</h3>
+            </div>
+            <p className="sensor-loading">Loading sensor data...</p>
+          </div>
+        </div>
+      );
     }
 
     const statusClass = getStatusClass(this.state.data.currStatus);
