@@ -102,64 +102,6 @@
   grid-column: span 1;
 }
 
-/* System Configuration Section - spans full width */
-.system-config {
-  grid-column: 1 / -1;
-  background: var(--devui-color-white);
-  border: 1px solid var(--devui-color-border);
-  border-radius: var(--devui-radius);
-  padding: var(--devui-spacing);
-  box-shadow: var(--devui-shadow);
-}
-
-.system-config-title {
-  font-size: var(--devui-font-size-l);
-  font-weight: 600;
-  color: var(--devui-color-text-dark);
-  margin: 0 0 var(--devui-spacing) 0;
-}
-
-.system-config-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: var(--devui-spacing-small);
-}
-
-.config-card {
-  background: var(--devui-color-bg);
-  border: 1px solid var(--devui-color-border);
-  border-radius: var(--devui-radius-small);
-  padding: var(--devui-spacing-small);
-  text-align: center;
-  cursor: pointer;
-  transition: background-color var(--devui-transition);
-}
-
-.config-card:hover {
-  background: var(--devui-color-border);
-}
-
-/* Base Card Styles */
-.dashboard-card {
-  background: var(--devui-color-white);
-  border: 1px solid var(--devui-color-border);
-  border-radius: var(--devui-radius);
-  padding: var(--devui-spacing);
-  box-shadow: var(--devui-shadow);
-  transition: box-shadow var(--devui-transition);
-}
-
-.dashboard-card:hover {
-  box-shadow: var(--shadow-hover);
-}
-
-.dashboard-card-title {
-  font-size: var(--devui-font-size-l);
-  font-weight: 600;
-  color: var(--devui-color-text-dark);
-  margin: 0 0 var(--devui-spacing) 0;
-}
-
 /* Mobile Responsive */
 @media (max-width: 1024px) {
   .dashboard {
@@ -172,10 +114,6 @@
 
   .card-small {
     grid-column: span 1;
-  }
-
-  .system-config-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -264,9 +202,5 @@
   .card-large,
   .card-small {
     grid-column: span 1;
-  }
-
-  .system-config-grid {
-    grid-template-columns: 1fr;
   }
 }
