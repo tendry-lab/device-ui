@@ -128,6 +128,17 @@
   flex-wrap: wrap;
 }
 
+.devui-component-status-indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+}
+
+.devui-component-status-text {
+  font-size: var(--devui-font-size-s);
+  font-weight: 500;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .devui-component-header,

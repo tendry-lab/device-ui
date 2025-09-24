@@ -150,9 +150,11 @@ export class AnalogSensorComponent extends Component<
           </div>
 
           {/* Main status display */}
-          <div className="status-row">
-            <div className={`status-indicator ${statusClass}`} />
-            <span className={`status-text ${statusClass}`}>
+          <div className="devui-component-row">
+            <div
+              className={`devui-component-status-indicator ${statusClass}`}
+            />
+            <span className={`devui-component-status-text ${statusClass}`}>
               {this.state.data.currStatus}
             </span>
             <span className="status-duration">
@@ -193,7 +195,7 @@ export class AnalogSensorComponent extends Component<
               <div className="devui-component-detail-label">
                 Previous Status
               </div>
-              <div className="prev-status-row">
+              <div className="devui-component-row">
                 <div className={`prev-status-indicator ${prevStatusClass}`} />
                 <span className="prev-status-text">
                   {this.state.data.prevStatus}
