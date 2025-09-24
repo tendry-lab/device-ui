@@ -95,12 +95,12 @@ export class NetworkStatusComponent
   render() {
     if (!this.state.data) {
       return (
-        <div className="network-status-card">
-          <div className="network-status-header">
-            <div className="network-status-title-row">
-              <h3 className="network-status-title">Network Status</h3>
+        <div className="devui-component-card">
+          <div className="devui-component-header">
+            <div className="devui-component-title-row">
+              <h3 className="devui-component-title">Network Status</h3>
             </div>
-            <p className="network-status-loading">Loading network data...</p>
+            <p className="devui-component-loading">Loading network data...</p>
           </div>
         </div>
       );
@@ -120,21 +120,21 @@ export class NetworkStatusComponent
     }
 
     return (
-      <div className="network-status-card">
+      <div className="devui-component-card">
         {/* Header - always visible */}
         <div
-          className={`network-status-header ${this.state.expanded ? "expanded" : ""}`}
+          className={`devui-component-header ${this.state.expanded ? "expanded" : ""}`}
           onClick={this.toggleExpanded}
         >
-          <div className="network-status-title-row">
-            <h3 className="network-status-title">Network Status</h3>
+          <div className="devui-component-title-row">
+            <h3 className="devui-component-title">Network Status</h3>
             <div
               className={`devui-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
           </div>
 
           {/* Mode and Status display */}
-          <div className="mode-row">
+          <div className="devui-component-row">
             <span
               className={`network-mode ${isStaMode ? "sta-mode" : isApMode ? "ap-mode" : ""}`}
             >
@@ -151,7 +151,7 @@ export class NetworkStatusComponent
           </div>
 
           {/* Primary info */}
-          <div className="primary-info">
+          <div className="devui-component-primary-info">
             {isStaMode && <span>{(this.state.data as WiFiStaData).ip}</span>}
             {isApMode && (
               <span>
@@ -164,19 +164,19 @@ export class NetworkStatusComponent
 
         {/* Expanded details */}
         {this.state.expanded && (
-          <div className="network-status-details">
-            <div className="details-grid">
+          <div className="devui-component-details">
+            <div className="devui-component-details-grid">
               {isStaMode && (
                 <>
-                  <div className="detail-item">
-                    <div className="detail-label">SSID</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">SSID</div>
+                    <div className="devui-component-detail-value">
                       {(this.state.data as WiFiStaData).ssid}
                     </div>
                   </div>
-                  <div className="detail-item">
-                    <div className="detail-label">RSSI</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">RSSI</div>
+                    <div className="devui-component-detail-value">
                       {(this.state.data as WiFiStaData).rssi} dBm
                     </div>
                   </div>
@@ -184,9 +184,9 @@ export class NetworkStatusComponent
               )}
 
               {isApMode && (
-                <div className="detail-item">
-                  <div className="detail-label">Channel</div>
-                  <div className="detail-value">
+                <div className="devui-component-detail-item">
+                  <div className="devui-component-detail-label">Channel</div>
+                  <div className="devui-component-detail-value">
                     {(this.state.data as WiFiApData).channel}
                   </div>
                 </div>
