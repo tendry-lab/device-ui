@@ -113,12 +113,12 @@ export class AnalogSensorComponent extends Component<
   render() {
     if (!this.state.data) {
       return (
-        <div className="sensor-card">
-          <div className="sensor-header">
-            <div className="sensor-title-row">
-              <h3 className="sensor-title">{this.props.title}</h3>
+        <div className="devui-component-card">
+          <div className="devui-component-header">
+            <div className="devui-component-title-row">
+              <h3 className="devui-component-title">{this.props.title}</h3>
             </div>
-            <p className="sensor-loading">Loading sensor data...</p>
+            <p className="devui-component-loading">Loading sensor data...</p>
           </div>
         </div>
       );
@@ -128,14 +128,14 @@ export class AnalogSensorComponent extends Component<
     const prevStatusClass = getStatusClass(this.state.data.prevStatus);
 
     return (
-      <div className="sensor-card">
+      <div className="devui-component-card">
         {/* Header - always visible */}
         <div
-          className={`sensor-header ${this.state.expanded ? "expanded" : ""}`}
+          className={`devui-component-header ${this.state.expanded ? "expanded" : ""}`}
           onClick={this.toggleExpanded}
         >
-          <div className="sensor-title-row">
-            <h3 className="sensor-title">{this.props.title}</h3>
+          <div className="devui-component-title-row">
+            <h3 className="devui-component-title">{this.props.title}</h3>
             <div
               className={`devui-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
@@ -166,19 +166,23 @@ export class AnalogSensorComponent extends Component<
 
         {/* Expanded details */}
         {this.state.expanded && (
-          <div className="sensor-details">
-            <div className="details-grid">
-              <div className="detail-item">
-                <div className="detail-label">Raw Value</div>
-                <div className="detail-value">{this.state.data.raw}</div>
+          <div className="devui-component-details">
+            <div className="devui-component-details-grid">
+              <div className="devui-component-detail-item">
+                <div className="devui-component-detail-label">Raw Value</div>
+                <div className="devui-component-detail-value">
+                  {this.state.data.raw}
+                </div>
               </div>
-              <div className="detail-item">
-                <div className="detail-label">Voltage</div>
-                <div className="detail-value">{this.state.data.voltage}mV</div>
+              <div className="devui-component-detail-item">
+                <div className="devui-component-detail-label">Voltage</div>
+                <div className="devui-component-detail-value">
+                  {this.state.data.voltage}mV
+                </div>
               </div>
-              <div className="detail-item">
-                <div className="detail-label">Write Count</div>
-                <div className="detail-value">
+              <div className="devui-component-detail-item">
+                <div className="devui-component-detail-label">Write Count</div>
+                <div className="devui-component-detail-value">
                   {this.state.data.writeCount.toLocaleString()}
                 </div>
               </div>
@@ -186,7 +190,9 @@ export class AnalogSensorComponent extends Component<
 
             {/* Previous status */}
             <div className="previous-status">
-              <div className="detail-label">Previous Status</div>
+              <div className="devui-component-detail-label">
+                Previous Status
+              </div>
               <div className="prev-status-row">
                 <div className={`prev-status-indicator ${prevStatusClass}`} />
                 <span className="prev-status-text">
