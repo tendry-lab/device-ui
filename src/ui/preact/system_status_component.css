@@ -8,55 +8,6 @@
   --status-unknown: #f59e0b;
 }
 
-/* Main Container */
-.system-status-card {
-  background: var(--devui-color-white);
-  border: 1px solid var(--devui-color-border);
-  border-radius: var(--devui-radius);
-  padding: 0;
-  box-shadow: var(--devui-shadow);
-  overflow: hidden;
-  transition: box-shadow var(--devui-transition);
-  max-width: 100%;
-  width: 100%;
-}
-
-.system-status-card:hover {
-  box-shadow: var(--shadow-hover);
-}
-
-/* Header Section */
-.system-status-header {
-  padding: var(--devui-spacing);
-  cursor: pointer;
-}
-
-.system-status-header.expanded {
-  border-bottom: 1px solid var(--devui-color-border);
-}
-
-.system-status-title-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--devui-spacing-small);
-}
-
-.system-status-title {
-  margin: 0;
-  font-size: var(--devui-font-size-l);
-  font-weight: 600;
-  color: var(--devui-color-text-dark);
-}
-
-/* Status Display */
-.status-row {
-  display: flex;
-  align-items: center;
-  gap: var(--devui-spacing-small);
-  margin-bottom: var(--devui-spacing-small);
-}
-
 .status-indicator {
   width: 0.75rem;
   height: 0.75rem;
@@ -77,58 +28,6 @@
 .status-text.status-offline { color: var(--status-offline); }
 .status-text.status-unknown { color: var(--status-unknown); }
 
-/* Primary Info */
-.primary-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--devui-font-size-s);
-  color: var(--devui-color-text-secondary);
-  gap: var(--devui-spacing);
-  flex-wrap: wrap;
-}
-
-/* Loading State */
-.system-status-loading {
-  color: var(--devui-color-text-secondary);
-  font-style: italic;
-  margin: 0;
-  text-align: center;
-  padding: var(--devui-spacing);
-}
-
-/* Details Section */
-.system-status-details {
-  padding: var(--devui-spacing);
-  background-color: var(--devui-color-bg);
-}
-
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  gap: var(--devui-spacing-small) var(--devui-spacing);
-  margin-bottom: var(--devui-spacing);
-}
-
-.detail-item {
-  text-align: center;
-}
-
-.detail-label {
-  font-size: var(--devui-font-size-xs);
-  color: var(--devui-color-text-secondary);
-  margin-bottom: 0.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-}
-
-.detail-value {
-  font-size: var(--devui-font-size-m);
-  font-weight: 500;
-  color: var(--devui-color-text-dark);
-  word-break: break-word;
-}
-
 /* Device ID Button */
 .device-id-button {
   padding: 0.25rem 0.5rem;
@@ -148,49 +47,4 @@
 .device-id-button:focus-visible {
   outline: 2px solid var(--devui-color-primary);
   outline-offset: 2px;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .system-status-header,
-  .system-status-details {
-    padding: var(--devui-spacing);
-  }
-
-  .details-grid {
-    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
-    gap: var(--devui-spacing-small);
-  }
-
-  .primary-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
-  .detail-value {
-    font-size: var(--devui-font-size-s);
-  }
-}
-
-/* Tablet Responsive */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .details-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Extra Small Mobile */
-@media (max-width: 480px) {
-  .system-status-title {
-    font-size: var(--devui-font-size-m);
-  }
-
-  .primary-info {
-    font-size: var(--devui-font-size-xs);
-  }
-
-  .details-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
