@@ -37,8 +37,8 @@
 
 .non-modal-stack {
   position: absolute;
-  top: var(--spacing-large);
-  right: var(--spacing-large);
+  top: var(--devui-spacing-large);
+  right: var(--devui-spacing-large);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -48,11 +48,11 @@
 
 /* Notification Base */
 .notification {
-  background: var(--color-white);
-  border-radius: var(--radius);
+  background: var(--devui-color-white);
+  border-radius: var(--devui-radius);
   padding: var(--notification-padding);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--color-border);
+  box-shadow: var(--devui-shadow);
+  border: 1px solid var(--devui-color-border);
   border-left: 4px solid var(--accent-color);
   animation: slideIn var(--animation-duration) var(--animation-easing);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -73,11 +73,11 @@
 .notification-content {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing);
+  gap: var(--devui-spacing);
 }
 
 .notification-message {
-  font-size: var(--font-size-m);
+  font-size: var(--devui-font-size-m);
   color: var(--notification-text);
   font-weight: 500;
   line-height: 1.4;
@@ -87,7 +87,7 @@
 /* Buttons */
 .notification-buttons {
   display: flex;
-  gap: var(--spacing-small);
+  gap: var(--devui-spacing-small);
   justify-content: flex-end;
 }
 
@@ -125,13 +125,13 @@
 }
 
 .notification-button {
-  padding: var(--spacing-small) var(--spacing);
+  padding: var(--devui-spacing-small) var(--devui-spacing);
   border: none;
-  border-radius: var(--radius-small);
+  border-radius: var(--devui-radius-small);
   cursor: pointer;
-  font-size: var(--font-size-s);
+  font-size: var(--devui-font-size-s);
   font-weight: 500;
-  transition: all var(--transition);
+  transition: all var(--devui-transition);
   min-width: 4.5rem;
   height: 2.25rem;
   display: flex;
@@ -165,11 +165,11 @@
 .confirm-no {
   background: var(--notification-light);
   color: #475569;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--devui-color-border);
 }
 
 .confirm-no:hover {
-  background: var(--color-border);
+  background: var(--devui-color-border);
 }
 
 /* Non-modal specific */
@@ -201,9 +201,9 @@
 /* Mobile */
 @media (max-width: 768px) {
   .non-modal-stack {
-    left: var(--spacing-small);
-    right: var(--spacing-small);
-    top: var(--spacing-small);
+    left: var(--devui-spacing-small);
+    right: var(--devui-spacing-small);
+    top: var(--devui-spacing-small);
     max-width: none;
     align-items: flex-end;
   }

@@ -14,25 +14,25 @@
 
 /* Main Container */
 .config-container {
-  margin-top: var(--spacing);
-  padding: var(--spacing-large);
-  background-color: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  margin-top: var(--devui-spacing);
+  padding: var(--devui-spacing-large);
+  background-color: var(--devui-color-bg);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius);
+  box-shadow: var(--devui-shadow);
   text-align: center;
 }
 
 .config-title {
   margin: 0 0 1.25rem 0;
-  color: var(--color-text);
-  font-size: var(--font-size-m);
+  color: var(--devui-color-text);
+  font-size: var(--devui-font-size-m);
   font-weight: 600;
 }
 
 /* Status Messages */
 .config-loading {
-  color: var(--color-text-secondary);
+  color: var(--devui-color-text-secondary);
   font-style: italic;
   margin: 0;
 }
@@ -45,7 +45,7 @@
 
 /* Form Styling */
 .config-form {
-  margin-bottom: var(--spacing-large);
+  margin-bottom: var(--devui-spacing-large);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,20 +64,20 @@
 }
 
 .form-label {
-  font-size: var(--font-size-s);
+  font-size: var(--devui-font-size-s);
   font-weight: 600;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
   text-align: right;
   margin-right: 0.625rem;
 }
 
 .form-input {
-  padding: var(--spacing-small) 0.75rem;
+  padding: var(--devui-spacing-small) 0.75rem;
   border: 2px solid var(--config-border-input);
-  border-radius: var(--radius-small);
-  font-size: var(--font-size-s);
-  background-color: var(--color-white);
-  transition: all var(--transition);
+  border-radius: var(--devui-radius-small);
+  font-size: var(--devui-font-size-s);
+  background-color: var(--devui-color-white);
+  transition: all var(--devui-transition);
   font-family: inherit;
   text-align: left;
   width: 8rem;
@@ -85,13 +85,13 @@
 
 .form-input:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--devui-color-primary);
   background-color: var(--config-focus);
   box-shadow: 0 0 0 3px var(--config-focus-ring);
 }
 
 .form-input:hover:not(:focus) {
-  border-color: var(--color-text-secondary);
+  border-color: var(--devui-color-text-secondary);
 }
 
 /* Button Container */
@@ -99,19 +99,19 @@
   display: flex;
   gap: 0.75rem;
   justify-content: center;
-  margin-top: var(--spacing);
+  margin-top: var(--devui-spacing);
 }
 
 .config-buttons-item {
   padding: 0.75rem 1.25rem;
   border: none;
-  border-radius: var(--radius-button);
+  border-radius: var(--devui-radius-button);
   cursor: pointer;
-  font-size: var(--font-size-s);
+  font-size: var(--devui-font-size-s);
   font-weight: 600;
-  transition: all var(--transition);
+  transition: all var(--devui-transition);
   min-width: 5rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--devui-shadow);
 }
 
 .config-buttons-item:hover:not(:disabled) {
@@ -131,14 +131,14 @@
 }
 
 .config-buttons-item:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--devui-color-primary);
   outline-offset: 2px;
 }
 
 /* Button Variants */
 .config-buttons-item-apply {
   background-color: var(--config-success);
-  color: var(--color-white);
+  color: var(--devui-color-white);
 }
 
 .config-buttons-item-apply:hover:not(:disabled) {
@@ -147,7 +147,7 @@
 
 .config-buttons-item-reset {
   background-color: var(--config-danger);
-  color: var(--color-white);
+  color: var(--devui-color-white);
 }
 
 .config-buttons-item-reset:hover:not(:disabled) {
@@ -155,30 +155,30 @@
 }
 
 .config-buttons-item-close {
-  background-color: var(--color-white);
-  color: var(--color-text-dark);
+  background-color: var(--devui-color-white);
+  color: var(--devui-color-text-dark);
   border: 2px solid var(--config-border-input);
 }
 
 .config-buttons-item-close:hover:not(:disabled) {
-  background-color: var(--color-bg);
-  border-color: var(--color-text-secondary);
+  background-color: var(--devui-color-bg);
+  border-color: var(--devui-color-text-secondary);
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .config-container {
     margin-top: 0.75rem;
-    padding: var(--spacing);
+    padding: var(--devui-spacing);
   }
 
   .config-form {
-    gap: var(--spacing);
+    gap: var(--devui-spacing);
     max-width: 100%;
   }
 
   .config-buttons-container {
-    gap: var(--spacing-small);
+    gap: var(--devui-spacing-small);
     flex-wrap: wrap;
   }
 

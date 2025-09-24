@@ -5,10 +5,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
-  gap: var(--spacing);
+  gap: var(--devui-spacing);
   max-width: 80rem;
   margin: 0 auto;
-  padding: var(--spacing);
+  padding: var(--devui-spacing);
 }
 
 /* Navigation Bar - spans full width */
@@ -17,19 +17,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--spacing);
-  box-shadow: var(--shadow);
+  background: var(--devui-color-white);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius);
+  padding: var(--devui-spacing);
+  box-shadow: var(--devui-shadow);
   position: relative;
   box-sizing: border-box;
 }
 
 .nav-logo {
-  font-size: var(--font-size-xl);
+  font-size: var(--devui-font-size-xl);
   font-weight: 600;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
   display: flex;
   align-items: center;
 }
@@ -63,7 +63,7 @@
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: var(--color-text-dark);
+  background-color: var(--devui-color-text-dark);
   margin: 3px 0;
   transition: 0.3s;
   border-radius: 2px;
@@ -72,24 +72,24 @@
 /* Desktop Navigation Buttons */
 .nav-buttons {
   display: flex;
-  gap: var(--spacing-small);
+  gap: var(--devui-spacing-small);
 }
 
 .nav-button {
-  padding: var(--spacing-small) var(--spacing);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-button);
+  padding: var(--devui-spacing-small) var(--devui-spacing);
+  background: var(--devui-color-bg);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius-button);
   cursor: pointer;
-  font-size: var(--font-size-s);
-  color: var(--color-text-dark);
-  transition: background-color var(--transition);
+  font-size: var(--devui-font-size-s);
+  color: var(--devui-color-text-dark);
+  transition: background-color var(--devui-transition);
   -webkit-appearance: none;
   appearance: none;
 }
 
 .nav-button:hover {
-  background: var(--color-border);
+  background: var(--devui-color-border);
 }
 
 /* Large Cards - spans 2 columns */
@@ -105,48 +105,48 @@
 /* System Configuration Section - spans full width */
 .system-config {
   grid-column: 1 / -1;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--spacing);
-  box-shadow: var(--shadow);
+  background: var(--devui-color-white);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius);
+  padding: var(--devui-spacing);
+  box-shadow: var(--devui-shadow);
 }
 
 .system-config-title {
-  font-size: var(--font-size-l);
+  font-size: var(--devui-font-size-l);
   font-weight: 600;
-  color: var(--color-text-dark);
-  margin: 0 0 var(--spacing) 0;
+  color: var(--devui-color-text-dark);
+  margin: 0 0 var(--devui-spacing) 0;
 }
 
 .system-config-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: var(--spacing-small);
+  gap: var(--devui-spacing-small);
 }
 
 .config-card {
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-small);
-  padding: var(--spacing-small);
+  background: var(--devui-color-bg);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius-small);
+  padding: var(--devui-spacing-small);
   text-align: center;
   cursor: pointer;
-  transition: background-color var(--transition);
+  transition: background-color var(--devui-transition);
 }
 
 .config-card:hover {
-  background: var(--color-border);
+  background: var(--devui-color-border);
 }
 
 /* Base Card Styles */
 .dashboard-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--spacing);
-  box-shadow: var(--shadow);
-  transition: box-shadow var(--transition);
+  background: var(--devui-color-white);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius);
+  padding: var(--devui-spacing);
+  box-shadow: var(--devui-shadow);
+  transition: box-shadow var(--devui-transition);
 }
 
 .dashboard-card:hover {
@@ -154,10 +154,10 @@
 }
 
 .dashboard-card-title {
-  font-size: var(--font-size-l);
+  font-size: var(--devui-font-size-l);
   font-weight: 600;
-  color: var(--color-text-dark);
-  margin: 0 0 var(--spacing) 0;
+  color: var(--devui-color-text-dark);
+  margin: 0 0 var(--devui-spacing) 0;
 }
 
 /* Mobile Responsive */
@@ -194,10 +194,10 @@
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    background: var(--devui-color-white);
+    border: 1px solid var(--devui-color-border);
+    border-radius: var(--devui-radius);
+    box-shadow: var(--devui-shadow);
     flex-direction: column;
     min-width: 150px;
     z-index: 1000;
@@ -205,26 +205,26 @@
 
   .nav-buttons .nav-button {
     border: none;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--devui-color-border);
     border-radius: 0;
-    padding: var(--spacing);
+    padding: var(--devui-spacing);
     text-align: left;
-    background: var(--color-white);
+    background: var(--devui-color-white);
     width: 100%;
     margin: 0;
   }
 
   .nav-buttons .nav-button:last-child {
     border-bottom: none;
-    border-radius: 0 0 var(--radius) var(--radius);
+    border-radius: 0 0 var(--devui-radius) var(--devui-radius);
   }
 
   .nav-buttons .nav-button:first-child {
-    border-radius: var(--radius) var(--radius) 0 0;
+    border-radius: var(--devui-radius) var(--devui-radius) 0 0;
   }
 
   .nav-buttons .nav-button:hover {
-    background: var(--color-bg);
+    background: var(--devui-color-bg);
   }
 
   /* Show menu when checkbox is checked */
@@ -257,8 +257,8 @@
   /* Mobile Dashboard Layout */
   .dashboard {
     grid-template-columns: 1fr;
-    gap: var(--spacing-small);
-    padding: var(--spacing-small);
+    gap: var(--devui-spacing-small);
+    padding: var(--devui-spacing-small);
   }
 
   .card-large,

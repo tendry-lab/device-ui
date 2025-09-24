@@ -13,13 +13,13 @@
 
 /* Main Container */
 .sensor-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  background: var(--devui-color-white);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius);
   padding: 0;
-  box-shadow: var(--shadow);
+  box-shadow: var(--devui-shadow);
   overflow: hidden;
-  transition: box-shadow var(--transition);
+  transition: box-shadow var(--devui-transition);
   width: 100%;
 }
 
@@ -29,58 +29,58 @@
 
 /* Header Section */
 .sensor-header {
-  padding: var(--spacing);
+  padding: var(--devui-spacing);
   cursor: pointer;
 }
 
 .sensor-header.expanded {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--devui-color-border);
 }
 
 .sensor-title-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-small);
+  margin-bottom: var(--devui-spacing-small);
 }
 
 .sensor-title {
   margin: 0;
-  font-size: var(--font-size-l);
+  font-size: var(--devui-font-size-l);
   font-weight: 600;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
 }
 
 /* Moisture Display */
 .moisture-display {
   display: flex;
   align-items: baseline;
-  gap: var(--spacing-small);
-  margin-bottom: var(--spacing-small);
+  gap: var(--devui-spacing-small);
+  margin-bottom: var(--devui-spacing-small);
 }
 
 .moisture-value {
-  font-size: var(--font-size-3xl);
+  font-size: var(--devui-font-size-3xl);
   font-weight: 700;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
 }
 
 .moisture-unit {
-  font-size: var(--font-size-l);
-  color: var(--color-text-secondary);
+  font-size: var(--devui-font-size-l);
+  color: var(--devui-color-text-secondary);
 }
 
 .progress-info {
   margin-left: auto;
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
+  font-size: var(--devui-font-size-xs);
+  color: var(--devui-color-text-secondary);
 }
 
 /* Status Display */
 .status-row {
   display: flex;
   align-items: center;
-  gap: var(--spacing-small);
+  gap: var(--devui-spacing-small);
 }
 
 .status-indicator {
@@ -90,52 +90,52 @@
 }
 
 .status-text {
-  font-size: var(--font-size-m);
+  font-size: var(--devui-font-size-m);
   font-weight: 500;
 }
 
 .status-duration {
-  font-size: var(--font-size-s);
-  color: var(--color-text-secondary);
+  font-size: var(--devui-font-size-s);
+  color: var(--devui-color-text-secondary);
 }
 
 /* Details Section */
 .sensor-details {
-  padding: var(--spacing);
-  background-color: var(--color-bg);
+  padding: var(--devui-spacing);
+  background-color: var(--devui-color-bg);
 }
 
 .details-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
-  gap: var(--spacing-small);
-  margin-bottom: var(--spacing-large);
+  gap: var(--devui-spacing-small);
+  margin-bottom: var(--devui-spacing-large);
 }
 
 .detail-label {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
+  font-size: var(--devui-font-size-xs);
+  color: var(--devui-color-text-secondary);
   margin-bottom: 0.25rem;
 }
 
 .detail-value {
-  font-size: var(--font-size-m);
+  font-size: var(--devui-font-size-m);
   font-weight: 500;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
 }
 
 /* Previous Status */
 .previous-status {
-  padding: var(--spacing-small);
-  background-color: var(--color-white);
-  border-radius: var(--radius-small);
-  border: 1px solid var(--color-border);
+  padding: var(--devui-spacing-small);
+  background-color: var(--devui-color-white);
+  border-radius: var(--devui-radius-small);
+  border: 1px solid var(--devui-color-border);
 }
 
 .prev-status-row {
   display: flex;
   align-items: center;
-  gap: var(--spacing-small);
+  gap: var(--devui-spacing-small);
 }
 
 .prev-status-indicator {
@@ -145,14 +145,14 @@
 }
 
 .prev-status-text {
-  font-size: var(--font-size-s);
+  font-size: var(--devui-font-size-s);
   font-weight: 500;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
 }
 
 .prev-status-duration {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
+  font-size: var(--devui-font-size-xs);
+  color: var(--devui-color-text-secondary);
 }
 
 /* Status Colors */
@@ -179,12 +179,12 @@
 
   .sensor-header,
   .sensor-details {
-    padding: var(--spacing);
+    padding: var(--devui-spacing);
   }
 
   .details-grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-small);
+    gap: var(--devui-spacing-small);
   }
 
   .moisture-display {
@@ -192,6 +192,6 @@
   }
 
   .moisture-value {
-    font-size: var(--font-size-2xl);
+    font-size: var(--devui-font-size-2xl);
   }
 }

@@ -24,8 +24,8 @@
 
   /* Typography Settings */
   color-scheme: light;
-  color: var(--color-text);
-  background-color: var(--color-white);
+  color: var(--devui-color-text);
+  background-color: var(--devui-color-white);
   font-family: var(--font-family);
   line-height: var(--line-height);
   font-weight: var(--font-weight-normal);
@@ -55,15 +55,15 @@ a:hover {
 
 /* Buttons */
 button {
-  border-radius: var(--radius-small);
+  border-radius: var(--devui-radius-small);
   border: 1px solid var(--color-border-transparent);
   padding: var(--spacing-button);
-  font-size: var(--font-size-m);
+  font-size: var(--devui-font-size-m);
   font-weight: var(--font-weight-medium);
   font-family: inherit;
   background-color: var(--color-button-bg);
   cursor: pointer;
-  transition: border-color var(--transition);
+  transition: border-color var(--devui-transition);
 }
 
 button:hover {

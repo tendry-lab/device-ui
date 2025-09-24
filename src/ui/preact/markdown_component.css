@@ -12,8 +12,8 @@
 }
 
 .markdown-modal {
-  background: var(--color-white);
-  border-radius: var(--radius);
+  background: var(--devui-color-white);
+  border-radius: var(--devui-radius);
   box-shadow: 0 1.5625rem 5rem rgba(0, 0, 0, 0.25);
   max-width: 50rem;
   max-height: 80vh;
@@ -26,57 +26,57 @@
 
 .close-button {
   position: absolute;
-  top: var(--spacing);
-  right: var(--spacing);
+  top: var(--devui-spacing);
+  right: var(--devui-spacing);
   background: none;
   border: none;
-  font-size: var(--font-size-2xl);
+  font-size: var(--devui-font-size-2xl);
   cursor: pointer;
-  color: var(--color-text-secondary);
+  color: var(--devui-color-text-secondary);
   z-index: 1001;
   width: 2rem;
   height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-small);
+  border-radius: var(--devui-radius-small);
 }
 
 .close-button:hover {
-  background: var(--color-bg);
-  color: var(--color-text-dark);
+  background: var(--devui-color-bg);
+  color: var(--devui-color-text-dark);
 }
 
 .markdown-content {
-  padding: var(--spacing-large);
+  padding: var(--devui-spacing-large);
   overflow-y: auto;
   line-height: 1.6;
   text-align: left;
-  font-size: var(--font-size-xl);
+  font-size: var(--devui-font-size-xl);
 }
 
 .markdown-content h1, .markdown-content h2, .markdown-content h3 {
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
   margin-top: 0;
-  margin-bottom: var(--spacing);
+  margin-bottom: var(--devui-spacing);
 }
 
 .markdown-content p {
-  margin-bottom: var(--spacing);
-  color: var(--color-text);
+  margin-bottom: var(--devui-spacing);
+  color: var(--devui-color-text);
 }
 
 .markdown-content code {
-  background: var(--color-bg);
+  background: var(--devui-color-bg);
   padding: 0.125rem 0.25rem;
-  border-radius: var(--radius-small);
+  border-radius: var(--devui-radius-small);
   font-family: monospace;
 }
 
 .markdown-content pre {
-  background: var(--color-bg);
-  padding: var(--spacing);
-  border-radius: var(--radius-small);
+  background: var(--devui-color-bg);
+  padding: var(--devui-spacing);
+  border-radius: var(--devui-radius-small);
   overflow-x: auto;
 }
 
@@ -87,7 +87,7 @@
   }
 
   .markdown-content {
-    padding: var(--spacing);
-    font-size: var(--font-size-m);
+    padding: var(--devui-spacing);
+    font-size: var(--devui-font-size-m);
   }
 }
