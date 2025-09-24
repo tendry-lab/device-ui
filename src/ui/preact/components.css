@@ -91,6 +91,21 @@
   padding: var(--devui-spacing);
 }
 
+.devui-component-detail-label {
+  font-size: var(--devui-font-size-xs);
+  color: var(--devui-color-text-secondary);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.devui-component-detail-value {
+  font-size: var(--devui-font-size-m);
+  font-weight: 500;
+  color: var(--devui-color-text-dark);
+  word-break: break-word;
+}
+
 .devui-component-details {
   padding: var(--devui-spacing);
   background-color: var(--devui-color-bg);
