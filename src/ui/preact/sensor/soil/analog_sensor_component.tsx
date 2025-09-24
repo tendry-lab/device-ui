@@ -137,7 +137,7 @@ export class AnalogSensorComponent extends Component<
           <div className="devui-component-title-row">
             <h3 className="devui-component-title">{this.props.title}</h3>
             <div
-              className={`devui-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
+              className={`devui-component-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
           </div>
 
