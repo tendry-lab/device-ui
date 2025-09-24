@@ -137,7 +137,7 @@ export class AnalogSensorComponent extends Component<
           <div className="sensor-title-row">
             <h3 className="sensor-title">{this.props.title}</h3>
             <div
-              className={`expand-arrow ${this.state.expanded ? "expanded" : ""}`}
+              className={`devui-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
           </div>
 
@@ -211,8 +211,11 @@ export class AnalogSensorComponent extends Component<
         )}
 
         {this.state.expanded && !this.state.enableConfiguration && (
-          <div className="config-button-container">
-            <button onClick={this.handleConfigBegin} className="config-button">
+          <div className="devui-configure-button-container">
+            <button
+              onClick={this.handleConfigBegin}
+              className="devui-configure-button"
+            >
               Configure
             </button>
           </div>

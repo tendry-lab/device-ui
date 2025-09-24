@@ -189,7 +189,7 @@ export class SystemStatusComponent
           <div className="system-status-title-row">
             <h3 className="system-status-title">System Status</h3>
             <div
-              className={`expand-arrow ${this.state.expanded ? "expanded" : ""}`}
+              className={`devui-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
           </div>
 
@@ -300,19 +300,19 @@ export class SystemStatusComponent
 
         {this.state.expanded && !this.state.enableConfiguration && (
           <>
-            <div className="config-button-container">
+            <div className="devui-configure-button-container">
               <button
                 onClick={this.handleConfigBeginMdns}
-                className="config-button"
+                className="devui-configure-button"
               >
                 Configure mDNS
               </button>
             </div>
 
-            <div className="config-button-container">
+            <div className="devui-configure-button-container">
               <button
                 onClick={this.handleConfigBeginSystemTime}
-                className="config-button"
+                className="devui-configure-button"
               >
                 Configure System Time
               </button>
