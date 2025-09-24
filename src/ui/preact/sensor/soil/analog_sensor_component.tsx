@@ -211,10 +211,10 @@ export class AnalogSensorComponent extends Component<
         )}
 
         {this.state.expanded && !this.state.enableConfiguration && (
-          <div className="devui-configure-button-container">
+          <div className="devui-component-configure-button-container">
             <button
               onClick={this.handleConfigBegin}
-              className="devui-configure-button"
+              className="devui-component-configure-button"
             >
               Configure
             </button>

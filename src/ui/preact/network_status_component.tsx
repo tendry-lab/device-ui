@@ -207,10 +207,10 @@ export class NetworkStatusComponent
         {isStaMode &&
           this.state.expanded &&
           !this.state.enableConfiguration && (
-            <div className="devui-configure-button-container">
+            <div className="devui-component-configure-button-container">
               <button
                 onClick={this.handleConfigBeginWiFiSta}
-                className="devui-configure-button"
+                className="devui-component-configure-button"
               >
                 Configure
               </button>
@@ -219,18 +219,18 @@ export class NetworkStatusComponent
 
         {isApMode && this.state.expanded && !this.state.enableConfiguration && (
           <>
-            <div className="devui-configure-button-container">
+            <div className="devui-component-configure-button-container">
               <button
                 onClick={this.handleConfigBeginWiFiAp}
-                className="devui-configure-button"
+                className="devui-component-configure-button"
               >
                 Configure WiFi AP
               </button>
             </div>
-            <div className="devui-configure-button-container">
+            <div className="devui-component-configure-button-container">
               <button
                 onClick={this.handleConfigBeginWiFiSta}
-                className="devui-configure-button"
+                className="devui-component-configure-button"
               >
                 Configure WiFi STA
               </button>

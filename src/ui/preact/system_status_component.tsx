@@ -300,19 +300,19 @@ export class SystemStatusComponent
 
         {this.state.expanded && !this.state.enableConfiguration && (
           <>
-            <div className="devui-configure-button-container">
+            <div className="devui-component-configure-button-container">
               <button
                 onClick={this.handleConfigBeginMdns}
-                className="devui-configure-button"
+                className="devui-component-configure-button"
               >
                 Configure mDNS
               </button>
             </div>
 
-            <div className="devui-configure-button-container">
+            <div className="devui-component-configure-button-container">
               <button
                 onClick={this.handleConfigBeginSystemTime}
-                className="devui-configure-button"
+                className="devui-component-configure-button"
               >
                 Configure System Time
               </button>
