@@ -38,10 +38,10 @@
 .devui-component-status-indicator.status-good { background-color: var(--status-good); }
 .devui-component-status-indicator.status-fair { background-color: var(--status-fair); }
 .devui-component-status-indicator.status-poor { background-color: var(--status-poor); }
-.devui-component-status-indicator.status-very-poor { background-color: var(--status-very-poor); }
+.devui-component-status-indicator.status-unreliable { background-color: var(--status-unreliable); }
 
 .devui-component-status-text.status-excellent { color: var(--status-excellent); }
 .devui-component-status-text.status-good { color: var(--status-good); }
 .devui-component-status-text.status-fair { color: var(--status-fair); }
 .devui-component-status-text.status-poor { color: var(--status-poor); }
-.devui-component-status-text.status-very-poor { color: var(--status-very-poor); }
+.devui-component-status-text.status-unreliable { color: var(--status-unreliable); }
