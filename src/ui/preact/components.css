@@ -14,7 +14,6 @@
   transform: rotate(90deg);
 }
 
-/* Configuration button */
 .devui-component-configure-button-container {
   padding: var(--devui-spacing-small) var(--devui-spacing);
   border-top: 1px solid var(--devui-color-border);
