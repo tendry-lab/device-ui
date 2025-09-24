@@ -165,12 +165,12 @@ export class SystemStatusComponent
   render() {
     if (!this.state.telemetry && !this.state.registration) {
       return (
-        <div className="system-status-card">
-          <div className="system-status-header">
-            <div className="system-status-title-row">
-              <h3 className="system-status-title">System Status</h3>
+        <div className="devui-component-card">
+          <div className="devui-component-header">
+            <div className="devui-component-title-row">
+              <h3 className="devui-component-title">System Status</h3>
             </div>
-            <p className="system-status-loading">Loading device data...</p>
+            <p className="devui-component-loading">Loading device data...</p>
           </div>
         </div>
       );
@@ -180,21 +180,21 @@ export class SystemStatusComponent
     const statusClass = `status-${deviceStatus.status}`;
 
     return (
-      <div className="system-status-card">
+      <div className="devui-component-card">
         {/* Header - always visible */}
         <div
-          className={`system-status-header ${this.state.expanded ? "expanded" : ""}`}
+          className={`devui-component-header ${this.state.expanded ? "expanded" : ""}`}
           onClick={this.toggleExpanded}
         >
-          <div className="system-status-title-row">
-            <h3 className="system-status-title">System Status</h3>
+          <div className="devui-component-title-row">
+            <h3 className="devui-component-title">System Status</h3>
             <div
               className={`devui-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
           </div>
 
           {/* Status display */}
-          <div className="status-row">
+          <div className="devui-component-row">
             <div className={`status-indicator ${statusClass}`} />
             <span className={`status-text ${statusClass}`}>
               {deviceStatus.statusText}
@@ -202,7 +202,7 @@ export class SystemStatusComponent
           </div>
 
           {/* Primary info - most important metrics */}
-          <div className="primary-info">
+          <div className="devui-component-primary-info">
             {this.state.registration && (
               <button
                 className="device-id-button"
@@ -227,37 +227,45 @@ export class SystemStatusComponent
 
         {/* Expanded details */}
         {this.state.expanded && (
-          <div className="system-status-details">
-            <div className="details-grid">
+          <div className="devui-component-details">
+            <div className="devui-component-details-grid">
               {this.state.telemetry && (
                 <>
-                  <div className="detail-item">
-                    <div className="detail-label">Lifetime</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">Lifetime</div>
+                    <div className="devui-component-detail-value">
                       {TimeOps.formatDuration(this.state.telemetry.lifetime)}
                     </div>
                   </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Timestamp</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">
+                      Timestamp
+                    </div>
+                    <div className="devui-component-detail-value">
                       {this.state.telemetry.timestamp}
                     </div>
                   </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Memory Free</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">
+                      Memory Free
+                    </div>
+                    <div className="devui-component-detail-value">
                       {formatMemory(this.state.telemetry.memoryHeap)}
                     </div>
                   </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Memory Min</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">
+                      Memory Min
+                    </div>
+                    <div className="devui-component-detail-value">
                       {formatMemory(this.state.telemetry.memoryHeapMin)}
                     </div>
                   </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Reset Reason</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">
+                      Reset Reason
+                    </div>
+                    <div className="devui-component-detail-value">
                       {formatResetReason(this.state.telemetry.resetReason)}
                     </div>
                   </div>
@@ -266,21 +274,21 @@ export class SystemStatusComponent
 
               {this.state.registration && (
                 <>
-                  <div className="detail-item">
-                    <div className="detail-label">ESP-IDF</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">ESP-IDF</div>
+                    <div className="devui-component-detail-value">
                       {this.state.registration.toolchainVersion}
                     </div>
                   </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Firmware</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">Firmware</div>
+                    <div className="devui-component-detail-value">
                       {this.state.registration.fwName}
                     </div>
                   </div>
-                  <div className="detail-item">
-                    <div className="detail-label">Product</div>
-                    <div className="detail-value">
+                  <div className="devui-component-detail-item">
+                    <div className="devui-component-detail-label">Product</div>
+                    <div className="devui-component-detail-value">
                       {this.state.registration.productName}
                     </div>
                   </div>
