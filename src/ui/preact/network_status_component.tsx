@@ -142,8 +142,10 @@ export class NetworkStatusComponent
             </span>
             {isStaMode && (
               <>
-                <div className={`status-indicator ${signalClass}`} />
-                <span className={`status-text ${signalClass}`}>
+                <div
+                  className={`devui-component-status-indicator ${signalClass}`}
+                />
+                <span className={`devui-component-status-text ${signalClass}`}>
                   {signalStatus}
                 </span>
               </>

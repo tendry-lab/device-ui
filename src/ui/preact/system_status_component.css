@@ -8,25 +8,14 @@
   --status-unknown: #f59e0b;
 }
 
-.status-indicator {
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
-}
-
-.status-text {
-  font-size: var(--devui-font-size-m);
-  font-weight: 500;
-}
-
 /* Status Colors */
-.status-indicator.status-online { background-color: var(--status-online); }
-.status-indicator.status-offline { background-color: var(--status-offline); }
-.status-indicator.status-unknown { background-color: var(--status-unknown); }
+.devui-component-status-indicator.status-online { background-color: var(--status-online); }
+.devui-component-status-indicator.status-offline { background-color: var(--status-offline); }
+.devui-component-status-indicator.status-unknown { background-color: var(--status-unknown); }
 
-.status-text.status-online { color: var(--status-online); }
-.status-text.status-offline { color: var(--status-offline); }
-.status-text.status-unknown { color: var(--status-unknown); }
+.devui-component-status-text.status-online { color: var(--status-online); }
+.devui-component-status-text.status-offline { color: var(--status-offline); }
+.devui-component-status-text.status-unknown { color: var(--status-unknown); }
 
 /* Device ID Button */
 .device-id-button {

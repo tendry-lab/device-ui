@@ -36,24 +36,6 @@
   color: var(--devui-color-text-secondary);
 }
 
-/* Status Display */
-.status-row {
-  display: flex;
-  align-items: center;
-  gap: var(--devui-spacing-small);
-}
-
-.status-indicator {
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
-}
-
-.status-text {
-  font-size: var(--devui-font-size-m);
-  font-weight: 500;
-}
-
 .status-duration {
   font-size: var(--devui-font-size-s);
   color: var(--devui-color-text-secondary);
@@ -65,12 +47,6 @@
   background-color: var(--devui-color-white);
   border-radius: var(--devui-radius-small);
   border: 1px solid var(--devui-color-border);
-}
-
-.prev-status-row {
-  display: flex;
-  align-items: center;
-  gap: var(--devui-spacing-small);
 }
 
 .prev-status-indicator {
@@ -91,19 +67,19 @@
 }
 
 /* Status Colors */
-.status-indicator.status-none { background-color: var(--status-none); }
-.status-indicator.status-saturated { background-color: var(--status-saturated); }
-.status-indicator.status-wet { background-color: var(--status-wet); }
-.status-indicator.status-depletion { background-color: var(--status-depletion); }
-.status-indicator.status-dry { background-color: var(--status-dry); }
-.status-indicator.status-error { background-color: var(--status-error); }
+.devui-component-status-indicator.status-none { background-color: var(--status-none); }
+.devui-component-status-indicator.status-saturated { background-color: var(--status-saturated); }
+.devui-component-status-indicator.status-wet { background-color: var(--status-wet); }
+.devui-component-status-indicator.status-depletion { background-color: var(--status-depletion); }
+.devui-component-status-indicator.status-dry { background-color: var(--status-dry); }
+.devui-component-status-indicator.status-error { background-color: var(--status-error); }
 
-.status-text.status-none { color: var(--status-none); }
-.status-text.status-saturated { color: var(--status-saturated); }
-.status-text.status-wet { color: var(--status-wet); }
-.status-text.status-depletion { color: var(--status-depletion); }
-.status-text.status-dry { color: var(--status-dry); }
-.status-text.status-error { color: var(--status-error); }
+.devui-component-status-text.status-none { color: var(--status-none); }
+.devui-component-status-text.status-saturated { color: var(--status-saturated); }
+.devui-component-status-text.status-wet { color: var(--status-wet); }
+.devui-component-status-text.status-depletion { color: var(--status-depletion); }
+.devui-component-status-text.status-dry { color: var(--status-dry); }
+.devui-component-status-text.status-error { color: var(--status-error); }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {

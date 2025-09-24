@@ -33,27 +33,15 @@
   background: var(--mode-ap);
 }
 
-/* Status Indicators */
-.status-indicator {
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 50%;
-}
-
-.status-text {
-  font-size: var(--devui-font-size-s);
-  font-weight: 500;
-}
-
 /* Signal Strength Colors */
-.status-indicator.status-excellent { background-color: var(--status-excellent); }
-.status-indicator.status-good { background-color: var(--status-good); }
-.status-indicator.status-fair { background-color: var(--status-fair); }
-.status-indicator.status-poor { background-color: var(--status-poor); }
-.status-indicator.status-very-poor { background-color: var(--status-very-poor); }
+.devui-component-status-indicator.status-excellent { background-color: var(--status-excellent); }
+.devui-component-status-indicator.status-good { background-color: var(--status-good); }
+.devui-component-status-indicator.status-fair { background-color: var(--status-fair); }
+.devui-component-status-indicator.status-poor { background-color: var(--status-poor); }
+.devui-component-status-indicator.status-very-poor { background-color: var(--status-very-poor); }
 
-.status-text.status-excellent { color: var(--status-excellent); }
-.status-text.status-good { color: var(--status-good); }
-.status-text.status-fair { color: var(--status-fair); }
-.status-text.status-poor { color: var(--status-poor); }
-.status-text.status-very-poor { color: var(--status-very-poor); }
+.devui-component-status-text.status-excellent { color: var(--status-excellent); }
+.devui-component-status-text.status-good { color: var(--status-good); }
+.devui-component-status-text.status-fair { color: var(--status-fair); }
+.devui-component-status-text.status-poor { color: var(--status-poor); }
+.devui-component-status-text.status-very-poor { color: var(--status-very-poor); }

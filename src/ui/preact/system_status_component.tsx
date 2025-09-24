@@ -195,8 +195,10 @@ export class SystemStatusComponent
 
           {/* Status display */}
           <div className="devui-component-row">
-            <div className={`status-indicator ${statusClass}`} />
-            <span className={`status-text ${statusClass}`}>
+            <div
+              className={`devui-component-status-indicator ${statusClass}`}
+            />
+            <span className={`devui-component-status-text ${statusClass}`}>
               {deviceStatus.statusText}
             </span>
           </div>
