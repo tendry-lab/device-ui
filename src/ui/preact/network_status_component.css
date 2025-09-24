@@ -16,13 +16,13 @@
 
 /* Main Container */
 .network-status-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  background: var(--devui-color-white);
+  border: 1px solid var(--devui-color-border);
+  border-radius: var(--devui-radius);
   padding: 0;
-  box-shadow: var(--shadow);
+  box-shadow: var(--devui-shadow);
   overflow: hidden;
-  transition: box-shadow var(--transition);
+  transition: box-shadow var(--devui-transition);
   max-width: 100%;
   width: 100%;
 }
@@ -33,41 +33,41 @@
 
 /* Header Section */
 .network-status-header {
-  padding: var(--spacing);
+  padding: var(--devui-spacing);
   cursor: pointer;
 }
 
 .network-status-header.expanded {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--devui-color-border);
 }
 
 .network-status-title-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-small);
+  margin-bottom: var(--devui-spacing-small);
 }
 
 .network-status-title {
   margin: 0;
-  font-size: var(--font-size-l);
+  font-size: var(--devui-font-size-l);
   font-weight: 600;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
 }
 
 /* Mode and Status Display */
 .mode-row {
   display: flex;
   align-items: center;
-  gap: var(--spacing-small);
-  margin-bottom: var(--spacing-small);
+  gap: var(--devui-spacing-small);
+  margin-bottom: var(--devui-spacing-small);
 }
 
 .network-mode {
   display: inline-block;
   padding: 0.125rem 0.5rem;
-  border-radius: var(--radius-small);
-  font-size: var(--font-size-xs);
+  border-radius: var(--devui-radius-small);
+  font-size: var(--devui-font-size-xs);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.025em;
@@ -90,7 +90,7 @@
 }
 
 .status-text {
-  font-size: var(--font-size-s);
+  font-size: var(--devui-font-size-s);
   font-weight: 500;
 }
 
@@ -112,32 +112,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-size-s);
-  color: var(--color-text-secondary);
-  gap: var(--spacing-small);
+  font-size: var(--devui-font-size-s);
+  color: var(--devui-color-text-secondary);
+  gap: var(--devui-spacing-small);
   flex-wrap: wrap;
 }
 
 /* Loading State */
 .network-status-loading {
-  color: var(--color-text-secondary);
+  color: var(--devui-color-text-secondary);
   font-style: italic;
   margin: 0;
   text-align: center;
-  padding: var(--spacing);
+  padding: var(--devui-spacing);
 }
 
 /* Details Section */
 .network-status-details {
-  padding: var(--spacing);
-  background-color: var(--color-bg);
+  padding: var(--devui-spacing);
+  background-color: var(--devui-color-bg);
 }
 
 .details-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  gap: var(--spacing-small) var(--spacing);
-  margin-bottom: var(--spacing);
+  gap: var(--devui-spacing-small) var(--devui-spacing);
+  margin-bottom: var(--devui-spacing);
 }
 
 .detail-item {
@@ -145,17 +145,17 @@
 }
 
 .detail-label {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-secondary);
+  font-size: var(--devui-font-size-xs);
+  color: var(--devui-color-text-secondary);
   margin-bottom: 0.25rem;
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }
 
 .detail-value {
-  font-size: var(--font-size-m);
+  font-size: var(--devui-font-size-m);
   font-weight: 500;
-  color: var(--color-text-dark);
+  color: var(--devui-color-text-dark);
   word-break: break-word;
 }
 
@@ -163,12 +163,12 @@
 @media (max-width: 768px) {
   .network-status-header,
   .network-status-details {
-    padding: var(--spacing);
+    padding: var(--devui-spacing);
   }
 
   .details-grid {
     grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
-    gap: var(--spacing-small);
+    gap: var(--devui-spacing-small);
   }
 
   .primary-info {
@@ -182,7 +182,7 @@
   }
 
   .detail-value {
-    font-size: var(--font-size-s);
+    font-size: var(--devui-font-size-s);
   }
 }
 
@@ -196,11 +196,11 @@
 /* Extra Small Mobile */
 @media (max-width: 480px) {
   .network-status-title {
-    font-size: var(--font-size-m);
+    font-size: var(--devui-font-size-m);
   }
 
   .primary-info {
-    font-size: var(--font-size-xs);
+    font-size: var(--devui-font-size-xs);
   }
 
   .details-grid {

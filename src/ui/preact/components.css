@@ -3,10 +3,10 @@
 .expand-arrow {
   width: 0;
   height: 0;
-  border-left: 0.625rem solid var(--color-text-secondary);
+  border-left: 0.625rem solid var(--devui-color-text-secondary);
   border-top: 0.4375rem solid transparent;
   border-bottom: 0.4375rem solid transparent;
-  transition: transform var(--transition);
+  transition: transform var(--devui-transition);
   cursor: pointer;
 }
 
@@ -16,22 +16,22 @@
 
 /* Configuration button */
 .config-button-container {
-  padding: var(--spacing-small) var(--spacing);
-  border-top: 1px solid var(--color-border);
-  background-color: var(--color-bg);
+  padding: var(--devui-spacing-small) var(--devui-spacing);
+  border-top: 1px solid var(--devui-color-border);
+  background-color: var(--devui-color-bg);
 }
 
 .config-button {
   width: 100%;
-  padding: var(--spacing-small);
+  padding: var(--devui-spacing-small);
   background-color: #6b7280;
   color: white;
   border: none;
-  border-radius: var(--radius-button);
+  border-radius: var(--devui-radius-button);
   cursor: pointer;
-  font-size: var(--font-size-s);
+  font-size: var(--devui-font-size-s);
   font-weight: 500;
-  transition: background-color var(--transition);
+  transition: background-color var(--devui-transition);
 }
 
 .config-button:hover {

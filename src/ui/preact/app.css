@@ -11,7 +11,7 @@
 #app {
   max-width: var(--app-max-width);
   margin: 0 auto;
-  padding: var(--spacing);
+  padding: var(--devui-spacing);
   text-align: center;
   box-sizing: border-box;
 }
@@ -19,6 +19,6 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   #app {
-    padding: var(--spacing-small);
+    padding: var(--devui-spacing-small);
   }
 }
