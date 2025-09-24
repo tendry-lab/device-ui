@@ -129,7 +129,7 @@ export class NetworkStatusComponent
           <div className="devui-component-title-row">
             <h3 className="devui-component-title">Network Status</h3>
             <div
-              className={`devui-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
+              className={`devui-component-expand-arrow ${this.state.expanded ? "expanded" : ""}`}
             />
           </div>
 

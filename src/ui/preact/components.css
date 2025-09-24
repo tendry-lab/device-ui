@@ -1,6 +1,6 @@
 @import '@device-ui/ui/preact/tokens.css';
 
-.devui-expand-arrow {
+.devui-component-expand-arrow {
   width: 0;
   height: 0;
   border-left: 0.625rem solid var(--devui-color-text-secondary);
@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.devui-expand-arrow.expanded {
+.devui-component-expand-arrow.expanded {
   transform: rotate(90deg);
 }
 
