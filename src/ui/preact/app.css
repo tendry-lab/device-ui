@@ -3,13 +3,11 @@
 /* CSS Custom Properties */
 :root {
   --app-font-family: Arial, sans-serif;
-  --app-max-width: 80rem;
   --app-shadow-color: #646cffaa;
   --app-shadow-preact: #673ab8aa;
 }
 
 #app {
-  max-width: var(--app-max-width);
   margin: 0 auto;
   padding: var(--devui-spacing);
   text-align: center;
