@@ -4,7 +4,7 @@ import "@device-ui/ui/preact/form_config_component.css";
 
 // Loading state component.
 function ConfigLoading() {
-  return <p className="config-loading">Loading configuration...</p>;
+  return <p className="devui-component-loading">Loading configuration...</p>;
 }
 
 // Error state component.
