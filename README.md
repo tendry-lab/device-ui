@@ -1,8 +1,21 @@
-[![Build Web-GUI](https://github.com/tendry-lab/bonsai-zero-a-1-k-web-gui/actions/workflows/build.yml/badge.svg)](https://github.com/tendry-lab/bonsai-zero-a-1-k-web-gui/actions/workflows/build.yml)
-
 ## Introduction
 
-`device-ui` is a set of components used to build a Web GUI for the embedded devices. It is designed to be very small, up to 50KB gzipped.
+[![Build Web-GUI](https://github.com/tendry-lab/bonsai-zero-a-1-k-web-gui/actions/workflows/build.yml/badge.svg)](https://github.com/tendry-lab/bonsai-zero-a-1-k-web-gui/actions/workflows/build.yml)
+
+Web UI foundation for device monitoring and control. Preact components, TypeScript, tested core logic. Complete interfaces under 50KB gzipped.
+
+## Features
+
+- Preact + TypeScript
+- System and network configuration
+- Sensor monitoring components
+- Notification system
+- Offline device documentation
+- Responsive design
+
+## Preview
+
+![](docs/images/device_ui_mockup.png)
 
 ## Development
 
