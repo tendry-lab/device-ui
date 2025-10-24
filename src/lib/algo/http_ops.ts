@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 export class HTTPOps {
   // Add query parameters to @p baseURL from @p params.
   static addQueryParams(

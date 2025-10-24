@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { Fetcher } from "@device-ui/lib/http/fetcher";
 import { HTTPFetcher } from "@device-ui/lib/http/http_fetcher";
 import { Rebooter } from "@device-ui/lib/device/rebooter";

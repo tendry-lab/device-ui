@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import eslintPluginPrettier from "eslint-plugin-prettier";
 import typescriptPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptParser from "@typescript-eslint/parser";

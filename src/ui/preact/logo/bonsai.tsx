@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 export const BonsaiLogo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

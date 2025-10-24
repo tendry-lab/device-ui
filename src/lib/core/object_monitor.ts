@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 // Object monitor provides an inversion control between the core and UI logic.
 //
 // The idea is the following: both, a core component (logic) and UI component

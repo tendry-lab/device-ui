@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { BasicConfigComponent } from "@device-ui/ui/preact/basic_config_component";
 
 import "@device-ui/ui/preact/form_config_component.css";

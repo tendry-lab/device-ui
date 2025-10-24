@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 // Arbitrary key-value configuration.
 export interface Config {
   // Read key-value configuration.

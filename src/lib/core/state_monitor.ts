@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
 
 export class StateMonitor<T> {

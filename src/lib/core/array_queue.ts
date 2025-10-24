@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 // Queue implementation based on JavaScript array.
 export class ArrayQueue<T> {
   // Add element to the queue.

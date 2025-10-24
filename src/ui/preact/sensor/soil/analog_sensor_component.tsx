@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { Component } from "preact";
 
 import { FormConfigComponent } from "@device-ui/ui/preact/form_config_component";
