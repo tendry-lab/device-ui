@@ -9,7 +9,7 @@ on:
       - '*'
 
 jobs:
-  build-firmware:
+  build:
     runs-on: ubuntu-latest
     env:
       SOURCE_PATH: project
