@@ -1,4 +1,4 @@
-name: Build Web-GUI
+name: device-ui
 
 on:
   pull_request:
