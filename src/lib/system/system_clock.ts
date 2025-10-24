@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 // SystemClock represents a UNIX time of the resource.
 export interface SystemClock {
   // SetTimestamp sets the UNIX time for the resource.

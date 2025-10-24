@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { ArrayQueue } from "@device-ui/lib/core/array_queue";
 import { ConnectionHandler } from "@device-ui/lib/device/connection_handler";
 

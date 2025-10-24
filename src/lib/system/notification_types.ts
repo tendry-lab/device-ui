@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Tendry Lab
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { Queue } from "@device-ui/lib/core/queue";
 import { LimitQueue } from "@device-ui/lib/core/limit_queue";
 import { ArrayQueue } from "@device-ui/lib/core/array_queue";
