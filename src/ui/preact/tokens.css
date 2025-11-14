@@ -17,6 +17,10 @@
   --devui-color-text-dark: #1e293b;
   --devui-color-white: #ffffff;
   --devui-color-primary: #3b82f6;
+  --devui-color-green: #10b981;
+  --devui-color-green-hover: #059669;
+  --devui-color-red: #ef4444;
+  --devui-color-red-hover: #dc2626;
 
   /* Effects */
   --devui-radius: 0.75rem;

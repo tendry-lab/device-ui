@@ -8,7 +8,7 @@
 
 :root {
   /* Status Colors */
-  --status-online: #10b981;
+  --status-online: var(--devui-color-green);
   --status-offline: #6b7280;
   --status-unknown: #f59e0b;
 }
