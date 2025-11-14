@@ -8,11 +8,11 @@
 
 :root {
   /* Signal Strength Colors */
-  --status-excellent: #10b981;
+  --status-excellent: var(--devui-color-green);
   --status-good: #22c55e;
   --status-fair: #f59e0b;
-  --status-poor: #ef4444;
-  --status-unreliable: #dc2626;
+  --status-poor: var(--devui-color-red);
+  --status-unreliable: var(--devui-color-red-hover);
 
   /* Network Mode Colors */
   --mode-sta: #3b82f6;

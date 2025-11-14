@@ -7,10 +7,10 @@
 
 /* CSS Custom Properties */
 :root {
-  --notification-error: #ef4444;
+  --notification-error: var(--devui-color-red);
   --notification-warning: #f59e0b;
-  --notification-success: #10b981;
-  --notification-success-hover: #059669;
+  --notification-success: var(--devui-color-green);
+  --notification-success-hover: var(--devui-color-green-hover);
   --notification-text: #334155;
   --notification-light: #f9fafb;
   --notification-padding: 1.5rem;

@@ -7,10 +7,10 @@
 
 /* CSS Custom Properties */
 :root {
-  --config-success: #10b981;
-  --config-success-hover: #059669;
-  --config-danger: #ef4444;
-  --config-danger-hover: #dc2626;
+  --config-success: var(--devui-color-green);
+  --config-success-hover: var(--devui-color-green-hover);
+  --config-danger: var(--devui-color-red);
+  --config-danger-hover: var(--devui-color-red-hover);
   --config-secondary: #6b7280;
   --config-border-input: #d1d5db;
   --config-focus: rgba(59, 130, 246, 0.1);
