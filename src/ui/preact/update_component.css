@@ -1,0 +1,182 @@
+@import '@device-ui/ui/preact/tokens.css';
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+}
+
+.ota-modal {
+  background: var(--devui-color-white);
+  border-radius: var(--devui-radius);
+  box-shadow: 0 1.5625rem 5rem rgba(0, 0, 0, 0.25);
+  max-width: 50rem;
+  max-height: 80vh;
+  width: calc(100vw - 4rem);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-button {
+  position: absolute;
+  top: var(--devui-spacing);
+  right: var(--devui-spacing);
+  background: none;
+  border: none;
+  font-size: var(--devui-font-size-2xl);
+  cursor: pointer;
+  color: var(--devui-color-text-secondary);
+  z-index: 1001;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--devui-radius-small);
+}
+
+.close-button:hover {
+  background: var(--devui-color-bg);
+  color: var(--devui-color-text-dark);
+}
+
+.ota-content {
+  padding: var(--devui-spacing-large);
+  display: flex;
+  flex-direction: column;
+  gap: var(--devui-spacing-large);
+}
+
+.ota-title {
+  margin: 0;
+  font-size: var(--devui-font-size-xl);
+  font-weight: 600;
+  color: var(--devui-color-text-dark);
+  text-align: center;
+}
+
+.ota-dropzone {
+  border: 2px dashed var(--devui-color-border);
+  border-radius: var(--devui-radius);
+  padding: var(--devui-spacing-large);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--devui-transition);
+  background: var(--devui-color-bg);
+  min-height: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--devui-spacing-small);
+}
+
+.ota-dropzone:hover {
+  border-color: var(--devui-color-text-secondary);
+  background: var(--devui-color-white);
+}
+
+.ota-dropzone.dragging {
+  border-color: var(--devui-color-primary);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.ota-dropzone.has-file {
+  border-color: var(--devui-color-green);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.ota-dropzone-icon {
+  font-size: 3rem;
+  margin-bottom: var(--devui-spacing-small);
+}
+
+.ota-dropzone-text {
+  margin: 0;
+  font-size: var(--devui-font-size-m);
+  font-weight: 500;
+  color: var(--devui-color-text-dark);
+}
+
+.ota-dropzone-subtext {
+  margin: 0;
+  font-size: var(--devui-font-size-s);
+  color: var(--devui-color-text-secondary);
+}
+
+.ota-file-input {
+  display: none;
+}
+
+.ota-actions {
+  display: flex;
+  gap: var(--devui-spacing);
+  justify-content: center;
+}
+
+.ota-button {
+  padding: var(--devui-spacing-small) var(--devui-spacing-large);
+  border: none;
+  border-radius: var(--devui-radius-button);
+  cursor: pointer;
+  font-size: var(--devui-font-size-m);
+  font-weight: 500;
+  transition: all var(--devui-transition);
+  min-width: 7rem;
+}
+
+.ota-button:focus-visible {
+  outline: 2px solid var(--devui-color-primary);
+  outline-offset: 2px;
+}
+
+.ota-button-primary {
+  background: var(--devui-color-green);
+  color: var(--devui-color-white);
+}
+
+.ota-button-primary:hover {
+  background: var(--devui-color-green-hover);
+}
+
+.ota-button-secondary {
+  background: var(--devui-color-white);
+  color: var(--devui-color-text-dark);
+  border: 2px solid var(--devui-color-border);
+}
+
+.ota-button-secondary:hover {
+  background: var(--devui-color-bg);
+  border-color: var(--devui-color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .ota-modal {
+    width: calc(100vw - 2rem);
+    max-height: 90vh;
+  }
+
+  .ota-content {
+    padding: var(--devui-spacing);
+  }
+
+  .ota-dropzone {
+    min-height: 10rem;
+    padding: var(--devui-spacing);
+  }
+
+  .ota-actions {
+    flex-direction: column;
+  }
+
+  .ota-button {
+    width: 100%;
+  }
+}
