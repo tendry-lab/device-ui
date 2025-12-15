@@ -14,7 +14,7 @@ jobs:
     env:
       SOURCE_PATH: project
     steps:
-      - name: Checkout repository
+      - name: checkout repository
         uses: actions/checkout@v4
         with:
           path: ${{ env.SOURCE_PATH }}
@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Build web GUI
+      - name: build web GUI
         shell: bash
         run: |
           cd ${{ env.SOURCE_PATH }}
