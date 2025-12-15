@@ -7,6 +7,7 @@ import {
   AlertType,
   ConfirmType,
 } from "@device-ui/lib/system/notification_types";
+
 import { NotificationSeverity } from "@device-ui/lib/system/notification";
 
 export type NotificationResult<T> = {
