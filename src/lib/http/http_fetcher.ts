@@ -6,9 +6,7 @@
 import { Fetcher } from "@device-ui/lib/http/fetcher";
 
 export class HTTPFetcher implements Fetcher {
-  constructor(url: string) {
-    this.url = url;
-  }
+  constructor(private url: string) {}
 
   async fetch(): Promise<{ data: Uint8Array | null; error: Error | null }> {
     let ret: Uint8Array | null = null;
@@ -32,6 +30,4 @@ export class HTTPFetcher implements Fetcher {
 
     return { data: ret, error: err };
   }
-
-  private url: string;
 }
