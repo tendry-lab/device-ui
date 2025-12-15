@@ -218,7 +218,7 @@ export class UpdateComponent
         <div className="update-success-message">
           <p className="update-success-text">
             Update successfully finished. Check updated firmware version in
-            system status card.
+            System Status card.
           </p>
         </div>
       </div>
