@@ -37,7 +37,7 @@
 
 .progress-info {
   margin-left: auto;
-  font-size: var(--devui-font-size-xs);
+  font-size: var(--devui-font-size-s);
   color: var(--devui-color-text-secondary);
 }
 
