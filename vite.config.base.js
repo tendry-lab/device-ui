@@ -51,6 +51,7 @@ export function createBaseConfig(deviceIP = "", projectConfig = {}) {
         "/api/v1/config/wifi/sta": createProxyConfig(deviceIP),
         "/api/v1/config/wifi/ap": createProxyConfig(deviceIP),
         "/api/v1/config/mdns": createProxyConfig(deviceIP),
+        "/api/v1/system/update": createProxyConfig(deviceIP),
       },
     },
     build: {
