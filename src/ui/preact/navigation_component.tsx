@@ -10,8 +10,10 @@ import { Locator } from "@device-ui/lib/device/locator";
 import { Notificator } from "@device-ui/lib/system/notificator";
 import { NotificationSeverity } from "@device-ui/lib/system/notification";
 import { StateMonitor } from "@device-ui/lib/core/state_monitor";
+import { Updater } from "@device-ui/lib/device/updater";
 
 import { MarkdownComponent } from "@device-ui/ui/preact/markdown_component";
+import { UpdateComponent } from "@device-ui/ui/preact/update_component";
 
 import "@device-ui/ui/preact/dashboard.css";
 
@@ -24,6 +26,9 @@ export type NavigationComponentProps = {
 
   // Notificator to send notifications.
   notificator: Notificator;
+
+  // Updater to perform the firmware update process.
+  updater: Updater;
 
   // Navigation bar logo.
   logo: JSX.Element;
@@ -40,6 +45,7 @@ export class NavigationComponent extends Component<
     super(props);
 
     this.helpState = new StateMonitor<boolean>(false);
+    this.updateState = new StateMonitor<boolean>(false);
   }
 
   render() {
@@ -62,6 +68,9 @@ export class NavigationComponent extends Component<
             <button className="nav-button" onClick={this.handleReboot}>
               Reboot
             </button>
+            <button className="nav-button" onClick={this.handleUpdate}>
+              Update
+            </button>
             <button className="nav-button" onClick={this.handleHelp}>
               Help
             </button>
@@ -72,12 +81,18 @@ export class NavigationComponent extends Component<
           stateMonitor={this.helpState}
           data={this.props.help}
         />
+
+        <UpdateComponent
+          stateMonitor={this.updateState}
+          updater={this.props.updater}
+        />
       </>
     );
   }
 
   override componentWillUnmount() {
     this.helpState.set(false);
+    this.updateState.set(false);
   }
 
   private handleLocate = async () => {
@@ -191,5 +206,10 @@ export class NavigationComponent extends Component<
     this.helpState.set(true);
   };
 
+  private handleUpdate = () => {
+    this.updateState.set(true);
+  };
+
   private helpState: StateMonitor<boolean>;
+  private updateState: StateMonitor<boolean>;
 }

@@ -9,6 +9,7 @@ Web UI foundation for device monitoring and control. Preact components, TypeScri
 - Preact + TypeScript
 - System and network configuration
 - Sensor monitoring components
+- OTA firmware update
 - Notification system
 - Offline device documentation
 - Responsive design
