@@ -10,7 +10,7 @@ import { Locator } from "@device-ui/lib/device/locator";
 import { Notificator } from "@device-ui/lib/system/notificator";
 import { NotificationSeverity } from "@device-ui/lib/system/notification";
 import { StateMonitor } from "@device-ui/lib/core/state_monitor";
-import { Updater } from "@device-ui/lib/device/updater";
+import { UpdaterSelector } from "@device-ui/lib/device/updater_selector";
 
 import { MarkdownComponent } from "@device-ui/ui/preact/markdown_component";
 import { UpdateComponent } from "@device-ui/ui/preact/update_component";
@@ -27,8 +27,8 @@ export type NavigationComponentProps = {
   // Notificator to send notifications.
   notificator: Notificator;
 
-  // Updater to perform the firmware update process.
-  updater: Updater;
+  // UpdaterSelector to select the updater for the firmware update process.
+  updaterSelector: UpdaterSelector;
 
   // Navigation bar logo.
   logo: JSX.Element;
@@ -84,7 +84,7 @@ export class NavigationComponent extends Component<
 
         <UpdateComponent
           stateMonitor={this.updateState}
-          updater={this.props.updater}
+          updaterSelector={this.props.updaterSelector}
         />
       </>
     );

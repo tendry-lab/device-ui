@@ -7,13 +7,18 @@ import { Component } from "preact";
 
 import { ObjectMonitor } from "@device-ui/lib/core/object_monitor";
 import { StateMonitor } from "@device-ui/lib/core/state_monitor";
-import { Updater } from "@device-ui/lib/device/updater";
+
+import {
+  UpdaterId,
+  UpdaterSelector,
+  UpdaterSelectorResult,
+} from "@device-ui/lib/device/updater_selector";
 
 import "@device-ui/ui/preact/update_component.css";
 
 export type UpdateComponentProps = {
   stateMonitor: StateMonitor<boolean>;
-  updater: Updater;
+  updaterSelector: UpdaterSelector;
 };
 
 type updateComponentState = {
@@ -22,6 +27,7 @@ type updateComponentState = {
   isUpdating: boolean;
   updateError: string | null;
   updateFinished: boolean;
+  updaterId: UpdaterId;
   selectedFile: File | null;
 };
 
@@ -38,6 +44,7 @@ export class UpdateComponent
       isUpdating: false,
       updateError: null,
       updateFinished: false,
+      updaterId: UpdaterId.None,
       selectedFile: null,
     };
 
@@ -58,6 +65,7 @@ export class UpdateComponent
       isUpdating: false,
       updateError: null,
       updateFinished: false,
+      updaterId: UpdaterId.None,
       selectedFile: null,
     });
   }
@@ -69,6 +77,7 @@ export class UpdateComponent
       isUpdating: false,
       updateError: null,
       updateFinished: false,
+      updaterId: UpdaterId.None,
       selectedFile: null,
     });
   }
@@ -186,7 +195,14 @@ export class UpdateComponent
     return (
       <div className="update-updating">
         <div className="update-spinner"></div>
-        <p className="update-updating-title">Updating firmware...</p>
+
+        {this.state.updaterId === UpdaterId.Firmware && (
+          <p className="update-updating-title">Updating Firmware...</p>
+        )}
+        {this.state.updaterId === UpdaterId.UI && (
+          <p className="update-updating-title">Updating UI...</p>
+        )}
+
         <p className="update-updating-warning">
           Please do not power off or reboot the device
         </p>
@@ -216,10 +232,7 @@ export class UpdateComponent
           </p>
         </div>
         <div className="update-success-message">
-          <p className="update-success-text">
-            Update successfully finished. Check updated firmware version in
-            System Status card.
-          </p>
+          <p className="update-success-text">Update successfully finished.</p>
         </div>
       </div>
     );
@@ -274,6 +287,7 @@ export class UpdateComponent
       selectedFile: file,
       updateError: null,
       updateFinished: false,
+      updaterId: UpdaterId.None,
     });
   };
 
@@ -283,6 +297,7 @@ export class UpdateComponent
       selectedFile: null,
       updateError: null,
       updateFinished: false,
+      updaterId: UpdaterId.None,
     });
     if (this.fileInput) {
       this.fileInput.value = "";
@@ -297,9 +312,23 @@ export class UpdateComponent
     const buffer = await this.state.selectedFile.arrayBuffer();
     const data = new Uint8Array(buffer);
 
-    this.setState({ ...this.state, isUpdating: true, updateError: null });
+    let error: Error | null = null;
 
-    const error = await this.props.updater.update(data);
+    const selectResult: UpdaterSelectorResult =
+      this.props.updaterSelector.select(this.state.selectedFile.name);
+
+    this.setState({
+      ...this.state,
+      isUpdating: true,
+      updateError: null,
+      updaterId: selectResult.id,
+    });
+
+    if (!selectResult.error) {
+      error = await selectResult.updater!.update(data);
+    } else {
+      error = selectResult.error;
+    }
     if (error) {
       const errorMessage = `Update failed: ${error}`;
       console.error(`update_component: update failed: ${error}`);
