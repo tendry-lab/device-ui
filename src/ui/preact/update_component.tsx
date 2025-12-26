@@ -330,13 +330,12 @@ export class UpdateComponent
       error = selectResult.error;
     }
     if (error) {
-      const errorMessage = `Update failed: ${error}`;
       console.error(`update_component: update failed: ${error}`);
 
       this.setState({
         ...this.state,
         isUpdating: false,
-        updateError: errorMessage,
+        updateError: `${error}`,
       });
 
       return;
