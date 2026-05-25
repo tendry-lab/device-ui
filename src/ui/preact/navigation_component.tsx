@@ -22,7 +22,7 @@ export type NavigationComponentProps = {
   rebooter: Rebooter;
 
   // Locator to control the device locating.
-  locator: Locator;
+  locator: Locator | null;
 
   // Notificator to send notifications.
   notificator: Notificator;
@@ -62,9 +62,11 @@ export class NavigationComponent extends Component<
           </label>
 
           <div className="nav-buttons">
-            <button className="nav-button" onClick={this.handleLocate}>
-              Locate
-            </button>
+            {this.props.locator && (
+              <button className="nav-button" onClick={this.handleLocate}>
+                Locate
+              </button>
+            )}
             <button className="nav-button" onClick={this.handleReboot}>
               Reboot
             </button>
@@ -119,7 +121,7 @@ export class NavigationComponent extends Component<
       return;
     }
 
-    const err = await this.props.locator.flip();
+    const err = await this.props.locator!.flip();
     if (err) {
       console.error(
         "navigation_component: failed to toggle device locating:",
