@@ -31,7 +31,7 @@ export type NavigationComponentProps = {
   updaterSelector: UpdaterSelector;
 
   // Navigation bar logo.
-  logo: JSX.Element;
+  logo: JSX.Element | null;
 
   // Help documentation.
   help: JSX.Element;
@@ -52,7 +52,7 @@ export class NavigationComponent extends Component<
     return (
       <>
         <nav className="nav-bar">
-          <div className="nav-logo">{this.props.logo}</div>
+          {this.props.logo && <div className="nav-logo">{this.props.logo}</div>}
 
           <input type="checkbox" id="menu-toggle" className="menu-toggle" />
           <label htmlFor="menu-toggle" className="hamburger">
